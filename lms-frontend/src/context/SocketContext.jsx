@@ -23,11 +23,14 @@ export const SocketProvider = ({ children }) => {
     }
 
     const newSocket = io(SOCKET_URL, {
-      transports: ['polling', 'websocket'],  // polling first — works through Render/proxies, then upgrades
+      withCredentials: true,                  // IMPORTANT: Send credentials with CORS
+      transports: ['websocket', 'polling'],   // Try websocket first, fallback to polling
       reconnectionAttempts: 5,                // stop after 5 retries instead of infinite
       reconnectionDelay: 3000,                // wait 3s between retries
       reconnectionDelayMax: 15000,            // max 15s between retries
-      timeout: 10000,                         // 10s connection timeout
+      timeout: 20000,                         // 20s connection timeout (increased for Render cold starts)
+      autoConnect: true,
+      forceNew: false,
     });
 
     newSocket.on('connect', () => {

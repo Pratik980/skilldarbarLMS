@@ -21,20 +21,29 @@ const allowedOrigins = [
   process.env.FRONTEND_URL,
 ].filter(Boolean);
 
-const isOriginAllowed = (origin) => !origin || allowedOrigins.includes(origin);
-
 const io = new Server(server, {
   cors: {
-    origin: (origin, callback) => {
-      if (isOriginAllowed(origin)) {
+    origin: function(origin, callback) {
+      // Allow requests with no origin (mobile apps, curl, etc)
+      if (!origin) {
+        console.log('✅ Socket.IO: Allowing request with no origin');
         return callback(null, true);
       }
-      return callback(new Error('Not allowed by CORS'), false);
+      
+      if (allowedOrigins.includes(origin)) {
+        console.log('✅ Socket.IO: Allowing origin:', origin);
+        return callback(null, true);
+      } else {
+        console.log('❌ Socket.IO: Blocked origin:', origin);
+        return callback(new Error('Not allowed by CORS'), false);
+      }
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
   },
-  transports: ['polling', 'websocket'], // polling first for proxy compatibility
+  transports: ['websocket', 'polling'], // Try websocket first, fallback to polling
+  allowEIO3: true, // Allow compatibility with Socket.IO v2/v3 clients
   pingTimeout: 60000,
   pingInterval: 25000,
 });
