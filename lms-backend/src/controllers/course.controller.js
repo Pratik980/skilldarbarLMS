@@ -79,6 +79,10 @@ exports.getCourseById = async (req, res) => {
 // @access  Private/Admin
 exports.createCourse = async (req, res) => {
   try {
+    console.log('=== CREATE COURSE REQUEST ===');
+    console.log('Body:', req.body);
+    console.log('Files:', req.files);
+    
     const { name, description, fee, category, duration, lectures, reviewEnabled } = req.body;
 
     if (!name || !fee) {
@@ -89,6 +93,7 @@ exports.createCourse = async (req, res) => {
     }
 
     if (!req.files || !req.files.qrImage || !req.files.qrImage[0]) {
+      console.log('❌ No QR image uploaded');
       return res.status(400).json({
         success: false,
         message: 'Please upload a QR code image',
@@ -96,9 +101,9 @@ exports.createCourse = async (req, res) => {
     }
 
     // Debug: Log uploaded file info
-    console.log('Uploaded QR Image:', req.files.qrImage[0].path);
+    console.log('✅ Uploaded QR Image:', req.files.qrImage[0].path);
     if (req.files.thumbnail) {
-      console.log('Uploaded Thumbnail:', req.files.thumbnail[0].path);
+      console.log('✅ Uploaded Thumbnail:', req.files.thumbnail[0].path);
     }
 
     const courseData = {
@@ -117,14 +122,16 @@ exports.createCourse = async (req, res) => {
       courseData.thumbnail = req.files.thumbnail[0].path;
     }
 
+    console.log('💾 Saving course data:', courseData);
     const course = await Course.create(courseData);
+    console.log('🎉 Course created successfully:', course._id);
 
     res.status(201).json({
       success: true,
       data: course,
     });
   } catch (error) {
-    console.error('Course creation error:', error);
+    console.error('❌ Course creation error:', error);
     res.status(500).json({
       success: false,
       message: error.message,

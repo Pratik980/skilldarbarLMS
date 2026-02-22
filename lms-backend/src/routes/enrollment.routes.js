@@ -1,5 +1,7 @@
 const express = require('express');
 const multer = require('multer');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const { cloudinary } = require('../config/cloudinary');
 const {
   getMyEnrollments,
   enrollCourse,
@@ -10,14 +12,10 @@ const {
 } = require('../controllers/enrollment.controller');
 const { protect } = require('../middleware/auth.middleware');
 const { authorize } = require('../middleware/admin.middleware');
-const { paymentProofStorage } = require('../config/cloudinary');
 
 const router = express.Router();
 
 // Multer configuration for payment proof upload using Cloudinary
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
-const { cloudinary } = require('../config/cloudinary');
-
 const paymentStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
