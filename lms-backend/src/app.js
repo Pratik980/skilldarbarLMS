@@ -15,9 +15,34 @@ const notificationRoutes = require('./routes/notification.routes');
 const app = express();
 
 // Middleware
-app.use(cors());
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  process.env.FRONTEND_URL, // Add this to Render environment variables
+  'https://skilldarbar.netlify.app' // Add your actual netlify URL here
+].filter(Boolean);
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+console.log('🌍 Environment:', process.env.NODE_ENV);
+console.log('✅ CORS allowed origins:', allowedOrigins);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 
 // Static files
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
