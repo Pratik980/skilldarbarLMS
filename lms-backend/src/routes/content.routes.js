@@ -17,7 +17,7 @@ const router = express.Router();
 // Multer configuration using Cloudinary with dynamic resource types
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
-  params: (req, file) => {
+  params: async (req, file) => {
     let folder, resourceType, allowedFormats;
     
     if (file.fieldname === 'videoFile') {
@@ -29,6 +29,10 @@ const storage = new CloudinaryStorage({
       resourceType = 'raw';
       allowedFormats = ['pdf'];
     } else if (file.fieldname === 'slideImages') {
+      folder = 'lms/images';
+      resourceType = 'image';
+      allowedFormats = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+    } else {
       folder = 'lms/images';
       resourceType = 'image';
       allowedFormats = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
@@ -54,6 +58,7 @@ const upload = multer({
       'image/jpeg',
       'image/png',
       'image/gif',
+      'image/webp',
     ];
     if (allowedMimes.includes(file.mimetype)) {
       cb(null, true);

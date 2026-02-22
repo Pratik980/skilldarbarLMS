@@ -15,8 +15,20 @@ const { paymentProofStorage } = require('../config/cloudinary');
 const router = express.Router();
 
 // Multer configuration for payment proof upload using Cloudinary
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const { cloudinary } = require('../config/cloudinary');
+
+const paymentStorage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'lms/payment-proofs',
+    allowed_formats: ['jpg', 'jpeg', 'png', 'gif'],
+    resource_type: 'image',
+  },
+});
+
 const uploadPaymentProof = multer({
-  storage: paymentProofStorage,
+  storage: paymentStorage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
   fileFilter: (req, file, cb) => {
     const allowedMimes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];

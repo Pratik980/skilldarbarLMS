@@ -14,11 +14,23 @@ const { imageStorage } = require('../config/cloudinary');
 const router = express.Router();
 
 // Configure multer for profile image uploads using Cloudinary
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const { cloudinary } = require('../config/cloudinary');
+
+const profileImageStorage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'lms/images',
+    allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+    resource_type: 'image',
+  },
+});
+
 const upload = multer({
-  storage: imageStorage,
+  storage: profileImageStorage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
   fileFilter: function (req, file, cb) {
-    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
     if (allowedTypes.includes(file.mimetype)) {
       return cb(null, true);
     } else {

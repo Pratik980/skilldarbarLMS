@@ -22,12 +22,12 @@ const router = express.Router();
 // Multer configuration for course images using Cloudinary with dynamic folders
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
-  params: (req, file) => {
+  params: async (req, file) => {
     const folder = file.fieldname === 'qrImage' ? 'lms/qr-codes' : 'lms/images';
     return {
       folder: folder,
       allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
-      transformation: [{ width: 1200, height: 800, crop: 'limit' }],
+      resource_type: 'image',
     };
   },
 });
@@ -36,11 +36,11 @@ const uploadCourseImages = multer({
   storage: storage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
   fileFilter: (req, file, cb) => {
-    const allowedMimes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];
+    const allowedMimes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'image/webp'];
     if (allowedMimes.includes(file.mimetype)) {
       cb(null, true);
     } else {
-      cb(new Error('Invalid file type. Only JPEG, PNG, and GIF are allowed.'));
+      cb(new Error('Invalid file type. Only JPEG, PNG, GIF, and WEBP are allowed.'));
     }
   },
 });
