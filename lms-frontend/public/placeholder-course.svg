@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="225" viewBox="0 0 400 225">
+  <rect width="400" height="225" fill="#f1f5f9"/>
+  <text x="200" y="112" font-family="system-ui" font-size="16" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">No Image Available</text>
+  <path d="M176 80h48v8h-48z M188 88v24h24V88z M194 100a3 3 0 1 0 6 0 3 3 0 1 0-6 0z M189 111l6-6 3 3 6-6 6 6v2h-21z" fill="#cbd5e1"/>
+</svg>

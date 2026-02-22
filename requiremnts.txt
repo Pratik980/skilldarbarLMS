@@ -1,0 +1,288 @@
+🎓 LMS WEBSITE – FINAL REQUIREMENT DOCUMENT
+
+Level: Simple → Medium Professional
+Project Type: Paid Course LMS (Manual Payment + Admin Controlled)
+
+1️⃣ SYSTEM OVERVIEW
+📌 Project Description
+
+A single LMS website where students can view courses, enroll using QR payment, and access course content after admin approval.
+
+👥 User Roles
+Role	Description
+Student	Can register, login, enroll, and access courses
+Admin	Full system control, approve payments, manage courses & users
+🧩 Core Features
+
+Role-based login system
+
+Paid course system (Manual QR payment)
+
+Course access after admin approval
+
+LMS learning (Video + PDF + Slides + Drive link)
+
+Manual certificate sending
+
+Revenue + enrollment tracking
+
+2️⃣ PUBLIC WEBSITE (Before Login)
+🏠 Homepage
+
+Sections:
+
+Institute introduction
+
+Featured courses
+
+About institute
+
+Contact info
+
+Login / Signup buttons
+
+📚 Course List Page
+
+Display all courses:
+
+Course name
+
+Course fee
+
+Short description
+
+Enroll button
+
+View details button
+
+📄 Course Details Page
+
+Shows:
+
+Course name
+
+Full description
+
+Course fee
+
+QR payment image
+
+Enroll button
+
+3️⃣ AUTHENTICATION SYSTEM
+👨‍🎓 Student Signup
+
+Fields:
+
+Full name
+
+Email
+
+Phone
+
+Password
+
+🔐 Student Login
+
+Email
+
+Password
+
+🛠 Admin Login
+
+Separate admin login page
+
+Admin account created manually from database
+
+4️⃣ PAYMENT FLOW (Manual QR System)
+🎯 Enrollment Steps
+
+Student clicks Enroll
+
+QR payment image displayed
+
+Student pays manually
+
+Student clicks "I Have Paid"
+
+Course status → Pending
+
+Admin checks payment
+
+Admin approves
+
+Course access activated
+
+⚠ No automatic payment verification
+⚠ No name matching required
+⚠ Fully manual approval system
+
+5️⃣ STUDENT DASHBOARD
+
+After login student sees:
+
+📊 Dashboard Overview
+
+Total enrolled courses
+
+Active courses
+
+Pending courses
+
+📚 My Courses
+
+Shows:
+
+Approved courses list
+
+Click to open learning page
+
+🎓 Course Learning Page
+
+Admin can upload any of these:
+
+Content Type	Supported
+Video lecture	Upload video
+Slide images	Multiple images
+PDF notes	Upload PDF
+Google Drive link	External link
+
+✔ All optional
+✔ Admin decides per course
+
+📄 Certificate System
+
+No auto certificate
+
+Admin sends manually via email after completion
+
+👤 Profile Section
+
+Student can:
+
+Edit profile
+
+Change password
+
+6️⃣ ADMIN PANEL STRUCTURE
+📊 1. Admin Dashboard
+
+Shows:
+
+Total courses
+
+Total students
+
+Total revenue
+
+Total enrollments
+
+Monthly revenue overview
+
+Active users count
+
+Basic visitor count
+
+📚 2. Course Management
+Course List
+
+Shows:
+
+All courses
+
+Course fee
+
+Total enrollments per course
+
+Add Course
+
+Fields:
+
+Course name
+
+Course description
+
+Course fee
+
+QR payment image upload
+
+Course Content Upload
+
+Admin can add:
+
+Video upload
+
+Multiple slide images
+
+PDF files
+
+Google drive link
+
+(All optional)
+
+👥 3. User Management
+
+Admin can:
+
+View total users
+
+View user list
+
+View user details
+
+See enrolled courses per user
+
+Activate / deactivate user
+
+💳 4. Enrollment / Payment Management
+
+Admin sees:
+
+Pending enrollments
+
+Approved enrollments
+
+Student name
+
+Course name
+
+Buttons:
+
+Approve
+
+Reject
+
+⚙ 5. Settings Panel
+
+Admin can change:
+
+Institute name
+
+Admin email
+
+Admin password
+
+Contact number
+
+7️⃣ DATA & ANALYTICS VISIBILITY
+
+Admin dashboard must show:
+
+Metric	Required
+Total revenue	✔
+Revenue per course	✔
+Total students	✔
+Total courses	✔
+Total enrollments	✔
+Visitor count	✔
+🔥 FINAL SYSTEM FLOW
+
+Public Website
+→ Student Signup/Login
+→ Select Course
+→ Pay via QR
+→ Click “I Have Paid”
+→ Admin Approval
+→ Course Access Granted
+→ Student Learning
+→ Admin sends certificate manually

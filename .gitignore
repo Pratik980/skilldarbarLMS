@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Environment variables (contain secrets)
+.env
+.env.local
+.env.production
+
+# Build output
+lms-frontend/dist/
+
+# Uploads (user-generated content)
+lms-backend/uploads/images/*
+lms-backend/uploads/pdfs/*
+lms-backend/uploads/payment-proofs/*
+lms-backend/uploads/qr-codes/*
+# Keep upload directories
+!lms-backend/uploads/images/.gitkeep
+!lms-backend/uploads/pdfs/.gitkeep
+!lms-backend/uploads/payment-proofs/.gitkeep
+!lms-backend/uploads/qr-codes/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*

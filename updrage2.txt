@@ -1,0 +1,190 @@
+🎓 LMS WEBSITE – FINAL UPGRADED REQUIREMENTS
+
+(Small Budget Version – NPR 12,000)
+
+Level: Simple → Medium (Professional but Lean)
+Purpose: Paid Course + Exam + Certificate LMS
+
+🎯 CORE OBJECTIVE
+
+Add REAL VALUE FEATURES that students care about:
+
+✅ Learning Progress
+
+✅ Exam after course
+
+✅ Certificate only if PASS
+
+❌ No unnecessary complexity
+❌ No fake “enterprise” features
+
+1️⃣ COURSE LEARNING SYSTEM (FINAL)
+📘 Lesson Structure
+
+Each course contains:
+
+Multiple lessons
+
+Each lesson can have:
+
+Video OR
+
+PDF OR
+
+External link (Drive / YouTube)
+
+(Admin chooses content type)
+
+2️⃣ COURSE PROGRESS SYSTEM ✅ (IMPORTANT)
+🔁 How Progress Works
+
+Each lesson has “Mark as Completed” button
+
+Progress % =
+
+Completed Lessons ÷ Total Lessons × 100
+
+👨‍🎓 Student Can See:
+
+Progress bar (0% – 100%)
+
+✔ Completed lessons
+
+🔒 Exam locked until 100%
+
+✔ Simple
+✔ Cheap
+✔ Professional
+
+3️⃣ FINAL EXAM SYSTEM (MCQ ONLY) ✅
+📝 Exam Rules
+
+Only ONE final exam per course
+
+MCQ questions only
+
+4 options (A, B, C, D)
+
+1 correct answer
+
+Auto-check result
+
+⚙ Admin Controls:
+
+Add / edit MCQ questions
+
+Set passing percentage (example: 60%)
+
+One attempt only
+
+🎯 Exam Unlock Rule
+
+Exam unlocks ONLY AFTER 100% progress
+
+4️⃣ PASS / FAIL LOGIC (STRICT)
+Condition	Result
+Progress < 100%	❌ No exam
+Exam failed	❌ No certificate
+Exam passed	✅ Certificate unlocked
+5️⃣ CERTIFICATE SYSTEM (LOW-COST BUT REAL) ✅
+🎓 Certificate Generation
+
+Pre-designed certificate template
+
+Auto-filled fields:
+
+Student name
+
+Course name
+
+Date
+
+Certificate ID
+
+📥 Student Can:
+
+Download certificate (PDF)
+
+View certificate in dashboard
+
+⚠ No certificate if:
+
+Exam not passed
+
+Course not completed
+
+6️⃣ STUDENT DASHBOARD (FINAL)
+
+Student sees:
+
+Enrolled courses
+
+Course progress %
+
+Exam status (Locked / Passed / Failed)
+
+Certificate status (Available / Not Available)
+
+7️⃣ ADMIN PANEL (MINIMUM BUT POWERFUL)
+Admin Can:
+
+Add courses & lessons
+
+Upload lesson content
+
+Create MCQ exam
+
+Set pass percentage
+
+View:
+
+Student progress
+
+Exam result
+
+Certificate status
+
+❌ No analytics graphs
+❌ No automation overload
+
+🔄 FINAL SYSTEM FLOW (CONFIRMED)
+Enroll
+→ Admin Approval
+→ Learn Lessons
+→ Mark Lessons Complete
+→ Progress = 100%
+→ Exam Unlock
+→ Pass Exam
+→ Certificate Download
+
+💰 BUDGET CONFIRMATION (NPR 12,000)
+Feature	Included
+Lesson progress	✅
+MCQ exam	✅
+Exam lock logic	✅
+Certificate system	✅
+Admin controls	✅
+Extra analytics	❌
+Advanced security	❌
+
+✔ 100% achievable
+✔ No fake promises
+
+🧠 FINAL ADVICE (VERY IMPORTANT)
+
+Market it as:
+
+“Exam-Based Certified Course”
+
+Not:
+
+“Advanced LMS Platform”
+
+This makes your LMS:
+
+Trustworthy
+
+Valuable
+
+Sale-ready
+So its all integrated.

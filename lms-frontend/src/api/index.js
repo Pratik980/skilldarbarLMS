@@ -1,0 +1,9 @@
+export { examAPI } from './exam';
+export { certificateAPI } from './certificate';
+export { progressAPI } from './progress';
+export { coursesAPI } from './courses';
+export { enrollmentsAPI } from './enrollments';
+export { contentAPI } from './content';
+export { authAPI } from './auth';
+export { adminAPI } from './admin';
+export { notificationAPI } from './notification';
