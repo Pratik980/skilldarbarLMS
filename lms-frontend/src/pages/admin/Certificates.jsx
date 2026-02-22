@@ -47,11 +47,11 @@ const Certificates = () => {
         </div>
       )}
 
-      <div className="rounded-xl border border-white/10 bg-white shadow-lg shadow-black/5">
+      <div className="rounded-xl border border-white/10 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg shadow-black/5">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-brand-teal/10 bg-brand-teal/5 text-left text-xs font-semibold uppercase tracking-wider text-brand-teal/70">
+              <tr className="border-b border-brand-teal/10 dark:border-slate-700 bg-brand-teal/5 dark:bg-slate-700 text-left text-xs font-semibold uppercase tracking-wider text-brand-teal/70 dark:text-slate-400">
                 <th className="px-4 py-3">Student</th>
                 <th className="px-4 py-3">Course</th>
                 <th className="px-4 py-3">Progress</th>
@@ -59,16 +59,16 @@ const Certificates = () => {
                 <th className="px-4 py-3">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-brand-teal/10">
+            <tbody className="divide-y divide-brand-teal/10 dark:divide-slate-700">
               {progressList.map((progress) => (
-                <tr key={progress._id} className="hover:bg-brand-teal/5">
+                <tr key={progress._id} className="hover:bg-brand-teal/5 dark:hover:bg-slate-700">
                   <td className="px-4 py-3">
-                    <div className="font-medium text-brand-teal">{progress.student?.fullName}</div>
-                    <div className="text-xs text-brand-teal/70">{progress.student?.email}</div>
+                    <div className="font-medium text-brand-teal dark:text-slate-200">{progress.student?.fullName}</div>
+                    <div className="text-xs text-brand-teal/70 dark:text-slate-400">{progress.student?.email}</div>
                   </td>
-                  <td className="px-4 py-3 text-brand-teal/70">{progress.course?.name}</td>
-                  <td className="px-4 py-3 text-brand-teal/70">{progress.progressPercentage}%</td>
-                  <td className="px-4 py-3 text-brand-teal/70">{progress.certificateSent ? 'Sent' : 'Pending'}</td>
+                  <td className="px-4 py-3 text-brand-teal/70 dark:text-slate-400">{progress.course?.name}</td>
+                  <td className="px-4 py-3 text-brand-teal/70 dark:text-slate-400">{progress.progressPercentage}%</td>
+                  <td className="px-4 py-3 text-brand-teal/70 dark:text-slate-400">{progress.certificateSent ? 'Sent' : 'Pending'}</td>
                   <td className="px-4 py-3">
                     {progress.certificateSent ? (
                       <span className="rounded-full bg-brand-orange/15 px-2 py-1 text-xs font-semibold text-brand-orangeDark">Sent</span>
@@ -89,7 +89,7 @@ const Certificates = () => {
       </div>
 
       {progressList.length === 0 && (
-        <p className="text-sm text-white/70">No progress records found</p>
+        <p className="text-sm text-slate-500 dark:text-slate-400">No progress records found</p>
       )}
     </div>
   );

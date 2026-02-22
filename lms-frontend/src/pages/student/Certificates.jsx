@@ -53,50 +53,50 @@ const Certificates = () => {
 
   return (
     <div className="mx-auto max-w-7xl space-y-6">
-      <div className="rounded-2xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5">
+      <div className="rounded-2xl border border-white/10 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-lg shadow-black/5">
         <div className="flex items-center gap-3">
           <Award size={36} className="text-brand-orange" />
           <div>
             <h1 className="text-2xl font-bold text-brand-orange">My Achievements</h1>
-            <p className="text-sm text-brand-teal/70">View and manage your earned certificates and accomplishments</p>
+            <p className="text-sm text-brand-teal/70 dark:text-slate-400">View and manage your earned certificates and accomplishments</p>
           </div>
         </div>
       </div>
 
       {certificates.length > 0 && (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+          <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-orange/15 text-brand-orangeDark">
                 <Award size={20} />
               </div>
               <div>
-                <div className="text-2xl font-bold text-brand-teal">{certificates.length}</div>
-                <div className="text-xs text-brand-teal/60">Certificates Earned</div>
+                <div className="text-2xl font-bold text-brand-teal dark:text-slate-200">{certificates.length}</div>
+                <div className="text-xs text-brand-teal/60 dark:text-slate-400">Certificates Earned</div>
               </div>
             </div>
           </div>
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+          <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-teal/10 text-brand-teal">
                 <BookOpen size={20} />
               </div>
               <div>
-                <div className="text-2xl font-bold text-brand-teal">{certificates.length}</div>
-                <div className="text-xs text-brand-teal/60">Courses Completed</div>
+                <div className="text-2xl font-bold text-brand-teal dark:text-slate-200">{certificates.length}</div>
+                <div className="text-xs text-brand-teal/60 dark:text-slate-400">Courses Completed</div>
               </div>
             </div>
           </div>
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+          <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-orange/15 text-brand-orangeDark">
                 <Star size={20} />
               </div>
               <div>
-                <div className="text-2xl font-bold text-brand-teal">
+                <div className="text-2xl font-bold text-brand-teal dark:text-slate-200">
                   {Math.round(certificates.reduce((acc, cert) => acc + cert.score, 0) / certificates.length)}%
                 </div>
-                <div className="text-xs text-brand-teal/60">Average Score</div>
+                <div className="text-xs text-brand-teal/60 dark:text-slate-400">Average Score</div>
               </div>
             </div>
           </div>
@@ -110,39 +110,39 @@ const Certificates = () => {
       )}
 
       {certificates.length === 0 ? (
-        <div className="rounded-2xl border border-white/10 bg-white p-10 text-center shadow-lg shadow-black/5">
-          <Award className="mx-auto h-12 w-12 text-brand-teal/30" />
-          <div className="mt-3 text-xl font-semibold text-brand-teal">No Achievements Yet</div>
-          <div className="mt-2 text-sm text-brand-teal/70">
+        <div className="rounded-2xl border border-white/10 dark:border-slate-700 bg-white dark:bg-slate-800 p-10 text-center shadow-lg shadow-black/5">
+          <Award className="mx-auto h-12 w-12 text-brand-teal/30 dark:text-slate-600" />
+          <div className="mt-3 text-xl font-semibold text-brand-teal dark:text-slate-200">No Achievements Yet</div>
+          <div className="mt-2 text-sm text-brand-teal/70 dark:text-slate-400">
             Complete courses and pass exams to earn certificates and build your achievements. Start your learning journey today!
           </div>
         </div>
       ) : (
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {certificates.map((cert) => (
-            <div key={cert._id} className="relative overflow-hidden rounded-2xl border border-white/10 bg-white shadow-lg shadow-black/5">
+            <div key={cert._id} className="relative overflow-hidden rounded-2xl border border-white/10 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg shadow-black/5">
               <div className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-brand-orange/15 px-2 py-1 text-xs font-semibold text-brand-orangeDark">
                 <CheckCircle size={16} /> Certified
               </div>
 
-              <div className="border-b border-brand-teal/10 p-5">
+              <div className="border-b border-brand-teal/10 dark:border-slate-700 p-5">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-teal/10 text-brand-teal">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-teal/10 dark:bg-slate-700 text-brand-teal dark:text-slate-300">
                     <BookOpen size={26} />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-brand-teal">
+                    <div className="text-sm font-semibold text-brand-teal dark:text-slate-200">
                       {cert.course?.name || 'Course Certificate'}
                     </div>
-                    <div className="text-xs text-brand-teal/60">Certificate of Completion</div>
+                    <div className="text-xs text-brand-teal/60 dark:text-slate-400">Certificate of Completion</div>
                   </div>
                 </div>
               </div>
 
               <div className="p-5 space-y-4">
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Certificate ID</div>
-                  <div className="mt-2 rounded-lg border border-brand-teal/10 bg-brand-teal/5 px-3 py-2 text-xs font-semibold text-brand-teal">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60 dark:text-slate-400">Certificate ID</div>
+                  <div className="mt-2 rounded-lg border border-brand-teal/10 dark:border-slate-700 bg-brand-teal/5 dark:bg-slate-700 px-3 py-2 text-xs font-semibold text-brand-teal dark:text-slate-200">
                     {cert.certificateId}
                   </div>
                 </div>
@@ -153,17 +153,17 @@ const Certificates = () => {
                       <Star size={16} />
                     </div>
                     <div>
-                      <div className="text-xs text-brand-teal/60">Final Score</div>
+                      <div className="text-xs text-brand-teal/60 dark:text-slate-400">Final Score</div>
                       <div className="text-sm font-semibold text-brand-orangeDark">{cert.score}%</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-teal/10 text-brand-teal">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-teal/10 dark:bg-slate-700 text-brand-teal dark:text-slate-300">
                       <Calendar size={16} />
                     </div>
                     <div>
-                      <div className="text-xs text-brand-teal/60">Issued On</div>
-                      <div className="text-sm font-semibold text-brand-teal">
+                      <div className="text-xs text-brand-teal/60 dark:text-slate-400">Issued On</div>
+                      <div className="text-sm font-semibold text-brand-teal dark:text-slate-200">
                         {new Date(cert.issuedDate).toLocaleDateString('en-US', {
                           month: 'short',
                           day: 'numeric',

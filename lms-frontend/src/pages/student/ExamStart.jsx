@@ -40,14 +40,14 @@ const ExamStart = () => {
   if (!exam) {
     return (
       <div className="mx-auto max-w-3xl">
-        <div className="rounded-2xl border border-white/10 bg-white p-8 text-center shadow-lg shadow-black/5">
+        <div className="rounded-2xl border border-white/10 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 text-center shadow-lg shadow-black/5">
           <AlertCircle className="mx-auto h-10 w-10 text-red-500" />
-          <div className="mt-3 text-xl font-semibold text-brand-teal">No Exam Available</div>
-          <div className="mt-1 text-sm text-brand-teal/70">This course doesn't have an exam yet.</div>
+          <div className="mt-3 text-xl font-semibold text-brand-teal dark:text-slate-200">No Exam Available</div>
+          <div className="mt-1 text-sm text-brand-teal/70 dark:text-slate-400">This course doesn't have an exam yet.</div>
           <div className="mt-6">
             <button
               onClick={() => navigate(`/student/courses/${courseId}`)}
-              className="rounded-lg border border-brand-teal/20 bg-white px-4 py-2 text-sm font-semibold text-brand-teal hover:bg-brand-teal/5"
+              className="rounded-lg border border-brand-teal/20 bg-white dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200 px-4 py-2 text-sm font-semibold text-brand-teal hover:bg-brand-teal/5 dark:hover:bg-slate-700"
             >
               Back to Course
             </button>
@@ -71,10 +71,10 @@ const ExamStart = () => {
         </div>
       )}
 
-      <div className="rounded-2xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5">
+      <div className="rounded-2xl border border-white/10 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-lg shadow-black/5">
         <div className="space-y-2">
-          <h1 className="text-2xl font-bold text-brand-orange">{exam.title}</h1>
-          <p className="text-sm text-brand-teal/70">{exam.description || 'Final course assessment'}</p>
+          <h1 className="text-2xl font-bold text-brand-orange dark:text-slate-100">{exam.title}</h1>
+          <p className="text-sm text-brand-teal/70 dark:text-slate-400">{exam.description || 'Final course assessment'}</p>
         </div>
 
         <div className={`mt-6 rounded-xl border p-4 ${progress?.progressPercentage === 100 ? 'border-brand-orange/30 bg-brand-orange/10' : 'border-brand-teal/20 bg-brand-teal/10'}`}>

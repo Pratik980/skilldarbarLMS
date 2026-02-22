@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
+import LightModeWrapper from '../components/LightModeWrapper';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -57,6 +58,7 @@ const Signup = () => {
   };
 
   return (
+    <LightModeWrapper>
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-brand-teal via-[#1B3F4C] to-[#14323C] px-4 py-10 font-sans">
       <div className="pointer-events-none absolute -top-24 left-12 h-64 w-64 rounded-full bg-brand-orange/20 blur-3xl"></div>
       <div className="pointer-events-none absolute -bottom-24 right-0 h-64 w-64 rounded-full bg-white/10 blur-3xl"></div>
@@ -252,6 +254,7 @@ const Signup = () => {
         </p>
       </div>
     </div>
+    </LightModeWrapper>
   );
 };
 

@@ -51,11 +51,11 @@ const Users = () => {
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className="flex flex-col gap-3">
-          <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">Filter by Role</label>
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Filter by Role</label>
           <select
             value={filter.role}
             onChange={(e) => setFilter({ ...filter, role: e.target.value })}
-            className="rounded-lg border border-white/20 bg-white px-4 py-3 text-sm text-brand-teal focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
+            className="rounded-lg border border-white/20 dark:border-slate-600 bg-white dark:bg-slate-700 dark:text-white px-4 py-3 text-sm text-brand-teal focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
           >
             <option value="">All Roles</option>
             <option value="student">Student</option>
@@ -64,11 +64,11 @@ const Users = () => {
         </div>
 
         <div className="flex flex-col gap-3">
-          <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">Filter by Status</label>
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Filter by Status</label>
           <select
             value={filter.isActive}
             onChange={(e) => setFilter({ ...filter, isActive: e.target.value })}
-            className="rounded-lg border border-white/20 bg-white px-4 py-3 text-sm text-brand-teal focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
+            className="rounded-lg border border-white/20 dark:border-slate-600 bg-white dark:bg-slate-700 dark:text-white px-4 py-3 text-sm text-brand-teal focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
           >
             <option value="">All Status</option>
             <option value="true">Active</option>
@@ -77,11 +77,11 @@ const Users = () => {
         </div>
       </div>
 
-      <div className="rounded-xl border border-white/10 bg-white shadow-lg shadow-black/5">
+      <div className="rounded-xl border border-white/10 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg shadow-black/5">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-brand-teal/10 bg-brand-teal/5 text-left text-xs font-semibold uppercase tracking-wider text-brand-teal/70">
+              <tr className="border-b border-brand-teal/10 dark:border-slate-700 bg-brand-teal/5 dark:bg-slate-700 text-left text-xs font-semibold uppercase tracking-wider text-brand-teal/70 dark:text-slate-400">
                 <th className="px-3 py-3 md:px-4">Name</th>
                 <th className="hidden px-3 py-3 sm:table-cell md:px-4">Email</th>
                 <th className="hidden px-3 py-3 lg:table-cell md:px-4">Phone</th>
@@ -91,17 +91,17 @@ const Users = () => {
                 <th className="px-3 py-3 md:px-4">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-brand-teal/10">
+            <tbody className="divide-y divide-brand-teal/10 dark:divide-slate-700">
               {users.map(user => (
-                <tr key={user._id} className="hover:bg-brand-teal/5">
-                  <td className="px-3 py-3 font-medium text-brand-teal md:px-4">{user.fullName}</td>
-                  <td className="hidden px-3 py-3 text-brand-teal/70 sm:table-cell md:px-4">{user.email}</td>
-                  <td className="hidden px-3 py-3 text-brand-teal/70 lg:table-cell md:px-4">{user.phone}</td>
-                  <td className="px-3 py-3 text-brand-teal/70 capitalize md:px-4">{user.role}</td>
+                <tr key={user._id} className="hover:bg-brand-teal/5 dark:hover:bg-slate-700">
+                  <td className="px-3 py-3 font-medium text-brand-teal dark:text-slate-200 md:px-4">{user.fullName}</td>
+                  <td className="hidden px-3 py-3 text-brand-teal/70 dark:text-slate-400 sm:table-cell md:px-4">{user.email}</td>
+                  <td className="hidden px-3 py-3 text-brand-teal/70 dark:text-slate-400 lg:table-cell md:px-4">{user.phone}</td>
+                  <td className="px-3 py-3 text-brand-teal/70 dark:text-slate-400 capitalize md:px-4">{user.role}</td>
                   <td className="px-3 py-3 md:px-4">
                     <StatusBadge status={user.isActive ? 'active' : 'inactive'} />
                   </td>
-                  <td className="hidden px-3 py-3 text-brand-teal/70 md:table-cell md:px-4">{new Date(user.createdAt).toLocaleDateString()}</td>
+                  <td className="hidden px-3 py-3 text-brand-teal/70 dark:text-slate-400 md:table-cell md:px-4">{new Date(user.createdAt).toLocaleDateString()}</td>
                   <td className="px-3 py-3 md:px-4">
                     <button
                       onClick={() => handleToggleStatus(user._id)}
@@ -118,7 +118,7 @@ const Users = () => {
       </div>
 
       {users.length === 0 && (
-        <p className="text-sm text-white/70">No users found</p>
+        <p className="text-sm text-slate-500 dark:text-slate-400">No users found</p>
       )}
     </div>
   );

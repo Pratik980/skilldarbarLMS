@@ -78,12 +78,12 @@ const Courses = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search courses by name or category..."
-          className="flex-1 rounded-lg border border-brand-teal/20 bg-white px-4 py-2.5 text-sm text-brand-teal placeholder:text-brand-teal/40 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
+          className="flex-1 rounded-lg border border-brand-teal/20 bg-white dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:placeholder-slate-400 px-4 py-2.5 text-sm text-brand-teal placeholder:text-brand-teal/40 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
         />
         {searchTerm && (
           <button
             onClick={() => setSearchTerm('')}
-            className="w-full rounded-lg border border-brand-teal/20 bg-white px-4 py-2.5 text-sm font-semibold text-brand-teal hover:bg-brand-teal/5 sm:w-auto"
+            className="w-full rounded-lg border border-brand-teal/20 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-slate-200 px-4 py-2.5 text-sm font-semibold text-brand-teal hover:bg-brand-teal/5 dark:hover:bg-slate-700 sm:w-auto"
           >
             Clear
           </button>
@@ -96,11 +96,11 @@ const Courses = () => {
         </div>
       )}
 
-      <div className="rounded-xl border border-white/10 bg-white shadow-lg shadow-black/5">
+      <div className="rounded-xl border border-white/10 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg shadow-black/5">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-brand-teal/10 bg-brand-teal/5 text-left text-xs font-semibold uppercase tracking-wider text-brand-teal/70">
+              <tr className="border-b border-brand-teal/10 dark:border-slate-700 bg-brand-teal/5 dark:bg-slate-700 text-left text-xs font-semibold uppercase tracking-wider text-brand-teal/70 dark:text-slate-400">
                 <th className="px-3 py-3 md:px-4">Name</th>
                 <th className="px-3 py-3 md:px-4">Category</th>
                 <th className="px-3 py-3 md:px-4">Fee</th>
@@ -111,15 +111,15 @@ const Courses = () => {
                 <th className="px-3 py-3 md:px-4">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-brand-teal/10">
+            <tbody className="divide-y divide-brand-teal/10 dark:divide-slate-700">
               {filteredCourses.map(course => (
-                <tr key={course._id} className="hover:bg-brand-teal/5">
-                  <td className="px-3 py-3 font-medium text-brand-teal md:px-4">{course.name}</td>
-                  <td className="px-3 py-3 text-brand-teal/70 md:px-4">{course.category}</td>
-                  <td className="px-3 py-3 text-brand-teal/70 md:px-4">{course.fee}</td>
-                  <td className="hidden px-3 py-3 text-brand-teal/70 sm:table-cell md:px-4">{course.instructor?.fullName}</td>
-                  <td className="hidden px-3 py-3 text-brand-teal/70 lg:table-cell md:px-4">{course.totalEnrollments}</td>
-                  <td className="hidden px-3 py-3 text-brand-teal/70 lg:table-cell md:px-4">NPR {course.revenue || course.totalRevenue || 0}</td>
+                <tr key={course._id} className="hover:bg-brand-teal/5 dark:hover:bg-slate-700">
+                  <td className="px-3 py-3 font-medium text-brand-teal dark:text-slate-200 md:px-4">{course.name}</td>
+                  <td className="px-3 py-3 text-brand-teal/70 dark:text-slate-400 md:px-4">{course.category}</td>
+                  <td className="px-3 py-3 text-brand-teal/70 dark:text-slate-400 md:px-4">{course.fee}</td>
+                  <td className="hidden px-3 py-3 text-brand-teal/70 dark:text-slate-400 sm:table-cell md:px-4">{course.instructor?.fullName}</td>
+                  <td className="hidden px-3 py-3 text-brand-teal/70 dark:text-slate-400 lg:table-cell md:px-4">{course.totalEnrollments}</td>
+                  <td className="hidden px-3 py-3 text-brand-teal/70 dark:text-slate-400 lg:table-cell md:px-4">NPR {course.revenue || course.totalRevenue || 0}</td>
                   <td className="px-3 py-3 md:px-4">
                     <StatusBadge status={course.isActive ? 'active' : 'inactive'} />
                   </td>
@@ -127,19 +127,19 @@ const Courses = () => {
                     <div className="flex flex-wrap gap-2">
                       <Link
                         to={`/admin/courses/edit/${course._id}`}
-                        className="rounded-lg border border-brand-teal/20 bg-white px-2 py-1 text-xs font-semibold text-brand-teal hover:bg-brand-teal/5 md:px-3 md:py-1.5"
+                        className="rounded-lg border border-brand-teal/20 dark:border-slate-700 bg-white dark:bg-slate-700 px-2 py-1 text-xs font-semibold text-brand-teal dark:text-slate-200 hover:bg-brand-teal/5 dark:hover:bg-slate-600 md:px-3 md:py-1.5"
                       >
                         Edit
                       </Link>
                       <Link
                         to={`/admin/courses/${course._id}/exam`}
-                        className="rounded-lg border border-brand-teal/20 bg-white px-2 py-1 text-xs font-semibold text-brand-teal hover:bg-brand-teal/5 md:px-3 md:py-1.5"
+                        className="rounded-lg border border-brand-teal/20 dark:border-slate-700 bg-white dark:bg-slate-700 px-2 py-1 text-xs font-semibold text-brand-teal dark:text-slate-200 hover:bg-brand-teal/5 dark:hover:bg-slate-600 md:px-3 md:py-1.5"
                       >
                         Exam
                       </Link>
                       <Link
                         to={`/admin/courses/${course._id}/exam-results`}
-                        className="hidden rounded-lg border border-brand-teal/20 bg-white px-2 py-1 text-xs font-semibold text-brand-teal hover:bg-brand-teal/5 sm:inline-block md:px-3 md:py-1.5"
+                        className="hidden rounded-lg border border-brand-teal/20 dark:border-slate-700 bg-white dark:bg-slate-700 px-2 py-1 text-xs font-semibold text-brand-teal dark:text-slate-200 hover:bg-brand-teal/5 dark:hover:bg-slate-600 sm:inline-block md:px-3 md:py-1.5"
                       >
                         Results
                       </Link>

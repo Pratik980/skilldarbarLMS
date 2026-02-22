@@ -96,14 +96,14 @@ const Dashboard = () => {
   return (
     <div className="mx-auto max-w-7xl space-y-6 px-4 md:space-y-8 md:px-0">
       {/* Welcome Header */}
-      <div className="rounded-xl border border-brand-orange/20 bg-gradient-to-r from-brand-orange/10 via-brand-orange/5 to-transparent p-6">
+      <div className="rounded-xl border border-brand-orange/20 bg-gradient-to-r from-brand-orange/10 via-brand-orange/5 to-transparent p-6 dark:border-brand-orange/30 dark:from-brand-orange/20 dark:via-brand-orange/10">
         <div className="flex items-center gap-3">
           <div className="rounded-full bg-brand-orange/20 p-3">
             <Sparkles className="h-6 w-6 text-brand-orange" />
           </div>
           <div>
             <h2 className="text-2xl font-bold text-brand-orange md:text-3xl">Welcome back, {user?.fullName?.split(' ')[0] || 'Student'}!</h2>
-            <p className="mt-1 text-sm text-brand-teal/70">Track your learning progress and continue your journey</p>
+            <p className="mt-1 text-sm text-brand-teal/70 dark:text-slate-400">Track your learning progress and continue your journey</p>
           </div>
         </div>
       </div>
@@ -116,10 +116,10 @@ const Dashboard = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-5">
-        <div className="group rounded-xl border border-brand-teal/10 bg-gradient-to-br from-white to-brand-teal/5 p-5 shadow-lg shadow-black/5 transition-all hover:shadow-xl">
+        <div className="group rounded-xl border border-brand-teal/10 bg-gradient-to-br from-white to-brand-teal/5 p-5 shadow-lg shadow-black/5 transition-all hover:shadow-xl dark:border-slate-700 dark:from-slate-800 dark:to-slate-800">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Total Courses</p>
+              <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60 dark:text-slate-400">Total Courses</p>
               <p className="mt-2 text-3xl font-bold text-brand-teal">{courses.length}</p>
             </div>
             <div className="rounded-lg bg-brand-teal/10 p-3 transition-colors group-hover:bg-brand-teal/20">
@@ -128,10 +128,10 @@ const Dashboard = () => {
           </div>
         </div>
         
-        <div className="group rounded-xl border border-brand-orange/10 bg-gradient-to-br from-white to-brand-orange/5 p-5 shadow-lg shadow-black/5 transition-all hover:shadow-xl">
+        <div className="group rounded-xl border border-brand-orange/10 bg-gradient-to-br from-white to-brand-orange/5 p-5 shadow-lg shadow-black/5 transition-all hover:shadow-xl dark:border-slate-700 dark:from-slate-800 dark:to-slate-800">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wide text-brand-orange/60">Enrolled</p>
+              <p className="text-xs font-semibold uppercase tracking-wide text-brand-orange/60 dark:text-slate-400">Enrolled</p>
               <p className="mt-2 text-3xl font-bold text-brand-orange">{approvedEnrollments.length}</p>
             </div>
             <div className="rounded-lg bg-brand-orange/10 p-3 transition-colors group-hover:bg-brand-orange/20">
@@ -140,10 +140,10 @@ const Dashboard = () => {
           </div>
         </div>
         
-        <div className="group rounded-xl border border-green-600/10 bg-gradient-to-br from-white to-green-50 p-5 shadow-lg shadow-black/5 transition-all hover:shadow-xl">
+        <div className="group rounded-xl border border-green-600/10 bg-gradient-to-br from-white to-green-50 p-5 shadow-lg shadow-black/5 transition-all hover:shadow-xl dark:border-slate-700 dark:from-slate-800 dark:to-slate-700">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wide text-green-600/60">Completed</p>
+              <p className="text-xs font-semibold uppercase tracking-wide text-green-600/60 dark:text-slate-400">Completed</p>
               <p className="mt-2 text-3xl font-bold text-green-600">{completedEnrollments.length}</p>
             </div>
             <div className="rounded-lg bg-green-600/10 p-3 transition-colors group-hover:bg-green-600/20">
@@ -152,10 +152,10 @@ const Dashboard = () => {
           </div>
         </div>
         
-        <div className="group rounded-xl border border-yellow-600/10 bg-gradient-to-br from-white to-yellow-50 p-5 shadow-lg shadow-black/5 transition-all hover:shadow-xl">
+        <div className="group rounded-xl border border-yellow-600/10 bg-gradient-to-br from-white to-yellow-50 p-5 shadow-lg shadow-black/5 transition-all hover:shadow-xl dark:border-slate-700 dark:from-slate-800 dark:to-slate-700">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wide text-yellow-600/60">Pending</p>
+              <p className="text-xs font-semibold uppercase tracking-wide text-yellow-600/60 dark:text-slate-400">Pending</p>
               <p className="mt-2 text-3xl font-bold text-yellow-600">{pendingEnrollments.length}</p>
             </div>
             <div className="rounded-lg bg-yellow-600/10 p-3 transition-colors group-hover:bg-yellow-600/20">
@@ -164,10 +164,10 @@ const Dashboard = () => {
           </div>
         </div>
         
-        <div className="group rounded-xl border border-brand-teal/10 bg-gradient-to-br from-white to-brand-teal/5 p-5 shadow-lg shadow-black/5 transition-all hover:shadow-xl">
+        <div className="group rounded-xl border border-brand-teal/10 bg-gradient-to-br from-white to-brand-teal/5 p-5 shadow-lg shadow-black/5 transition-all hover:shadow-xl dark:border-slate-700 dark:from-slate-800 dark:to-slate-800">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Completion Rate</p>
+              <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60 dark:text-slate-400">Completion Rate</p>
               <p className="mt-2 text-3xl font-bold text-brand-teal">
                 {approvedEnrollments.length > 0 ? ((completedEnrollments.length / approvedEnrollments.length) * 100).toFixed(0) : 0}%
               </p>
@@ -183,8 +183,8 @@ const Dashboard = () => {
       {approvedEnrollments.length > 0 && (
         <div className="grid grid-cols-1 gap-4 md:gap-6 lg:grid-cols-2">
           {/* Course Progress Bar Chart */}
-          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
-            <h3 className="mb-4 text-lg font-semibold text-brand-teal">Course Progress</h3>
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6 dark:border-slate-700 dark:bg-slate-800">
+            <h3 className="mb-4 text-lg font-semibold text-brand-teal dark:text-slate-100">Course Progress</h3>
             <ResponsiveContainer width="100%" height={250}>
               <BarChart
                 data={approvedEnrollments.map(e => ({
@@ -203,8 +203,8 @@ const Dashboard = () => {
           </div>
 
           {/* Enrollment Status Pie */}
-          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
-            <h3 className="mb-4 text-lg font-semibold text-brand-teal">Enrollment Status</h3>
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6 dark:border-slate-700 dark:bg-slate-800">
+            <h3 className="mb-4 text-lg font-semibold text-brand-teal dark:text-slate-100">Enrollment Status</h3>
             <ResponsiveContainer width="100%" height={250}>
               <PieChart>
                 <Pie
@@ -232,8 +232,8 @@ const Dashboard = () => {
           </div>
 
           {/* Weekly Learning Progress */}
-          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
-            <h3 className="mb-4 text-lg font-semibold text-brand-teal">Weekly Learning Activity (Last 7 Days)</h3>
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6 dark:border-slate-700 dark:bg-slate-800">
+            <h3 className="mb-4 text-lg font-semibold text-brand-teal dark:text-slate-100">Weekly Learning Activity (Last 7 Days)</h3>
             <ResponsiveContainer width="100%" height={250}>
               <BarChart data={last7Days} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
@@ -246,8 +246,8 @@ const Dashboard = () => {
           </div>
 
           {/* Enrolled vs Completed Comparison */}
-          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
-            <h3 className="mb-4 text-lg font-semibold text-brand-teal">Enrolled vs Completed</h3>
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6 dark:border-slate-700 dark:bg-slate-800">
+            <h3 className="mb-4 text-lg font-semibold text-brand-teal dark:text-slate-100">Enrolled vs Completed</h3>
             <ResponsiveContainer width="100%" height={250}>
               <BarChart data={enrolledVsCompletedData} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
@@ -266,11 +266,11 @@ const Dashboard = () => {
       )}
 
       {/* My Enrollments Section */}
-      <div className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5">
+      <div className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5 dark:border-slate-700 dark:bg-slate-800">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Target className="h-5 w-5 text-brand-orange" />
-            <h3 className="text-lg font-bold text-brand-teal">My Enrollments</h3>
+            <h3 className="text-lg font-bold text-brand-teal dark:text-slate-100">My Enrollments</h3>
           </div>
           {enrollments.length > 0 && (
             <Link to="/student/my-enrollments" className="text-sm font-semibold text-brand-orange hover:text-brand-orangeDark">
@@ -283,8 +283,8 @@ const Dashboard = () => {
             <div className="rounded-full bg-brand-teal/10 p-4">
               <BookOpen className="h-16 w-16 text-brand-teal/60" />
             </div>
-            <h4 className="mt-6 text-lg font-bold text-brand-teal">No Enrollments Yet</h4>
-            <p className="mt-2 text-center text-sm text-brand-teal/70 max-w-md">
+            <h4 className="mt-6 text-lg font-bold text-brand-teal dark:text-slate-100">No Enrollments Yet</h4>
+            <p className="mt-2 text-center text-sm text-brand-teal/70 max-w-md dark:text-slate-400">
               Start your learning journey by enrolling in courses that interest you
             </p>
             <Link 
@@ -309,9 +309,9 @@ const Dashboard = () => {
                 <Link
                   key={enrollment._id}
                   to="/student/my-enrollments"
-                  className="group overflow-hidden rounded-xl border border-brand-teal/10 bg-white transition-all hover:shadow-lg"
+                  className="group overflow-hidden rounded-xl border border-brand-teal/10 bg-white transition-all hover:shadow-lg dark:border-slate-700 dark:bg-slate-800"
                 >
-                  <div className="relative h-40 bg-slate-100">
+                  <div className="relative h-40 bg-slate-100 dark:bg-slate-700">
                     <SafeImage 
                       src={getImageUrl(course?.thumbnail)} 
                       alt={course?.name} 
@@ -328,8 +328,8 @@ const Dashboard = () => {
                     )}
                   </div>
                   <div className="p-4">
-                    <h4 className="font-semibold text-brand-teal group-hover:text-brand-orange">{course?.name}</h4>
-                    <div className="mt-2 flex items-center gap-2 text-xs text-brand-teal/60">
+                    <h4 className="font-semibold text-brand-teal group-hover:text-brand-orange dark:text-slate-200">{course?.name}</h4>
+                    <div className="mt-2 flex items-center gap-2 text-xs text-brand-teal/60 dark:text-slate-400">
                       <Calendar size={12} />
                       <span>Enrolled: {new Date(enrollment.enrolledAt).toLocaleDateString()}</span>
                     </div>
@@ -337,7 +337,7 @@ const Dashboard = () => {
                     {enrollment.status === 'approved' && progress && (
                       <>
                         <div className="mt-3">
-                          <div className="flex items-center justify-between text-xs font-semibold text-brand-teal/80">
+                          <div className="flex items-center justify-between text-xs font-semibold text-brand-teal/80 dark:text-slate-300">
                             <span>Progress</span>
                             <span>{progress.progressPercentage}%</span>
                           </div>
@@ -380,19 +380,19 @@ const Dashboard = () => {
 
       {/* Pending Courses Section */}
       {pendingEnrollments.length > 0 && (
-        <div className="rounded-xl border border-yellow-200 bg-yellow-50 p-4 shadow-lg shadow-black/5 md:p-6">
+        <div className="rounded-xl border border-yellow-200 bg-yellow-50 p-4 shadow-lg shadow-black/5 md:p-6 dark:border-yellow-900/50 dark:bg-yellow-900/20">
           <div className="flex items-center gap-2">
             <Clock size={20} className="text-yellow-600" />
-            <h3 className="text-base font-semibold text-yellow-800 md:text-lg">Pending Courses</h3>
+            <h3 className="text-base font-semibold text-yellow-800 md:text-lg dark:text-yellow-500">Pending Courses</h3>
             <span className="ml-auto rounded-full bg-yellow-600 px-3 py-1 text-xs font-bold text-white">{pendingEnrollments.length}</span>
           </div>
-          <p className="mt-2 text-sm text-yellow-700">These courses are awaiting admin approval.</p>
+          <p className="mt-2 text-sm text-yellow-700 dark:text-yellow-400">These courses are awaiting admin approval.</p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {pendingEnrollments.map(enrollment => {
               const course = enrollment.course;
               return (
-                <div key={enrollment._id} className="overflow-hidden rounded-xl border border-yellow-300 bg-white">
-                  <div className="relative h-32 bg-slate-100">
+                <div key={enrollment._id} className="overflow-hidden rounded-xl border border-yellow-300 bg-white dark:border-yellow-900/50 dark:bg-slate-800">
+                  <div className="relative h-32 bg-slate-100 dark:bg-slate-700">
                     <SafeImage 
                       src={getImageUrl(course.thumbnail)} 
                       alt={course.name} 
@@ -404,11 +404,11 @@ const Dashboard = () => {
                     </div>
                   </div>
                   <div className="p-4">
-                    <h4 className="text-sm font-semibold text-brand-teal">{course.name}</h4>
-                    <p className="mt-1 text-xs text-brand-teal/70">
+                    <h4 className="text-sm font-semibold text-brand-teal dark:text-slate-200">{course.name}</h4>
+                    <p className="mt-1 text-xs text-brand-teal/70 dark:text-slate-400">
                       Enrolled: {new Date(enrollment.enrolledAt).toLocaleDateString()}
                     </p>
-                    <p className="mt-2 text-xs text-yellow-700">
+                    <p className="mt-2 text-xs text-yellow-700 dark:text-yellow-400">
                       Waiting for admin approval
                     </p>
                   </div>
@@ -421,10 +421,10 @@ const Dashboard = () => {
 
       {/* Continue Learning Section */}
       {approvedEnrollments.length > 0 && (
-      <div className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5">
+      <div className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5 dark:border-slate-700 dark:bg-slate-800">
         <div className="flex items-center gap-2">
           <BookOpen className="h-5 w-5 text-brand-orange" />
-          <h3 className="text-lg font-bold text-brand-teal">Continue Learning</h3>
+          <h3 className="text-lg font-bold text-brand-teal dark:text-slate-100">Continue Learning</h3>
         </div>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {approvedEnrollments.slice(0, 4).map(enrollment => {
@@ -434,9 +434,9 @@ const Dashboard = () => {
               <Link 
                 to={`/student/my-enrollments`}
                 key={course._id} 
-                className="group overflow-hidden rounded-xl border border-brand-teal/10 bg-white transition-all hover:scale-[1.02] hover:shadow-xl"
+                className="group overflow-hidden rounded-xl border border-brand-teal/10 bg-white transition-all hover:scale-[1.02] hover:shadow-xl dark:border-slate-700 dark:bg-slate-800"
               >
-                <div className="relative h-36 bg-slate-100">
+                <div className="relative h-36 bg-slate-100 dark:bg-slate-700">
                   <SafeImage src={getImageUrl(course.thumbnail)} alt={course.name} className="h-full w-full object-cover transition-transform group-hover:scale-105" fallbackIcon={<BookOpen size={40} className="text-brand-teal/40" />} />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
                   {progress && progress.progressPercentage === 100 && progress.examPassed && (
@@ -446,13 +446,13 @@ const Dashboard = () => {
                   )}
                 </div>
                 <div className="p-4">
-                  <h4 className="text-sm font-semibold text-brand-teal group-hover:text-brand-orange transition-colors">{course.name}</h4>
-                  <p className="mt-1 line-clamp-2 text-xs text-brand-teal/70">{course.description || 'No description available'}</p>
+                  <h4 className="text-sm font-semibold text-brand-teal group-hover:text-brand-orange transition-colors dark:text-slate-200">{course.name}</h4>
+                  <p className="mt-1 line-clamp-2 text-xs text-brand-teal/70 dark:text-slate-400">{course.description || 'No description available'}</p>
                   
                   {progress && (
                     <div className="mt-3">
                       <div className="flex items-center justify-between text-xs font-semibold">
-                        <span className="text-brand-teal/70">Progress</span>
+                        <span className="text-brand-teal/70 dark:text-slate-400">Progress</span>
                         <span className="text-brand-orange">{progress.progressPercentage}%</span>
                       </div>
                       <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-brand-teal/10">
@@ -464,7 +464,7 @@ const Dashboard = () => {
                     </div>
                   )}
                   
-                  <div className="mt-3 flex flex-wrap gap-2 text-xs text-brand-teal/70">
+                  <div className="mt-3 flex flex-wrap gap-2 text-xs text-brand-teal/70 dark:text-slate-400">
                     <span className="inline-flex items-center gap-1"><Clock size={12} /> {course.duration || 'N/A'}</span>
                     <span className="inline-flex items-center gap-1"><BookOpen size={12} /> {course.lectures || 0}</span>
                   </div>
@@ -477,11 +477,11 @@ const Dashboard = () => {
       )}
 
       {/* Available Courses Section */}
-      <div className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5">
+      <div className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5 dark:border-slate-700 dark:bg-slate-800">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Sparkles className="h-5 w-5 text-brand-orange" />
-            <h3 className="text-lg font-bold text-brand-teal">Available Courses</h3>
+            <h3 className="text-lg font-bold text-brand-teal dark:text-slate-100">Available Courses</h3>
           </div>
           {courses.length > 6 && (
             <Link to="/student/courses" className="text-sm font-semibold text-brand-orange hover:text-brand-orangeDark">View All →</Link>
@@ -495,9 +495,9 @@ const Dashboard = () => {
               <Link 
                 to={`/student/courses/${course._id}`}
                 key={course._id} 
-                className="group overflow-hidden rounded-xl border border-brand-teal/10 bg-white transition-all hover:scale-[1.02] hover:shadow-xl"
+                className="group overflow-hidden rounded-xl border border-brand-teal/10 bg-white transition-all hover:scale-[1.02] hover:shadow-xl dark:border-slate-700 dark:bg-slate-800"
               >
-                <div className="relative h-40 bg-slate-100">
+                <div className="relative h-40 bg-slate-100 dark:bg-slate-700">
                   <SafeImage src={getImageUrl(course.thumbnail)} alt={course.name} className="h-full w-full object-cover transition-transform group-hover:scale-105" fallbackIcon={<BookOpen size={32} className="text-brand-teal/40" />} />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
                   <div className="absolute left-3 top-3 rounded-full bg-brand-orange px-3 py-1 text-xs font-bold text-white shadow-lg">
@@ -512,11 +512,11 @@ const Dashboard = () => {
                   )}
                 </div>
                 <div className="p-4">
-                  <h4 className="text-sm font-semibold text-brand-teal group-hover:text-brand-orange transition-colors">{course.name}</h4>
-                  <p className="mt-1 line-clamp-2 text-xs text-brand-teal/70">
+                  <h4 className="text-sm font-semibold text-brand-teal group-hover:text-brand-orange transition-colors dark:text-slate-200">{course.name}</h4>
+                  <p className="mt-1 line-clamp-2 text-xs text-brand-teal/70 dark:text-slate-400">
                     {course.description || 'No description available'}
                   </p>
-                  <div className="mt-3 flex flex-wrap gap-2 text-xs text-brand-teal/70">
+                  <div className="mt-3 flex flex-wrap gap-2 text-xs text-brand-teal/70 dark:text-slate-400">
                     <span className="inline-flex items-center gap-1"><Clock size={14} /> {course.duration || 'N/A'}</span>
                     <span className="inline-flex items-center gap-1"><BookOpen size={14} /> {course.lectures || 0} lessons</span>
                     <span className="inline-flex items-center gap-1"><Users size={14} /> {course.totalEnrollments || 0} students</span>

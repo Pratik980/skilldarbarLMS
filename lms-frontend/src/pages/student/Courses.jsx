@@ -63,12 +63,12 @@ const Courses = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search courses by name or category..."
-          className="flex-1 rounded-lg border border-brand-teal/20 bg-white px-4 py-2.5 text-sm text-brand-teal placeholder:text-brand-teal/40 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
+          className="flex-1 rounded-lg border border-brand-teal/20 bg-white dark:bg-slate-700 dark:border-slate-600 dark:text-white dark:placeholder-slate-400 px-4 py-2.5 text-sm text-brand-teal placeholder:text-brand-teal/40 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
         />
         {searchTerm && (
           <button
             onClick={() => setSearchTerm('')}
-            className="w-full rounded-lg border border-brand-teal/20 bg-white px-4 py-2.5 text-sm font-semibold text-brand-teal hover:bg-brand-teal/5 sm:w-auto"
+            className="w-full rounded-lg border border-brand-teal/20 bg-white dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200 px-4 py-2.5 text-sm font-semibold text-brand-teal hover:bg-brand-teal/5 sm:w-auto"
           >
             Clear
           </button>
@@ -87,8 +87,8 @@ const Courses = () => {
           const isPending = enrolledStatus === 'pending';
           const isApproved = enrolledStatus === 'approved';
           return (
-            <div key={course._id} className="group overflow-hidden rounded-2xl border border-brand-teal/10 bg-white shadow-lg shadow-black/5 transition-shadow hover:shadow-xl">
-              <div className="relative h-44 bg-slate-100">
+            <div key={course._id} className="group overflow-hidden rounded-2xl border border-brand-teal/10 bg-white dark:bg-slate-800 dark:border-slate-700 shadow-lg shadow-black/5 transition-shadow hover:shadow-xl">
+              <div className="relative h-44 bg-slate-100 dark:bg-slate-700">
                 <SafeImage 
                   src={getImageUrl(course.thumbnail)} 
                   alt={course.name}
@@ -114,8 +114,8 @@ const Courses = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-base font-semibold text-brand-teal">{course.name}</h3>
-                  <div className="mt-2 flex flex-wrap gap-3 text-xs text-brand-teal/70">
+                  <h3 className="text-base font-semibold text-brand-teal dark:text-slate-200">{course.name}</h3>
+                  <div className="mt-2 flex flex-wrap gap-3 text-xs text-brand-teal/70 dark:text-slate-400">
                     <span className="inline-flex items-center gap-1"><Clock size={15} /> {course.duration || '0h'}</span>
                     <span className="inline-flex items-center gap-1"><BookOpen size={15} /> {course.lectures || 0} lectures</span>
                     <span className="inline-flex items-center gap-1"><Users size={15} /> {course.totalEnrollments >= 1000 ? `${(course.totalEnrollments / 1000).toFixed(1)}K` : course.totalEnrollments || 0}</span>
@@ -131,12 +131,12 @@ const Courses = () => {
                   </span>
                 </div>
 
-                <div className="rounded-lg border border-brand-teal/10 bg-brand-teal/5 p-3">
+                <div className="rounded-lg border border-brand-teal/10 dark:border-slate-700 bg-brand-teal/5 dark:bg-slate-700 p-3">
                   <div className="flex items-center gap-2">
-                    <span className="text-lg font-bold text-brand-teal">NPR {course.fee}</span>
-                    <span className="text-xs text-brand-teal/40 line-through">NPR {Math.round(course.fee * 4.8)}</span>
+                    <span className="text-lg font-bold text-brand-teal dark:text-slate-200">NPR {course.fee}</span>
+                    <span className="text-xs text-brand-teal/40 dark:text-slate-400 line-through">NPR {Math.round(course.fee * 4.8)}</span>
                   </div>
-                  <div className="text-xs text-brand-teal/70">You save NPR {Math.round(course.fee * 3.8)} • Limited time offer</div>
+                  <div className="text-xs text-brand-teal/70 dark:text-slate-400">You save NPR {Math.round(course.fee * 3.8)} • Limited time offer</div>
                 </div>
 
                 <div>

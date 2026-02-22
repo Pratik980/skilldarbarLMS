@@ -59,7 +59,7 @@ const Dashboard = () => {
   return (
     <div className="mx-auto max-w-7xl space-y-4 px-4 md:space-y-6 md:px-0">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold text-brand-orange md:text-2xl">Admin Dashboard</h2>
+        <h2 className="text-xl font-bold text-brand-orange md:text-2xl dark:text-brand-orange">Admin Dashboard</h2>
       </div>
 
       {error && (
@@ -70,41 +70,41 @@ const Dashboard = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:gap-4 xl:grid-cols-3">
-        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
-          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Total Users</p>
-          <p className="mt-2 text-3xl font-bold text-brand-teal">{stats?.totalUsers || 0}</p>
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5 dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60 dark:text-slate-400">Total Users</p>
+          <p className="mt-2 text-3xl font-bold text-brand-teal dark:text-slate-100">{stats?.totalUsers || 0}</p>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
-          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Students</p>
-          <p className="mt-2 text-3xl font-bold text-brand-teal">{stats?.totalStudents || 0}</p>
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5 dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60 dark:text-slate-400">Students</p>
+          <p className="mt-2 text-3xl font-bold text-brand-teal dark:text-slate-100">{stats?.totalStudents || 0}</p>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
-          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Admins</p>
-          <p className="mt-2 text-3xl font-bold text-brand-teal">{stats?.totalAdmins || 0}</p>
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5 dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60 dark:text-slate-400">Admins</p>
+          <p className="mt-2 text-3xl font-bold text-brand-teal dark:text-slate-100">{stats?.totalAdmins || 0}</p>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
-          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Total Courses</p>
-          <p className="mt-2 text-3xl font-bold text-brand-teal">{stats?.totalCourses || 0}</p>
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5 dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60 dark:text-slate-400">Total Courses</p>
+          <p className="mt-2 text-3xl font-bold text-brand-teal dark:text-slate-100">{stats?.totalCourses || 0}</p>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
-          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Enrollments</p>
-          <p className="mt-2 text-3xl font-bold text-brand-teal">{stats?.totalEnrollments || 0}</p>
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5 dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60 dark:text-slate-400">Enrollments</p>
+          <p className="mt-2 text-3xl font-bold text-brand-teal dark:text-slate-100">{stats?.totalEnrollments || 0}</p>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
-          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Total Revenue</p>
-          <p className="mt-2 text-3xl font-bold text-brand-teal">NPR {stats?.totalRevenue || 0}</p>
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5 dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60 dark:text-slate-400">Total Revenue</p>
+          <p className="mt-2 text-3xl font-bold text-brand-teal dark:text-slate-100">NPR {stats?.totalRevenue || 0}</p>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
-          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Enrolled</p>
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5 dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60 dark:text-slate-400">Enrolled</p>
           <p className="mt-2 text-3xl font-bold text-brand-orange">{stats?.enrolledCount || 0}</p>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
-          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Completed</p>
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5 dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60 dark:text-slate-400">Completed</p>
           <p className="mt-2 text-3xl font-bold text-green-600">{stats?.completedCount || 0}</p>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
-          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Completion Rate</p>
-          <p className="mt-2 text-3xl font-bold text-brand-teal">
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5 dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60 dark:text-slate-400">Completion Rate</p>
+          <p className="mt-2 text-3xl font-bold text-brand-teal dark:text-slate-100">
             {stats?.enrolledCount > 0 ? ((stats.completedCount / stats.enrolledCount) * 100).toFixed(1) : 0}%
           </p>
         </div>
@@ -114,8 +114,8 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 gap-4 md:gap-6 lg:grid-cols-2">
         {/* Revenue per Course Bar Chart */}
         {revenueChartData.length > 0 && (
-          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
-            <h3 className="mb-4 text-lg font-semibold text-brand-teal">Revenue per Course</h3>
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6 dark:border-slate-700 dark:bg-slate-800">
+            <h3 className="mb-4 text-lg font-semibold text-brand-teal dark:text-slate-100">Revenue per Course</h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={revenueChartData} margin={{ top: 5, right: 20, left: 10, bottom: 60 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
@@ -133,8 +133,8 @@ const Dashboard = () => {
 
         {/* Monthly Revenue Line Chart */}
         {monthlyChartData.length > 0 && (
-          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
-            <h3 className="mb-4 text-lg font-semibold text-brand-teal">Monthly Revenue Trend</h3>
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6 dark:border-slate-700 dark:bg-slate-800">
+            <h3 className="mb-4 text-lg font-semibold text-brand-teal dark:text-slate-100">Monthly Revenue Trend</h3>
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={monthlyChartData} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
@@ -152,8 +152,8 @@ const Dashboard = () => {
 
         {/* Weekly Revenue Line Chart */}
         {weeklyChartData.length > 0 && (
-          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
-            <h3 className="mb-4 text-lg font-semibold text-brand-teal">Weekly Revenue Overview (Last 12 Weeks)</h3>
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6 dark:border-slate-700 dark:bg-slate-800">
+            <h3 className="mb-4 text-lg font-semibold text-brand-teal dark:text-slate-100">Weekly Revenue Overview (Last 12 Weeks)</h3>
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={weeklyChartData} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
@@ -176,8 +176,8 @@ const Dashboard = () => {
 
         {/* Enrolled vs Completed Bar Chart */}
         {enrollmentComparisonData.length > 0 && (
-          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
-            <h3 className="mb-4 text-lg font-semibold text-brand-teal">Enrolled vs Completed</h3>
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6 dark:border-slate-700 dark:bg-slate-800">
+            <h3 className="mb-4 text-lg font-semibold text-brand-teal dark:text-slate-100">Enrolled vs Completed</h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={enrollmentComparisonData} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
@@ -198,8 +198,8 @@ const Dashboard = () => {
 
         {/* Enrollment Status Pie Chart */}
         {enrollmentPieData.length > 0 && (
-          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
-            <h3 className="mb-4 text-lg font-semibold text-brand-teal">Enrollment Status</h3>
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6 dark:border-slate-700 dark:bg-slate-800">
+            <h3 className="mb-4 text-lg font-semibold text-brand-teal dark:text-slate-100">Enrollment Status</h3>
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
@@ -225,8 +225,8 @@ const Dashboard = () => {
 
         {/* Enrollments per Course (horizontal bar) */}
         {revenueChartData.length > 0 && (
-          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
-            <h3 className="mb-4 text-lg font-semibold text-brand-teal">Enrollments per Course</h3>
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6 dark:border-slate-700 dark:bg-slate-800">
+            <h3 className="mb-4 text-lg font-semibold text-brand-teal dark:text-slate-100">Enrollments per Course</h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={revenueChartData} layout="vertical" margin={{ top: 5, right: 20, left: 80, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
@@ -244,23 +244,23 @@ const Dashboard = () => {
 
       {/* Revenue per Course Table */}
       {stats?.revenuePerCourse && stats.revenuePerCourse.length > 0 && (
-        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
-          <h3 className="text-lg font-semibold text-brand-teal">Revenue per Course (Table)</h3>
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6 dark:border-slate-700 dark:bg-slate-800">
+          <h3 className="text-lg font-semibold text-brand-teal dark:text-slate-100">Revenue per Course (Table)</h3>
           <div className="mt-4 overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-brand-teal/10 bg-brand-teal/5 text-left text-xs font-semibold uppercase tracking-wider text-brand-teal/70">
+                <tr className="border-b border-brand-teal/10 bg-brand-teal/5 text-left text-xs font-semibold uppercase tracking-wider text-brand-teal/70 dark:border-slate-700 dark:bg-slate-700 dark:text-slate-300">
                   <th className="px-4 py-3">Course</th>
                   <th className="px-4 py-3">Enrollments</th>
                   <th className="px-4 py-3">Revenue</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-brand-teal/10">
+              <tbody className="divide-y divide-brand-teal/10 dark:divide-slate-700">
                 {stats.revenuePerCourse.map(item => (
-                  <tr key={item._id} className="hover:bg-brand-teal/5">
-                    <td className="px-4 py-3 font-medium text-brand-teal">{item.courseName}</td>
-                    <td className="px-4 py-3 text-brand-teal/70">{item.enrollmentCount}</td>
-                    <td className="px-4 py-3 text-brand-teal/70">NPR {item.courseRevenue}</td>
+                  <tr key={item._id} className="hover:bg-brand-teal/5 dark:hover:bg-slate-700/50">
+                    <td className="px-4 py-3 font-medium text-brand-teal dark:text-slate-200">{item.courseName}</td>
+                    <td className="px-4 py-3 text-brand-teal/70 dark:text-slate-400">{item.enrollmentCount}</td>
+                    <td className="px-4 py-3 text-brand-teal/70 dark:text-slate-400">NPR {item.courseRevenue}</td>
                   </tr>
                 ))}
               </tbody>
@@ -271,21 +271,21 @@ const Dashboard = () => {
 
       {/* Monthly Revenue Table */}
       {stats?.monthlyRevenue && stats.monthlyRevenue.length > 0 && (
-        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
-          <h3 className="text-lg font-semibold text-brand-teal">Monthly Revenue (Table)</h3>
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6 dark:border-slate-700 dark:bg-slate-800">
+          <h3 className="text-lg font-semibold text-brand-teal dark:text-slate-100">Monthly Revenue (Table)</h3>
           <div className="mt-4 overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-brand-teal/10 bg-brand-teal/5 text-left text-xs font-semibold uppercase tracking-wider text-brand-teal/70">
+                <tr className="border-b border-brand-teal/10 bg-brand-teal/5 text-left text-xs font-semibold uppercase tracking-wider text-brand-teal/70 dark:border-slate-700 dark:bg-slate-700 dark:text-slate-300">
                   <th className="px-4 py-3">Month</th>
                   <th className="px-4 py-3">Revenue</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-brand-teal/10">
+              <tbody className="divide-y divide-brand-teal/10 dark:divide-slate-700">
                 {stats.monthlyRevenue.map(item => (
-                  <tr key={item._id} className="hover:bg-brand-teal/5">
-                    <td className="px-4 py-3 font-medium text-brand-teal">{item._id}</td>
-                    <td className="px-4 py-3 text-brand-teal/70">NPR {item.revenue}</td>
+                  <tr key={item._id} className="hover:bg-brand-teal/5 dark:hover:bg-slate-700/50">
+                    <td className="px-4 py-3 font-medium text-brand-teal dark:text-slate-200">{item._id}</td>
+                    <td className="px-4 py-3 text-brand-teal/70 dark:text-slate-400">NPR {item.revenue}</td>
                   </tr>
                 ))}
               </tbody>

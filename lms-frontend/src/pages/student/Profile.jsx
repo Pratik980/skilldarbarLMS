@@ -124,20 +124,20 @@ const Profile = () => {
       <h2 className="text-2xl font-bold text-brand-orange">My Profile</h2>
 
       {message && (
-        <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+        <div className="rounded-lg border border-emerald-200 dark:border-emerald-900/50 bg-emerald-50 dark:bg-emerald-900/20 px-4 py-3 text-sm text-emerald-700 dark:text-emerald-400">
           {message}
         </div>
       )}
       {error && (
-        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="rounded-lg border border-red-200 dark:border-red-900/50 bg-red-50 dark:bg-red-900/20 px-4 py-3 text-sm text-red-700 dark:text-red-400">
           {error}
         </div>
       )}
 
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
         <div className="flex flex-col items-center text-center">
           <div className="relative">
-            <div className="flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-slate-100 text-2xl font-semibold text-slate-600">
+            <div className="flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-700 text-2xl font-semibold text-slate-600 dark:text-slate-300">
               {user?.profileImage ? (
                 <SafeImage
                   src={getImageUrl(user.profileImage)}
@@ -163,12 +163,12 @@ const Profile = () => {
 
           {profileImagePreview && (
             <div className="mt-4 flex flex-col items-center gap-2">
-              <img src={profileImagePreview} alt="Preview" className="h-24 w-24 rounded-full border border-slate-200 object-cover" />
+              <img src={profileImagePreview} alt="Preview" className="h-24 w-24 rounded-full border border-slate-200 dark:border-slate-700 object-cover" />
               <div className="flex gap-2">
                 <button
                   onClick={handleUploadProfileImage}
                   disabled={loading}
-                  className="rounded-lg bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white hover:bg-slate-800"
+                  className="rounded-lg bg-slate-900 dark:bg-slate-700 px-3 py-1.5 text-xs font-semibold text-white hover:bg-slate-800 dark:hover:bg-slate-600"
                 >
                   {loading ? 'Uploading...' : 'Upload Photo'}
                 </button>
@@ -177,7 +177,7 @@ const Profile = () => {
                     setProfileImageFile(null);
                     setProfileImagePreview(null);
                   }}
-                  className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+                  className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700"
                 >
                   Cancel
                 </button>
@@ -185,34 +185,34 @@ const Profile = () => {
             </div>
           )}
 
-          <h3 className="mt-4 text-lg font-semibold text-slate-800">{user?.fullName}</h3>
-          <p className="text-sm text-slate-500 capitalize">{user?.role}</p>
+          <h3 className="mt-4 text-lg font-semibold text-slate-800 dark:text-slate-200">{user?.fullName}</h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400 capitalize">{user?.role}</p>
         </div>
 
         {!isEditing ? (
-          <div className="mt-6 space-y-3 text-sm text-slate-700">
+          <div className="mt-6 space-y-3 text-sm text-slate-700 dark:text-slate-300">
             <div className="flex justify-between gap-4">
-              <span className="font-semibold text-slate-600">Email:</span>
+              <span className="font-semibold text-slate-600 dark:text-slate-400">Email:</span>
               <span>{user?.email}</span>
             </div>
             <div className="flex justify-between gap-4">
-              <span className="font-semibold text-slate-600">Phone:</span>
+              <span className="font-semibold text-slate-600 dark:text-slate-400">Phone:</span>
               <span>{user?.phone}</span>
             </div>
             <div className="flex justify-between gap-4">
-              <span className="font-semibold text-slate-600">Account Status:</span>
+              <span className="font-semibold text-slate-600 dark:text-slate-400">Account Status:</span>
               <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${user?.isActive ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-700'}`}>
                 {user?.isActive ? 'Active' : 'Inactive'}
               </span>
             </div>
             <div className="flex justify-between gap-4">
-              <span className="font-semibold text-slate-600">Member Since:</span>
+              <span className="font-semibold text-slate-600 dark:text-slate-400">Member Since:</span>
               <span>{new Date(user?.createdAt).toLocaleDateString()}</span>
             </div>
 
             <button
               onClick={() => setIsEditing(true)}
-              className="mt-2 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
+              className="mt-2 rounded-lg bg-slate-900 dark:bg-slate-700 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 dark:hover:bg-slate-600"
             >
               Edit Profile
             </button>
@@ -220,37 +220,37 @@ const Profile = () => {
         ) : (
           <form onSubmit={handleUpdateProfile} className="mt-6 space-y-4">
             <div className="space-y-2">
-              <label className="text-sm font-semibold text-slate-700">Full Name</label>
+              <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Full Name</label>
               <input
                 type="text"
                 name="fullName"
                 value={formData.fullName}
                 onChange={handleChange}
                 required
-                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 dark:text-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-semibold text-slate-700">Phone</label>
+              <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Phone</label>
               <input
                 type="tel"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
                 required
-                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 dark:text-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <div className="flex flex-wrap gap-2">
-              <button type="submit" disabled={loading} className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
+              <button type="submit" disabled={loading} className="rounded-lg bg-slate-900 dark:bg-slate-700 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 dark:hover:bg-slate-600">
                 {loading ? 'Saving...' : 'Save Changes'}
               </button>
               <button
                 type="button"
                 onClick={() => setIsEditing(false)}
-                className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+                className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700"
               >
                 Cancel
               </button>
@@ -258,12 +258,12 @@ const Profile = () => {
           </form>
         )}
 
-        <div className="my-6 h-px bg-slate-200"></div>
+        <div className="my-6 h-px bg-slate-200 dark:bg-slate-700"></div>
 
         <div className="space-y-3">
           <button
             onClick={() => setShowPasswordChange(!showPasswordChange)}
-            className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+            className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700"
           >
             {showPasswordChange ? 'Cancel' : 'Change Password'}
           </button>
@@ -271,19 +271,19 @@ const Profile = () => {
           {showPasswordChange && (
             <form onSubmit={handleChangePassword} className="space-y-3">
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700">Current Password</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Current Password</label>
                 <input
                   type="password"
                   name="currentPassword"
                   value={passwordData.currentPassword}
                   onChange={handlePasswordChange}
                   required
-                  className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 dark:text-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700">New Password</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">New Password</label>
                 <input
                   type="password"
                   name="newPassword"
@@ -291,12 +291,12 @@ const Profile = () => {
                   onChange={handlePasswordChange}
                   required
                   minLength="6"
-                  className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 dark:text-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700">Confirm New Password</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Confirm New Password</label>
                 <input
                   type="password"
                   name="newPasswordConfirm"
@@ -304,11 +304,11 @@ const Profile = () => {
                   onChange={handlePasswordChange}
                   required
                   minLength="6"
-                  className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 dark:text-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
-              <button type="submit" disabled={loading} className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
+              <button type="submit" disabled={loading} className="rounded-lg bg-slate-900 dark:bg-slate-700 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 dark:hover:bg-slate-600">
                 Update Password
               </button>
             </form>

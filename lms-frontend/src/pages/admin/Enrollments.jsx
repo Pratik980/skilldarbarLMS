@@ -108,11 +108,11 @@ const Enrollments = () => {
 
       <div className="grid grid-cols-1 gap-4">
         <div className="flex flex-col gap-3">
-          <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">Filter by Status</label>
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Filter by Status</label>
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            className="rounded-lg border border-brand-teal/20 bg-white px-4 py-3 text-sm text-brand-teal focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
+            className="rounded-lg border border-brand-teal/20 dark:border-slate-600 bg-white dark:bg-slate-700 dark:text-white px-4 py-3 text-sm text-brand-teal focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
           >
             <option value="">All Status</option>
             <option value="pending">Pending</option>
@@ -122,11 +122,11 @@ const Enrollments = () => {
         </div>
       </div>
 
-      <div className="rounded-xl border border-white/10 bg-white shadow-lg shadow-black/5">
+      <div className="rounded-xl border border-white/10 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg shadow-black/5">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-brand-teal/10 bg-brand-teal/5 text-left text-xs font-semibold uppercase tracking-wider text-brand-teal/70">
+              <tr className="border-b border-brand-teal/10 dark:border-slate-700 bg-brand-teal/5 dark:bg-slate-700 text-left text-xs font-semibold uppercase tracking-wider text-brand-teal/70 dark:text-slate-400">
                 <th className="px-3 py-3 md:px-4">Student</th>
                 <th className="px-3 py-3 md:px-4">Course</th>
                 <th className="hidden px-3 py-3 sm:table-cell md:px-4">Amount</th>
@@ -136,33 +136,33 @@ const Enrollments = () => {
                 <th className="px-3 py-3 md:px-4">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-brand-teal/10">
+            <tbody className="divide-y divide-brand-teal/10 dark:divide-slate-700">
               {enrollments.map(enrollment => {
                 const progress = getProgressForEnrollment(enrollment);
                 const isEligibleForCert = progress && progress.progressPercentage >= 80;
                 
                 return (
-                  <tr key={enrollment._id} className="hover:bg-brand-teal/5">
+                  <tr key={enrollment._id} className="hover:bg-brand-teal/5 dark:hover:bg-slate-700">
                     <td className="px-3 py-3 md:px-4">
-                      <div className="font-medium text-brand-teal">{enrollment.student?.fullName}</div>
-                      <div className="text-xs text-brand-teal/70">{enrollment.student?.email}</div>
+                      <div className="font-medium text-brand-teal dark:text-slate-200">{enrollment.student?.fullName}</div>
+                      <div className="text-xs text-brand-teal/70 dark:text-slate-400">{enrollment.student?.email}</div>
                     </td>
-                    <td className="px-3 py-3 text-brand-teal/70 md:px-4">{enrollment.course?.name}</td>
-                    <td className="hidden px-3 py-3 text-brand-teal/70 sm:table-cell md:px-4">NPR {enrollment.amount}</td>
-                    <td className="hidden px-3 py-3 text-brand-teal/70 lg:table-cell md:px-4">{new Date(enrollment.enrolledAt).toLocaleDateString()}</td>
+                    <td className="px-3 py-3 text-brand-teal/70 dark:text-slate-400 md:px-4">{enrollment.course?.name}</td>
+                    <td className="hidden px-3 py-3 text-brand-teal/70 dark:text-slate-400 sm:table-cell md:px-4">NPR {enrollment.amount}</td>
+                    <td className="hidden px-3 py-3 text-brand-teal/70 dark:text-slate-400 lg:table-cell md:px-4">{new Date(enrollment.enrolledAt).toLocaleDateString()}</td>
                     <td className="px-3 py-3 md:px-4">
                       <StatusBadge status={enrollment.status} />
                     </td>
                     <td className="hidden px-3 py-3 md:table-cell md:px-4">
                       {enrollment.status === 'approved' && progress ? (
                         <div className="flex items-center gap-2">
-                          <div className="h-2 w-28 overflow-hidden rounded-full bg-brand-teal/10">
+                          <div className="h-2 w-28 overflow-hidden rounded-full bg-brand-teal/10 dark:bg-slate-700">
                             <div 
                               className="h-full rounded-full bg-brand-orange"
                               style={{ width: `${progress.progressPercentage}%` }}
                             ></div>
                           </div>
-                          <span className="text-xs font-semibold text-brand-teal/80">{progress.progressPercentage}%</span>
+                          <span className="text-xs font-semibold text-brand-teal/80 dark:text-slate-300">{progress.progressPercentage}%</span>
                           {isEligibleForCert && (
                             <div>
                               {progress.certificateSent ? (
@@ -180,14 +180,14 @@ const Enrollments = () => {
                           )}
                         </div>
                       ) : (
-                        <span className="text-brand-teal/40">—</span>
+                        <span className="text-brand-teal/40 dark:text-slate-500">—</span>
                       )}
                     </td>
                     <td className="px-3 py-3 md:px-4">
                       <div className="flex flex-wrap gap-2">
                         <button
                           onClick={() => setSelectedEnrollment(enrollment)}
-                          className="rounded-lg border border-brand-teal/20 bg-white px-2 py-1 text-xs font-semibold text-brand-teal hover:bg-brand-teal/5 md:px-3 md:py-1.5"
+                          className="rounded-lg border border-brand-teal/20 dark:border-slate-700 bg-white dark:bg-slate-700 px-2 py-1 text-xs font-semibold text-brand-teal dark:text-slate-200 hover:bg-brand-teal/5 dark:hover:bg-slate-600 md:px-3 md:py-1.5"
                         >
                           View
                         </button>
@@ -218,15 +218,15 @@ const Enrollments = () => {
       </div>
 
       {enrollments.length === 0 && (
-        <p className="text-sm text-white/70">No enrollments found</p>
+        <p className="text-sm text-slate-500 dark:text-slate-400">No enrollments found</p>
       )}
 
       {selectedEnrollment && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4" onClick={() => setSelectedEnrollment(null)}>
-          <div className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-xl border border-brand-teal/10 bg-white p-4 shadow-xl md:p-6" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-base font-semibold text-brand-teal md:text-lg">Enrollment Details</h3>
+          <div className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-xl border border-brand-teal/10 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-xl md:p-6" onClick={(e) => e.stopPropagation()}>
+            <h3 className="text-base font-semibold text-brand-teal dark:text-slate-200 md:text-lg">Enrollment Details</h3>
             
-            <div className="mt-4 space-y-3 text-sm text-brand-teal/70">
+            <div className="mt-4 space-y-3 text-sm text-brand-teal/70 dark:text-slate-400">
               <div className="flex flex-col gap-1 sm:flex-row sm:justify-between sm:gap-4">
                 <span className="font-semibold">Student Name (Profile):</span>
                 <span className="sm:text-right">{selectedEnrollment.student?.fullName}</span>
@@ -262,7 +262,7 @@ const Enrollments = () => {
               
               <div className="pt-2">
                 <span className="font-semibold">Payment Proof:</span>
-                <div className="mt-3 overflow-hidden rounded-lg border border-brand-teal/10">
+                <div className="mt-3 overflow-hidden rounded-lg border border-brand-teal/10 dark:border-slate-700">
                   <SafeImage 
                     src={getImageUrl(selectedEnrollment.paymentProof)} 
                     alt="Payment Proof"
@@ -295,7 +295,7 @@ const Enrollments = () => {
                   </button>
                 </>
               )}
-              <button onClick={() => setSelectedEnrollment(null)} className="w-full rounded-lg border border-brand-teal/20 bg-white px-4 py-2 text-sm font-semibold text-brand-teal hover:bg-brand-teal/5 sm:w-auto">
+              <button onClick={() => setSelectedEnrollment(null)} className="w-full rounded-lg border border-brand-teal/20 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 text-sm font-semibold text-brand-teal dark:text-slate-200 hover:bg-brand-teal/5 dark:hover:bg-slate-700 sm:w-auto">
                 Close
               </button>
             </div>

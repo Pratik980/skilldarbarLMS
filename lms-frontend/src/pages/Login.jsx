@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
+import LightModeWrapper from '../components/LightModeWrapper';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -49,6 +50,7 @@ const Login = () => {
   };
 
   return (
+    <LightModeWrapper>
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-slate-200 px-4 py-10 font-sans">
       <div className="pointer-events-none absolute -top-20 right-0 h-64 w-64 rounded-full bg-brand-orange/20 blur-3xl"></div>
       <div className="pointer-events-none absolute -bottom-24 left-0 h-64 w-64 rounded-full bg-white/10 blur-3xl"></div>
@@ -169,6 +171,7 @@ const Login = () => {
         </p>
       </div>
     </div>
+    </LightModeWrapper>
   );
 };
 

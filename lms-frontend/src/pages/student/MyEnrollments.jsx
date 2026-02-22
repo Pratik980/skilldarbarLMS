@@ -96,15 +96,15 @@ const MyEnrollments = () => {
       <h2 className="text-2xl font-bold text-brand-orange">My Enrollments</h2>
 
       {error && (
-        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="rounded-lg border border-red-200 dark:border-red-900/50 bg-red-50 dark:bg-red-900/20 px-4 py-3 text-sm text-red-700 dark:text-red-400">
           {error}
         </div>
       )}
 
       {enrollments.length === 0 ? (
-        <div className="rounded-xl border border-slate-200 bg-white p-6 text-center shadow-sm">
-          <p className="text-sm text-slate-600">You haven't enrolled in any courses yet.</p>
-          <Link to="/student/courses" className="mt-3 inline-flex rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
+        <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 text-center shadow-sm">
+          <p className="text-sm text-slate-600 dark:text-slate-400">You haven't enrolled in any courses yet.</p>
+          <Link to="/student/courses" className="mt-3 inline-flex rounded-lg bg-slate-900 dark:bg-slate-700 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 dark:hover:bg-slate-600">
             Browse Courses
           </Link>
         </div>
@@ -119,28 +119,28 @@ const MyEnrollments = () => {
             const certificate = certificateData[courseId];
             
             return (
-              <div key={enrollment._id} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm space-y-4">
+              <div key={enrollment._id} className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm space-y-4">
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="text-base font-semibold text-slate-900">{enrollment.course?.name}</h3>
+                  <h3 className="text-base font-semibold text-slate-900 dark:text-slate-200">{enrollment.course?.name}</h3>
                   <StatusBadge status={enrollment.status} />
                 </div>
 
-                <div className="text-sm text-slate-600 space-y-1">
-                  <p><strong className="text-slate-700">Enrolled:</strong> {new Date(enrollment.enrolledAt).toLocaleDateString()}</p>
-                  <p><strong className="text-slate-700">Amount:</strong> NPR {enrollment.amount}</p>
+                <div className="text-sm text-slate-600 dark:text-slate-400 space-y-1">
+                  <p><strong className="text-slate-700 dark:text-slate-300">Enrolled:</strong> {new Date(enrollment.enrolledAt).toLocaleDateString()}</p>
+                  <p><strong className="text-slate-700 dark:text-slate-300">Amount:</strong> NPR {enrollment.amount}</p>
                   {enrollment.approvedAt && (
-                    <p><strong className="text-slate-700">Approved:</strong> {new Date(enrollment.approvedAt).toLocaleDateString()}</p>
+                    <p><strong className="text-slate-700 dark:text-slate-300">Approved:</strong> {new Date(enrollment.approvedAt).toLocaleDateString()}</p>
                   )}
                 </div>
 
                 {enrollment.status === 'approved' && (
                   <>
-                    <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
-                      <div className="flex items-center justify-between text-xs font-semibold text-slate-600">
+                    <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700 p-3">
+                      <div className="flex items-center justify-between text-xs font-semibold text-slate-600 dark:text-slate-300">
                         <span>Course Progress</span>
                         <span>{progress.progressPercentage}%</span>
                       </div>
-                      <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-200">
+                      <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-600">
                         <div 
                           className="h-full rounded-full bg-blue-600"
                           style={{ width: `${progress.progressPercentage}%` }}
@@ -191,7 +191,7 @@ const MyEnrollments = () => {
                       </div>
 
                       {canTakeExam && (
-                        <Link to={`/student/courses/${courseId}/exam`} className="mt-3 inline-flex rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50">
+                        <Link to={`/student/courses/${courseId}/exam`} className="mt-3 inline-flex rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-600">
                           Start Exam
                         </Link>
                       )}
@@ -232,7 +232,7 @@ const MyEnrollments = () => {
 
                     <Link 
                       to={`/student/courses/${courseId}`}
-                      className="inline-flex rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+                      className="inline-flex rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-600"
                     >
                       Continue Learning
                     </Link>
@@ -240,12 +240,12 @@ const MyEnrollments = () => {
                 )}
 
                 {enrollment.status === 'pending' && (
-                  <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-700">
+                  <div className="rounded-lg border border-amber-200 dark:border-amber-900/50 bg-amber-50 dark:bg-amber-900/20 p-3 text-sm text-amber-700 dark:text-amber-400">
                     <p className="font-semibold">Waiting for payment confirmation</p>
                     <SafeImage 
                       src={getImageUrl(enrollment.course?.qrImage)}
                       alt="QR"
-                      className="mt-2 w-24 rounded border border-amber-200"
+                      className="mt-2 w-24 rounded border border-amber-200 dark:border-amber-800"
                     />
                   </div>
                 )}
