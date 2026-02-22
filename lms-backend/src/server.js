@@ -21,14 +21,20 @@ const allowedOrigins = [
   process.env.FRONTEND_URL,
 ].filter(Boolean);
 
+const isOriginAllowed = (origin) => !origin || allowedOrigins.includes(origin);
+
 const io = new Server(server, {
   cors: {
-    origin: allowedOrigins,
+    origin: (origin, callback) => {
+      if (isOriginAllowed(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error('Not allowed by CORS'), false);
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   },
-
-  transports: ['polling', 'websocket'],  // polling first for proxy compatibility
+  transports: ['polling', 'websocket'], // polling first for proxy compatibility
   pingTimeout: 60000,
   pingInterval: 25000,
 });
