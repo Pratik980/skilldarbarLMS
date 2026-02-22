@@ -12,16 +12,12 @@ export const coursesAPI = {
   },
 
   createCourse: async (courseData) => {
-    const response = await axiosInstance.post('/courses', courseData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    });
+    const response = await axiosInstance.post('/courses', courseData);
     return response.data;
   },
 
   updateCourse: async (id, courseData) => {
-    const response = await axiosInstance.put(`/courses/${id}`, courseData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    });
+    const response = await axiosInstance.put(`/courses/${id}`, courseData);
     return response.data;
   },
 

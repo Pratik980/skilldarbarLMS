@@ -24,11 +24,12 @@ export const authAPI = {
   uploadProfileImage: async (imageFile) => {
     const formData = new FormData();
     formData.append('profileImage', imageFile);
-    const response = await axiosInstance.post('/auth/upload-profile-image', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
+    
+    console.log('=== Frontend: Uploading Profile Image ===');
+    console.log('File:', imageFile);
+    console.log('FormData entries:', Array.from(formData.entries()));
+    
+    const response = await axiosInstance.post('/auth/upload-profile-image', formData);
     return response.data;
   },
 

@@ -12,16 +12,12 @@ export const contentAPI = {
   },
 
   createContent: async (contentData) => {
-    const response = await axiosInstance.post('/content', contentData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    });
+    const response = await axiosInstance.post('/content', contentData);
     return response.data;
   },
 
   updateContent: async (id, contentData) => {
-    const response = await axiosInstance.put(`/content/${id}`, contentData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    });
+    const response = await axiosInstance.put(`/content/${id}`, contentData);
     return response.data;
   },
 
