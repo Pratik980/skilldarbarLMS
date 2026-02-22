@@ -18,8 +18,8 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
-  process.env.FRONTEND_URL, // Add this to Render environment variables
-  'https://skilldarbar.netlify.app' // Add your actual netlify URL here
+  'https://skilldarbarlms.netlify.app',
+  process.env.FRONTEND_URL, // Additional frontend URL from environment
 ].filter(Boolean);
 
 app.use(cors({
