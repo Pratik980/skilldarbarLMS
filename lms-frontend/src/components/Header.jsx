@@ -16,8 +16,8 @@ const Header = ({ isAdmin = false, onMenuToggle }) => {
   };
 
   return (
-    <header className="sticky top-0 z-20 flex items-center justify-between border-b border-orange-200 bg-white px-6 py-4 backdrop-blur dark:border-slate-700 dark:bg-slate-800">
-      <div className="flex items-center gap-3">
+    <header className="sticky top-0 z-20 flex items-center justify-between border-b border-orange-200 bg-white px-3 py-3 backdrop-blur dark:border-slate-700 dark:bg-slate-800 md:px-6 md:py-4">
+      <div className="flex items-center gap-2 md:gap-3">
         <button
           className="inline-flex items-center justify-center rounded-lg border border-orange-200 bg-orange-50 p-2 text-brand-orange hover:bg-orange-100 md:hidden"
           onClick={onMenuToggle}
@@ -29,21 +29,21 @@ const Header = ({ isAdmin = false, onMenuToggle }) => {
             <line x1="3" y1="18" x2="21" y2="18"></line>
           </svg>
         </button>
-        <h1 className="text-lg font-semibold text-slate-900">
-          Welcome, <span className="text-brand-orange">{user?.fullName}</span>!
+        <h1 className="text-sm font-semibold text-slate-900 md:text-lg">
+          <span className="hidden sm:inline">Welcome, </span><span className="text-brand-orange">{user?.fullName?.split(' ')[0]}</span><span className="hidden md:inline">{user?.fullName?.split(' ').slice(1).join(' ') ? ' ' + user?.fullName?.split(' ').slice(1).join(' ') : ''}</span>!
         </h1>
       </div>
       
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 md:gap-3">
         <button
           onClick={toggleTheme}
-          className="rounded-lg p-2 text-brand-teal/70 hover:bg-brand-teal/5 hover:text-brand-teal transition-colors dark:text-orange-300 dark:hover:bg-white/10"
+          className="hidden rounded-lg p-2 text-brand-teal/70 transition-colors hover:bg-brand-teal/5 hover:text-brand-teal dark:text-orange-300 dark:hover:bg-white/10 sm:block"
           aria-label="Toggle theme"
         >
           {isDark ? <Sun size={20} /> : <Moon size={20} />}
         </button>
         <NotificationBell />
-        <div className="h-10 w-10 overflow-hidden rounded-full border border-orange-200 bg-orange-50">
+        <div className="h-8 w-8 overflow-hidden rounded-full border border-orange-200 bg-orange-50 md:h-10 md:w-10">
           {user?.profileImage ? (
             <img 
               src={getImageUrl(user.profileImage)} 
@@ -59,9 +59,10 @@ const Header = ({ isAdmin = false, onMenuToggle }) => {
         </div>
         <button
           onClick={handleLogout}
-          className="rounded-lg bg-brand-orange px-4 py-2 text-sm font-semibold text-white hover:bg-brand-orangeDark"
+          className="rounded-lg bg-brand-orange px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-orangeDark md:px-4 md:py-2 md:text-sm"
         >
-          Logout
+          <span className="hidden sm:inline">Logout</span>
+          <span className="sm:hidden">Exit</span>
         </button>
       </div>
     </header>

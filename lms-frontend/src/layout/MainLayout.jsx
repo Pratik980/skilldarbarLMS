@@ -34,7 +34,7 @@ const MainLayout = () => {
       />
       <div className="flex min-w-0 flex-1 flex-col md:ml-64">
         <Header onMenuToggle={toggleMobileMenu} />
-        <main className="flex-1 px-6 py-6 bg-slate-50 overflow-y-auto dark:bg-slate-900">
+        <main className="flex-1 overflow-y-auto bg-slate-50 px-3 py-4 dark:bg-slate-900 md:px-6 md:py-6">
           <Outlet />
         </main>
       </div>

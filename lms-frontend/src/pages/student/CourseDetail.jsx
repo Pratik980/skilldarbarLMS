@@ -144,8 +144,8 @@ const CourseDetail = () => {
   if (!course) return <div>Course not found</div>;
 
   return (
-    <div className="mx-auto max-w-5xl space-y-6">
-      <button onClick={() => navigate(-1)} className="inline-flex items-center gap-1 text-sm font-medium text-brand-teal/70 hover:text-brand-teal transition-colors dark:text-slate-400 dark:hover:text-slate-200">
+    <div className="mx-auto max-w-5xl space-y-4 px-4 md:space-y-6 md:px-0">
+      <button onClick={() => navigate(-1)} className="inline-flex items-center gap-1 text-sm font-medium text-brand-teal/70 transition-colors hover:text-brand-teal dark:text-slate-400 dark:hover:text-slate-200">
         ← Back
       </button>
 

@@ -51,31 +51,31 @@ const Analytics = () => {
   };
 
   return (
-    <div className="mx-auto max-w-7xl space-y-6">
+    <div className="mx-auto max-w-7xl space-y-4 px-4 md:space-y-6 md:px-0">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-brand-orange">Course Analytics</h2>
+        <h2 className="text-xl font-bold text-brand-orange md:text-2xl">Course Analytics</h2>
       </div>
 
       {/* Search by Course Name */}
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row">
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Enter Course Name"
-          className="w-full max-w-md rounded-lg border border-brand-teal/20 bg-white px-4 py-2.5 text-sm text-brand-teal placeholder:text-brand-teal/40 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
+          className="flex-1 rounded-lg border border-brand-teal/20 bg-white px-4 py-2.5 text-sm text-brand-teal placeholder:text-brand-teal/40 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
         />
         <button
           onClick={handleSearch}
-          className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-orangeDark transition-colors"
+          className="w-full rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-orangeDark sm:w-auto"
         >
           Search
         </button>
         {searchTerm && (
           <button
             onClick={() => { setSearchTerm(''); fetchAllAnalytics(); }}
-            className="rounded-lg border border-brand-teal/20 bg-white px-4 py-2.5 text-sm font-semibold text-brand-teal hover:bg-brand-teal/5"
+            className="w-full rounded-lg border border-brand-teal/20 bg-white px-4 py-2.5 text-sm font-semibold text-brand-teal hover:bg-brand-teal/5 sm:w-auto"
           >
             Clear
           </button>

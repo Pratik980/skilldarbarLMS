@@ -59,8 +59,8 @@ const Dashboard = () => {
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="mx-auto max-w-7xl space-y-8">
-      <h2 className="text-2xl font-bold text-brand-orange">Student Dashboard</h2>
+    <div className="mx-auto max-w-7xl space-y-6 px-4 md:space-y-8 md:px-0">
+      <h2 className="text-xl font-bold text-brand-orange md:text-2xl">Student Dashboard</h2>
 
       {error && (
         <div className="rounded-lg border border-red-300/40 bg-red-500/15 px-4 py-3 text-sm text-red-100">
@@ -68,16 +68,16 @@ const Dashboard = () => {
         </div>
       )}
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <div className="rounded-xl border border-white/10 bg-white p-5 shadow-lg shadow-black/5">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 md:gap-4">
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
           <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Total Courses</p>
           <p className="mt-2 text-3xl font-bold text-brand-teal">{courses.length}</p>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white p-5 shadow-lg shadow-black/5">
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
           <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Enrolled</p>
           <p className="mt-2 text-3xl font-bold text-brand-teal">{approvedEnrollments.length}</p>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white p-5 shadow-lg shadow-black/5">
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
           <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Pending</p>
           <p className="mt-2 text-3xl font-bold text-brand-teal">{pendingEnrollments.length}</p>
         </div>
@@ -85,9 +85,9 @@ const Dashboard = () => {
 
       {/* Progress Charts */}
       {approvedEnrollments.length > 0 && (
-        <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 md:gap-6 lg:grid-cols-2">
           {/* Course Progress Bar Chart */}
-          <div className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5">
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
             <h3 className="mb-4 text-lg font-semibold text-brand-teal">Course Progress</h3>
             <ResponsiveContainer width="100%" height={250}>
               <BarChart
@@ -107,7 +107,7 @@ const Dashboard = () => {
           </div>
 
           {/* Enrollment Status Pie */}
-          <div className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5">
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
             <h3 className="mb-4 text-lg font-semibold text-brand-teal">Enrollment Status</h3>
             <ResponsiveContainer width="100%" height={250}>
               <PieChart>
@@ -137,8 +137,8 @@ const Dashboard = () => {
         </div>
       )}
 
-      <div className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5">
-        <h3 className="text-lg font-semibold text-brand-teal">My Enrollments</h3>
+      <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
+        <h3 className="text-base font-semibold text-brand-teal md:text-lg">My Enrollments</h3>
         {enrollments.length === 0 ? (
           <p className="mt-3 text-sm text-brand-teal/70">No enrollments yet. <Link to="/student/courses" className="font-semibold text-brand-orange">Browse courses</Link></p>
         ) : (
@@ -200,8 +200,10 @@ const Dashboard = () => {
         )}
       </div>
 
-      <div className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5">
-        <h3 className="text-lg font-semibold text-brand-teal">Continue Learning</h3>
+      <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <h3 className="text-base font-semibold text-brand-teal md:text-lg">Continue Learning</h3>
+        </div>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {approvedEnrollments.slice(0, 4).map(enrollment => {
             const course = enrollment.course;
@@ -247,9 +249,9 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5">
-        <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold text-brand-teal">Available Courses</h3>
+      <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <h3 className="text-base font-semibold text-brand-teal md:text-lg">Available Courses</h3>
           {courses.length > 4 && (
             <Link to="/student/courses" className="text-sm font-semibold text-brand-orange">View All →</Link>
           )}

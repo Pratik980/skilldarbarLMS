@@ -46,9 +46,9 @@ const Dashboard = () => {
   ].filter(d => d.value > 0);
 
   return (
-    <div className="mx-auto max-w-7xl space-y-6">
+    <div className="mx-auto max-w-7xl space-y-4 px-4 md:space-y-6 md:px-0">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-brand-orange">Admin Dashboard</h2>
+        <h2 className="text-xl font-bold text-brand-orange md:text-2xl">Admin Dashboard</h2>
       </div>
 
       {error && (
@@ -58,38 +58,38 @@ const Dashboard = () => {
       )}
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-        <div className="rounded-xl border border-white/10 bg-white p-5 shadow-lg shadow-black/5">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:gap-4 xl:grid-cols-3">
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
           <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Total Users</p>
           <p className="mt-2 text-3xl font-bold text-brand-teal">{stats?.totalUsers || 0}</p>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white p-5 shadow-lg shadow-black/5">
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
           <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Students</p>
           <p className="mt-2 text-3xl font-bold text-brand-teal">{stats?.totalStudents || 0}</p>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white p-5 shadow-lg shadow-black/5">
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
           <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Admins</p>
           <p className="mt-2 text-3xl font-bold text-brand-teal">{stats?.totalAdmins || 0}</p>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white p-5 shadow-lg shadow-black/5">
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
           <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Total Courses</p>
           <p className="mt-2 text-3xl font-bold text-brand-teal">{stats?.totalCourses || 0}</p>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white p-5 shadow-lg shadow-black/5">
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
           <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Enrollments</p>
           <p className="mt-2 text-3xl font-bold text-brand-teal">{stats?.totalEnrollments || 0}</p>
         </div>
-        <div className="rounded-xl border border-white/10 bg-white p-5 shadow-lg shadow-black/5">
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
           <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Total Revenue</p>
           <p className="mt-2 text-3xl font-bold text-brand-teal">NPR {stats?.totalRevenue || 0}</p>
         </div>
       </div>
 
       {/* Charts Row */}
-      <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 md:gap-6 lg:grid-cols-2">
         {/* Revenue per Course Bar Chart */}
         {revenueChartData.length > 0 && (
-          <div className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5">
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
             <h3 className="mb-4 text-lg font-semibold text-brand-teal">Revenue per Course</h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={revenueChartData} margin={{ top: 5, right: 20, left: 10, bottom: 60 }}>
@@ -108,7 +108,7 @@ const Dashboard = () => {
 
         {/* Monthly Revenue Line Chart */}
         {monthlyChartData.length > 0 && (
-          <div className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5">
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
             <h3 className="mb-4 text-lg font-semibold text-brand-teal">Monthly Revenue Trend</h3>
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={monthlyChartData} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
@@ -127,7 +127,7 @@ const Dashboard = () => {
 
         {/* Enrollment Status Pie Chart */}
         {enrollmentPieData.length > 0 && (
-          <div className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5">
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
             <h3 className="mb-4 text-lg font-semibold text-brand-teal">Enrollment Status</h3>
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
@@ -154,7 +154,7 @@ const Dashboard = () => {
 
         {/* Enrollments per Course (horizontal bar) */}
         {revenueChartData.length > 0 && (
-          <div className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5">
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
             <h3 className="mb-4 text-lg font-semibold text-brand-teal">Enrollments per Course</h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={revenueChartData} layout="vertical" margin={{ top: 5, right: 20, left: 80, bottom: 5 }}>
@@ -173,7 +173,7 @@ const Dashboard = () => {
 
       {/* Revenue per Course Table */}
       {stats?.revenuePerCourse && stats.revenuePerCourse.length > 0 && (
-        <div className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5">
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
           <h3 className="text-lg font-semibold text-brand-teal">Revenue per Course (Table)</h3>
           <div className="mt-4 overflow-x-auto">
             <table className="w-full text-sm">
@@ -200,7 +200,7 @@ const Dashboard = () => {
 
       {/* Monthly Revenue Table */}
       {stats?.monthlyRevenue && stats.monthlyRevenue.length > 0 && (
-        <div className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5">
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
           <h3 className="text-lg font-semibold text-brand-teal">Monthly Revenue (Table)</h3>
           <div className="mt-4 overflow-x-auto">
             <table className="w-full text-sm">

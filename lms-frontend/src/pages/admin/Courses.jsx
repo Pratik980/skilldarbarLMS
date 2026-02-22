@@ -60,30 +60,30 @@ const Courses = () => {
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="mx-auto max-w-7xl space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <h2 className="text-2xl font-bold text-brand-orange">Manage Courses</h2>
+    <div className="mx-auto max-w-7xl space-y-4 px-4 md:space-y-6 md:px-0">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <h2 className="text-xl font-bold text-brand-orange md:text-2xl">Manage Courses</h2>
         <Link
           to="/admin/courses/new"
-          className="rounded-lg bg-brand-orange px-4 py-2 text-sm font-semibold text-white hover:bg-brand-orangeDark"
+          className="rounded-lg bg-brand-orange px-4 py-2 text-center text-sm font-semibold text-white hover:bg-brand-orangeDark"
         >
           + Add New Course
         </Link>
       </div>
 
       {/* Search Bar */}
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row">
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search courses by name or category..."
-          className="w-full max-w-md rounded-lg border border-brand-teal/20 bg-white px-4 py-2.5 text-sm text-brand-teal placeholder:text-brand-teal/40 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
+          className="flex-1 rounded-lg border border-brand-teal/20 bg-white px-4 py-2.5 text-sm text-brand-teal placeholder:text-brand-teal/40 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
         />
         {searchTerm && (
           <button
             onClick={() => setSearchTerm('')}
-            className="rounded-lg border border-brand-teal/20 bg-white px-4 py-2.5 text-sm font-semibold text-brand-teal hover:bg-brand-teal/5"
+            className="w-full rounded-lg border border-brand-teal/20 bg-white px-4 py-2.5 text-sm font-semibold text-brand-teal hover:bg-brand-teal/5 sm:w-auto"
           >
             Clear
           </button>
@@ -101,57 +101,57 @@ const Courses = () => {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-brand-teal/10 bg-brand-teal/5 text-left text-xs font-semibold uppercase tracking-wider text-brand-teal/70">
-                <th className="px-4 py-3">Name</th>
-                <th className="px-4 py-3">Category</th>
-                <th className="px-4 py-3">Fee</th>
-                <th className="px-4 py-3">Instructor</th>
-                <th className="px-4 py-3">Enrollments</th>
-                <th className="px-4 py-3">Revenue</th>
-                <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3">Actions</th>
+                <th className="px-3 py-3 md:px-4">Name</th>
+                <th className="px-3 py-3 md:px-4">Category</th>
+                <th className="px-3 py-3 md:px-4">Fee</th>
+                <th className="hidden px-3 py-3 sm:table-cell md:px-4">Instructor</th>
+                <th className="hidden px-3 py-3 lg:table-cell md:px-4">Enrollments</th>
+                <th className="hidden px-3 py-3 lg:table-cell md:px-4">Revenue</th>
+                <th className="px-3 py-3 md:px-4">Status</th>
+                <th className="px-3 py-3 md:px-4">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-brand-teal/10">
               {filteredCourses.map(course => (
                 <tr key={course._id} className="hover:bg-brand-teal/5">
-                  <td className="px-4 py-3 font-medium text-brand-teal">{course.name}</td>
-                  <td className="px-4 py-3 text-brand-teal/70">{course.category}</td>
-                  <td className="px-4 py-3 text-brand-teal/70">NPR {course.fee}</td>
-                  <td className="px-4 py-3 text-brand-teal/70">{course.instructor?.fullName}</td>
-                  <td className="px-4 py-3 text-brand-teal/70">{course.totalEnrollments}</td>
-                  <td className="px-4 py-3 text-brand-teal/70">NPR {course.revenue || course.totalRevenue || 0}</td>
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-3 font-medium text-brand-teal md:px-4">{course.name}</td>
+                  <td className="px-3 py-3 text-brand-teal/70 md:px-4">{course.category}</td>
+                  <td className="px-3 py-3 text-brand-teal/70 md:px-4">{course.fee}</td>
+                  <td className="hidden px-3 py-3 text-brand-teal/70 sm:table-cell md:px-4">{course.instructor?.fullName}</td>
+                  <td className="hidden px-3 py-3 text-brand-teal/70 lg:table-cell md:px-4">{course.totalEnrollments}</td>
+                  <td className="hidden px-3 py-3 text-brand-teal/70 lg:table-cell md:px-4">NPR {course.revenue || course.totalRevenue || 0}</td>
+                  <td className="px-3 py-3 md:px-4">
                     <StatusBadge status={course.isActive ? 'active' : 'inactive'} />
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-3 md:px-4">
                     <div className="flex flex-wrap gap-2">
                       <Link
                         to={`/admin/courses/edit/${course._id}`}
-                        className="rounded-lg border border-brand-teal/20 bg-white px-3 py-1.5 text-xs font-semibold text-brand-teal hover:bg-brand-teal/5"
+                        className="rounded-lg border border-brand-teal/20 bg-white px-2 py-1 text-xs font-semibold text-brand-teal hover:bg-brand-teal/5 md:px-3 md:py-1.5"
                       >
                         Edit
                       </Link>
                       <Link
                         to={`/admin/courses/${course._id}/exam`}
-                        className="rounded-lg border border-brand-teal/20 bg-white px-3 py-1.5 text-xs font-semibold text-brand-teal hover:bg-brand-teal/5"
+                        className="rounded-lg border border-brand-teal/20 bg-white px-2 py-1 text-xs font-semibold text-brand-teal hover:bg-brand-teal/5 md:px-3 md:py-1.5"
                       >
-                        Exam (MCQ)
+                        Exam
                       </Link>
                       <Link
                         to={`/admin/courses/${course._id}/exam-results`}
-                        className="rounded-lg border border-brand-teal/20 bg-white px-3 py-1.5 text-xs font-semibold text-brand-teal hover:bg-brand-teal/5"
+                        className="hidden rounded-lg border border-brand-teal/20 bg-white px-2 py-1 text-xs font-semibold text-brand-teal hover:bg-brand-teal/5 sm:inline-block md:px-3 md:py-1.5"
                       >
                         Results
                       </Link>
                       <button
                         onClick={() => handleToggleStatus(course._id)}
-                        className={`rounded-lg px-3 py-1.5 text-xs font-semibold ${course.isActive ? 'bg-brand-orange/15 text-brand-orangeDark' : 'bg-brand-teal/10 text-brand-teal'}`}
+                        className={`rounded-lg px-2 py-1 text-xs font-semibold md:px-3 md:py-1.5 ${course.isActive ? 'bg-brand-orange/15 text-brand-orangeDark' : 'bg-brand-teal/10 text-brand-teal'}`}
                       >
                         {course.isActive ? 'Deactivate' : 'Activate'}
                       </button>
                       <button
                         onClick={() => handleDelete(course._id)}
-                        className="rounded-lg bg-red-100 px-3 py-1.5 text-xs font-semibold text-red-700"
+                        className="hidden rounded-lg bg-red-100 px-2 py-1 text-xs font-semibold text-red-700 lg:inline-block md:px-3 md:py-1.5"
                       >
                         Delete
                       </button>

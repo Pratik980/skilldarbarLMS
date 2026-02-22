@@ -95,9 +95,9 @@ const Enrollments = () => {
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="mx-auto max-w-7xl space-y-6">
+    <div className="mx-auto max-w-7xl space-y-4 px-4 md:space-y-6 md:px-0">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-brand-orange">Manage Enrollments</h2>
+        <h2 className="text-xl font-bold text-brand-orange md:text-2xl">Manage Enrollments</h2>
       </div>
 
       {error && (
@@ -106,7 +106,7 @@ const Enrollments = () => {
         </div>
       )}
 
-      <div className="grid grid-cols-1 gap-8">
+      <div className="grid grid-cols-1 gap-4">
         <div className="flex flex-col gap-3">
           <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">Filter by Status</label>
           <select
@@ -127,13 +127,13 @@ const Enrollments = () => {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-brand-teal/10 bg-brand-teal/5 text-left text-xs font-semibold uppercase tracking-wider text-brand-teal/70">
-                <th className="px-4 py-3">Student</th>
-                <th className="px-4 py-3">Course</th>
-                <th className="px-4 py-3">Amount</th>
-                <th className="px-4 py-3">Enrolled</th>
-                <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3">Progress</th>
-                <th className="px-4 py-3">Actions</th>
+                <th className="px-3 py-3 md:px-4">Student</th>
+                <th className="px-3 py-3 md:px-4">Course</th>
+                <th className="hidden px-3 py-3 sm:table-cell md:px-4">Amount</th>
+                <th className="hidden px-3 py-3 lg:table-cell md:px-4">Enrolled</th>
+                <th className="px-3 py-3 md:px-4">Status</th>
+                <th className="hidden px-3 py-3 md:table-cell md:px-4">Progress</th>
+                <th className="px-3 py-3 md:px-4">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-brand-teal/10">
@@ -143,17 +143,17 @@ const Enrollments = () => {
                 
                 return (
                   <tr key={enrollment._id} className="hover:bg-brand-teal/5">
-                    <td className="px-4 py-3">
+                    <td className="px-3 py-3 md:px-4">
                       <div className="font-medium text-brand-teal">{enrollment.student?.fullName}</div>
                       <div className="text-xs text-brand-teal/70">{enrollment.student?.email}</div>
                     </td>
-                    <td className="px-4 py-3 text-brand-teal/70">{enrollment.course?.name}</td>
-                    <td className="px-4 py-3 text-brand-teal/70">NPR {enrollment.amount}</td>
-                    <td className="px-4 py-3 text-brand-teal/70">{new Date(enrollment.enrolledAt).toLocaleDateString()}</td>
-                    <td className="px-4 py-3">
+                    <td className="px-3 py-3 text-brand-teal/70 md:px-4">{enrollment.course?.name}</td>
+                    <td className="hidden px-3 py-3 text-brand-teal/70 sm:table-cell md:px-4">NPR {enrollment.amount}</td>
+                    <td className="hidden px-3 py-3 text-brand-teal/70 lg:table-cell md:px-4">{new Date(enrollment.enrolledAt).toLocaleDateString()}</td>
+                    <td className="px-3 py-3 md:px-4">
                       <StatusBadge status={enrollment.status} />
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="hidden px-3 py-3 md:table-cell md:px-4">
                       {enrollment.status === 'approved' && progress ? (
                         <div className="flex items-center gap-2">
                           <div className="h-2 w-28 overflow-hidden rounded-full bg-brand-teal/10">
@@ -183,25 +183,25 @@ const Enrollments = () => {
                         <span className="text-brand-teal/40">—</span>
                       )}
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-3 py-3 md:px-4">
                       <div className="flex flex-wrap gap-2">
                         <button
                           onClick={() => setSelectedEnrollment(enrollment)}
-                          className="rounded-lg border border-brand-teal/20 bg-white px-3 py-1.5 text-xs font-semibold text-brand-teal hover:bg-brand-teal/5"
+                          className="rounded-lg border border-brand-teal/20 bg-white px-2 py-1 text-xs font-semibold text-brand-teal hover:bg-brand-teal/5 md:px-3 md:py-1.5"
                         >
-                          View Details
+                          View
                         </button>
                         {enrollment.status === 'pending' && (
                           <>
                             <button
                               onClick={() => handleApprove(enrollment._id)}
-                              className="rounded-lg bg-brand-orange/15 px-3 py-1.5 text-xs font-semibold text-brand-orangeDark"
+                              className="rounded-lg bg-brand-orange/15 px-2 py-1 text-xs font-semibold text-brand-orangeDark md:px-3 md:py-1.5"
                             >
                               Approve
                             </button>
                             <button
                               onClick={() => handleReject(enrollment._id)}
-                              className="rounded-lg bg-red-100 px-3 py-1.5 text-xs font-semibold text-red-700"
+                              className="hidden rounded-lg bg-red-100 px-2 py-1 text-xs font-semibold text-red-700 sm:inline-block md:px-3 md:py-1.5"
                             >
                               Reject
                             </button>
@@ -223,41 +223,41 @@ const Enrollments = () => {
 
       {selectedEnrollment && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4" onClick={() => setSelectedEnrollment(null)}>
-          <div className="w-full max-w-2xl rounded-xl border border-brand-teal/10 bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-lg font-semibold text-brand-teal">Enrollment Details</h3>
+          <div className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-xl border border-brand-teal/10 bg-white p-4 shadow-xl md:p-6" onClick={(e) => e.stopPropagation()}>
+            <h3 className="text-base font-semibold text-brand-teal md:text-lg">Enrollment Details</h3>
             
             <div className="mt-4 space-y-3 text-sm text-brand-teal/70">
-              <div className="flex justify-between gap-4">
+              <div className="flex flex-col gap-1 sm:flex-row sm:justify-between sm:gap-4">
                 <span className="font-semibold">Student Name (Profile):</span>
-                <span>{selectedEnrollment.student?.fullName}</span>
+                <span className="sm:text-right">{selectedEnrollment.student?.fullName}</span>
               </div>
-              <div className="flex justify-between gap-4">
+              <div className="flex flex-col gap-1 sm:flex-row sm:justify-between sm:gap-4">
                 <span className="font-semibold">Enrollment Name (Payment):</span>
-                <span>{selectedEnrollment.enrollmentName}</span>
+                <span className="sm:text-right">{selectedEnrollment.enrollmentName}</span>
               </div>
-              <div className="flex justify-between gap-4">
+              <div className="flex flex-col gap-1 sm:flex-row sm:justify-between sm:gap-4">
                 <span className="font-semibold">Email:</span>
-                <span>{selectedEnrollment.enrollmentEmail}</span>
+                <span className="break-all sm:text-right">{selectedEnrollment.enrollmentEmail}</span>
               </div>
-              <div className="flex justify-between gap-4">
+              <div className="flex flex-col gap-1 sm:flex-row sm:justify-between sm:gap-4">
                 <span className="font-semibold">Phone:</span>
-                <span>{selectedEnrollment.enrollmentPhone}</span>
+                <span className="sm:text-right">{selectedEnrollment.enrollmentPhone}</span>
               </div>
-              <div className="flex justify-between gap-4">
+              <div className="flex flex-col gap-1 sm:flex-row sm:justify-between sm:gap-4">
                 <span className="font-semibold">Course:</span>
-                <span>{selectedEnrollment.course?.name}</span>
+                <span className="sm:text-right">{selectedEnrollment.course?.name}</span>
               </div>
-              <div className="flex justify-between gap-4">
+              <div className="flex flex-col gap-1 sm:flex-row sm:justify-between sm:gap-4">
                 <span className="font-semibold">Amount:</span>
-                <span>NPR {selectedEnrollment.amount}</span>
+                <span className="sm:text-right">NPR {selectedEnrollment.amount}</span>
               </div>
-              <div className="flex justify-between gap-4">
+              <div className="flex flex-col gap-1 sm:flex-row sm:justify-between sm:gap-4">
                 <span className="font-semibold">Status:</span>
                 <StatusBadge status={selectedEnrollment.status} />
               </div>
-              <div className="flex justify-between gap-4">
+              <div className="flex flex-col gap-1 sm:flex-row sm:justify-between sm:gap-4">
                 <span className="font-semibold">Enrolled At:</span>
-                <span>{new Date(selectedEnrollment.enrolledAt).toLocaleString()}</span>
+                <span className="sm:text-right">{new Date(selectedEnrollment.enrolledAt).toLocaleString()}</span>
               </div>
               
               <div className="pt-2">
@@ -272,7 +272,7 @@ const Enrollments = () => {
               </div>
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
               {selectedEnrollment.status === 'pending' && (
                 <>
                   <button
@@ -280,7 +280,7 @@ const Enrollments = () => {
                       handleApprove(selectedEnrollment._id);
                       setSelectedEnrollment(null);
                     }}
-                    className="rounded-lg bg-brand-orange/15 px-4 py-2 text-sm font-semibold text-brand-orangeDark"
+                    className="w-full rounded-lg bg-brand-orange/15 px-4 py-2 text-sm font-semibold text-brand-orangeDark sm:w-auto"
                   >
                     Approve
                   </button>
@@ -289,13 +289,13 @@ const Enrollments = () => {
                       handleReject(selectedEnrollment._id);
                       setSelectedEnrollment(null);
                     }}
-                    className="rounded-lg bg-red-100 px-4 py-2 text-sm font-semibold text-red-700"
+                    className="w-full rounded-lg bg-red-100 px-4 py-2 text-sm font-semibold text-red-700 sm:w-auto"
                   >
                     Reject
                   </button>
                 </>
               )}
-              <button onClick={() => setSelectedEnrollment(null)} className="rounded-lg border border-brand-teal/20 bg-white px-4 py-2 text-sm font-semibold text-brand-teal hover:bg-brand-teal/5">
+              <button onClick={() => setSelectedEnrollment(null)} className="w-full rounded-lg border border-brand-teal/20 bg-white px-4 py-2 text-sm font-semibold text-brand-teal hover:bg-brand-teal/5 sm:w-auto">
                 Close
               </button>
             </div>

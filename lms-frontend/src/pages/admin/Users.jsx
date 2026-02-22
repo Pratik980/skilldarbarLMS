@@ -38,9 +38,9 @@ const Users = () => {
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="mx-auto max-w-7xl space-y-6">
+    <div className="mx-auto max-w-7xl space-y-4 px-4 md:space-y-6 md:px-0">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-brand-orange">Manage Users</h2>
+        <h2 className="text-xl font-bold text-brand-orange md:text-2xl">Manage Users</h2>
       </div>
 
       {error && (
@@ -49,7 +49,7 @@ const Users = () => {
         </div>
       )}
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className="flex flex-col gap-3">
           <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">Filter by Role</label>
           <select
@@ -82,30 +82,30 @@ const Users = () => {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-brand-teal/10 bg-brand-teal/5 text-left text-xs font-semibold uppercase tracking-wider text-brand-teal/70">
-                <th className="px-4 py-3">Name</th>
-                <th className="px-4 py-3">Email</th>
-                <th className="px-4 py-3">Phone</th>
-                <th className="px-4 py-3">Role</th>
-                <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3">Joined</th>
-                <th className="px-4 py-3">Actions</th>
+                <th className="px-3 py-3 md:px-4">Name</th>
+                <th className="hidden px-3 py-3 sm:table-cell md:px-4">Email</th>
+                <th className="hidden px-3 py-3 lg:table-cell md:px-4">Phone</th>
+                <th className="px-3 py-3 md:px-4">Role</th>
+                <th className="px-3 py-3 md:px-4">Status</th>
+                <th className="hidden px-3 py-3 md:table-cell md:px-4">Joined</th>
+                <th className="px-3 py-3 md:px-4">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-brand-teal/10">
               {users.map(user => (
                 <tr key={user._id} className="hover:bg-brand-teal/5">
-                  <td className="px-4 py-3 font-medium text-brand-teal">{user.fullName}</td>
-                  <td className="px-4 py-3 text-brand-teal/70">{user.email}</td>
-                  <td className="px-4 py-3 text-brand-teal/70">{user.phone}</td>
-                  <td className="px-4 py-3 text-brand-teal/70 capitalize">{user.role}</td>
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-3 font-medium text-brand-teal md:px-4">{user.fullName}</td>
+                  <td className="hidden px-3 py-3 text-brand-teal/70 sm:table-cell md:px-4">{user.email}</td>
+                  <td className="hidden px-3 py-3 text-brand-teal/70 lg:table-cell md:px-4">{user.phone}</td>
+                  <td className="px-3 py-3 text-brand-teal/70 capitalize md:px-4">{user.role}</td>
+                  <td className="px-3 py-3 md:px-4">
                     <StatusBadge status={user.isActive ? 'active' : 'inactive'} />
                   </td>
-                  <td className="px-4 py-3 text-brand-teal/70">{new Date(user.createdAt).toLocaleDateString()}</td>
-                  <td className="px-4 py-3">
+                  <td className="hidden px-3 py-3 text-brand-teal/70 md:table-cell md:px-4">{new Date(user.createdAt).toLocaleDateString()}</td>
+                  <td className="px-3 py-3 md:px-4">
                     <button
                       onClick={() => handleToggleStatus(user._id)}
-                      className={`rounded-lg px-3 py-1.5 text-xs font-semibold ${user.isActive ? 'bg-brand-orange/15 text-brand-orangeDark' : 'bg-brand-teal/10 text-brand-teal'}`}
+                      className={`rounded-lg px-2 py-1 text-xs font-semibold md:px-3 md:py-1.5 ${user.isActive ? 'bg-brand-orange/15 text-brand-orangeDark' : 'bg-brand-teal/10 text-brand-teal'}`}
                     >
                       {user.isActive ? 'Deactivate' : 'Activate'}
                     </button>
