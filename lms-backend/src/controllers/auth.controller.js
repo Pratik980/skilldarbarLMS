@@ -176,24 +176,35 @@ exports.updateProfile = async (req, res) => {
 // @access  Private
 exports.uploadProfileImage = async (req, res) => {
   try {
+    console.log('=== PROFILE IMAGE UPLOAD REQUEST ===');
+    console.log('User ID:', req.user.id);
+    console.log('File:', req.file);
+    
     if (!req.file) {
+      console.log('❌ No file uploaded');
       return res.status(400).json({
         success: false,
         message: 'Please upload an image',
       });
     }
 
+    console.log('✅ Uploaded Image Path (Cloudinary URL):', req.file.path);
+    
     const user = await User.findByIdAndUpdate(
       req.user.id,
       { profileImage: req.file.path },
       { returnDocument: 'after', runValidators: true }
     );
 
+    console.log('💾 User profile updated with image:', user.profileImage);
+    console.log('🎉 Profile image upload successful');
+
     res.status(200).json({
       success: true,
       data: user,
     });
   } catch (error) {
+    console.error('❌ Profile image upload error:', error);
     res.status(500).json({
       success: false,
       message: error.message,

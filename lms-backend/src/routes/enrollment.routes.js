@@ -18,10 +18,12 @@ const router = express.Router();
 // Multer configuration for payment proof upload using Cloudinary
 const paymentStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
-  params: {
-    folder: 'lms/payment-proofs',
-    allowed_formats: ['jpg', 'jpeg', 'png', 'gif'],
-    resource_type: 'image',
+  params: async (req, file) => {
+    return {
+      folder: 'lms/payment-proofs',
+      allowed_formats: ['jpg', 'jpeg', 'png', 'gif'],
+      resource_type: 'image',
+    };
   },
 });
 

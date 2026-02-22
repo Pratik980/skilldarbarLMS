@@ -17,10 +17,12 @@ const router = express.Router();
 // Configure multer for profile image uploads using Cloudinary
 const profileImageStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
-  params: {
-    folder: 'lms/images',
-    allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
-    resource_type: 'image',
+  params: async (req, file) => {
+    return {
+      folder: 'lms/images',
+      allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+      resource_type: 'image',
+    };
   },
 });
 

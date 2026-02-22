@@ -35,12 +35,12 @@ exports.enrollCourse = async (req, res) => {
     const { courseId } = req.params;
     
     // Log request data for debugging
-    console.log('=== Enrollment Request ===');
-    console.log('Request body:', req.body);
-    console.log('Request file:', req.file);
-    console.log('Request headers:', req.headers);
-    console.log('========================');
-
+    console.log('=== ENROLLMENT REQUEST ===');
+    console.log('Course ID:', courseId);
+    console.log('User ID:', req.user.id);
+    console.log('Body:', req.body);
+    console.log('File:', req.file);
+    
     const { enrollmentName, enrollmentEmail, enrollmentPhone } = req.body;
 
     if (!mongoose.isValidObjectId(courseId)) {
@@ -58,11 +58,14 @@ exports.enrollCourse = async (req, res) => {
     }
 
     if (!req.file) {
+      console.log('❌ No payment proof file uploaded');
       return res.status(400).json({
         success: false,
         message: 'Please upload payment proof image',
       });
     }
+
+    console.log('✅ Uploaded Payment Proof (Cloudinary URL):', req.file.path);
 
     const course = await Course.findById(courseId);
     if (!course) {
@@ -106,6 +109,9 @@ exports.enrollCourse = async (req, res) => {
       amount: course.fee,
       status: 'pending',
     });
+
+    console.log('💾 Enrollment created with payment proof:', enrollment.paymentProof);
+    console.log('🎉 Enrollment successful, ID:', enrollment._id);
 
     // Notify admins about new enrollment via socket + DB notification
     const io = req.app.get('io');
