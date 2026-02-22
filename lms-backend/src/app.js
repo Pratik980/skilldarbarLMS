@@ -18,7 +18,7 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
-  'https://skilldarbarlms.netlify.app',
+  'https://skilldarbarlmss.netlify.app',
   process.env.FRONTEND_URL, // Additional frontend URL from environment
 ].filter(Boolean);
 
