@@ -1,6 +1,5 @@
 const express = require('express');
 const multer = require('multer');
-const path = require('path');
 const {
   getMyEnrollments,
   enrollCourse,
@@ -11,22 +10,13 @@ const {
 } = require('../controllers/enrollment.controller');
 const { protect } = require('../middleware/auth.middleware');
 const { authorize } = require('../middleware/admin.middleware');
+const { paymentProofStorage } = require('../config/cloudinary');
 
 const router = express.Router();
 
-// Multer configuration for payment proof upload
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/payment-proofs/');
-  },
-  filename: (req, file, cb) => {
-    const uniqueName = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, uniqueName + path.extname(file.originalname));
-  },
-});
-
+// Multer configuration for payment proof upload using Cloudinary
 const uploadPaymentProof = multer({
-  storage,
+  storage: paymentProofStorage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
   fileFilter: (req, file, cb) => {
     const allowedMimes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];

@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
-const path = require('path');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const { cloudinary } = require('../config/cloudinary');
 const {
   getAllCourses,
   getCourseById,
@@ -18,23 +19,21 @@ const { authorize } = require('../middleware/admin.middleware');
 
 const router = express.Router();
 
-// Multer configuration for course image uploads
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    if (file.fieldname === 'qrImage') {
-      cb(null, 'uploads/qr-codes/');
-    } else if (file.fieldname === 'thumbnail') {
-      cb(null, 'uploads/images/');
-    }
-  },
-  filename: (req, file, cb) => {
-    const uniqueName = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, uniqueName + path.extname(file.originalname));
+// Multer configuration for course images using Cloudinary with dynamic folders
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: (req, file) => {
+    const folder = file.fieldname === 'qrImage' ? 'lms/qr-codes' : 'lms/images';
+    return {
+      folder: folder,
+      allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+      transformation: [{ width: 1200, height: 800, crop: 'limit' }],
+    };
   },
 });
 
 const uploadCourseImages = multer({
-  storage,
+  storage: storage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
   fileFilter: (req, file, cb) => {
     const allowedMimes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];

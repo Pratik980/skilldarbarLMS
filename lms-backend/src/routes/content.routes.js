@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
-const path = require('path');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const { cloudinary } = require('../config/cloudinary');
 const {
   getContentByCourse,
   getContentById,
@@ -13,29 +14,42 @@ const { authorize } = require('../middleware/admin.middleware');
 
 const router = express.Router();
 
-// Multer configuration
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
+// Multer configuration using Cloudinary with dynamic resource types
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: (req, file) => {
+    let folder, resourceType, allowedFormats;
+    
     if (file.fieldname === 'videoFile') {
-      cb(null, 'uploads/videos/');
+      folder = 'lms/videos';
+      resourceType = 'video';
+      allowedFormats = ['mp4', 'avi', 'mov', 'wmv'];
     } else if (file.fieldname === 'pdfFile') {
-      cb(null, 'uploads/pdfs/');
+      folder = 'lms/pdfs';
+      resourceType = 'raw';
+      allowedFormats = ['pdf'];
     } else if (file.fieldname === 'slideImages') {
-      cb(null, 'uploads/images/');
+      folder = 'lms/images';
+      resourceType = 'image';
+      allowedFormats = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
     }
-  },
-  filename: (req, file, cb) => {
-    const uniqueName = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, uniqueName + path.extname(file.originalname));
+    
+    return {
+      folder: folder,
+      resource_type: resourceType,
+      allowed_formats: allowedFormats,
+    };
   },
 });
 
 const upload = multer({
-  storage,
+  storage: storage,
   limits: { fileSize: 100 * 1024 * 1024 }, // 100MB
   fileFilter: (req, file, cb) => {
     const allowedMimes = [
       'video/mp4',
+      'video/avi',
+      'video/mov',
       'application/pdf',
       'image/jpeg',
       'image/png',

@@ -1,7 +1,5 @@
 const Content = require('../models/Content');
 const Course = require('../models/Course');
-const fs = require('fs');
-const path = require('path');
 const mongoose = require('mongoose');
 
 // @desc    Get all content for a course
@@ -176,34 +174,17 @@ exports.updateContent = async (req, res) => {
     // Handle file updates
     if (req.files) {
       if (req.files.videoFile) {
-        // Delete old file if exists
-        if (content.filePath && content.type === 'video') {
-          const oldPath = path.join(__dirname, '../../', content.filePath);
-          if (fs.existsSync(oldPath)) {
-            fs.unlinkSync(oldPath);
-          }
-        }
+        // Files are stored in Cloudinary, old files can be managed from Cloudinary dashboard
         content.filePath = req.files.videoFile[0].path;
       }
 
       if (req.files.pdfFile) {
-        if (content.filePath && content.type === 'pdf') {
-          const oldPath = path.join(__dirname, '../../', content.filePath);
-          if (fs.existsSync(oldPath)) {
-            fs.unlinkSync(oldPath);
-          }
-        }
+        // Files are stored in Cloudinary
         content.filePath = req.files.pdfFile[0].path;
       }
 
       if (req.files.slideImages) {
-        // Delete old images
-        content.slideImages.forEach((imgPath) => {
-          const oldPath = path.join(__dirname, '../../', imgPath);
-          if (fs.existsSync(oldPath)) {
-            fs.unlinkSync(oldPath);
-          }
-        });
+        // Images are stored in Cloudinary
         content.slideImages = req.files.slideImages.map((file) => file.path);
       }
     }
@@ -243,22 +224,7 @@ exports.deleteContent = async (req, res) => {
       });
     }
 
-    // Delete files
-    if (content.filePath) {
-      const filePath = path.join(__dirname, '../../', content.filePath);
-      if (fs.existsSync(filePath)) {
-        fs.unlinkSync(filePath);
-      }
-    }
-
-    if (content.slideImages && content.slideImages.length > 0) {
-      content.slideImages.forEach((imgPath) => {
-        const fullPath = path.join(__dirname, '../../', imgPath);
-        if (fs.existsSync(fullPath)) {
-          fs.unlinkSync(fullPath);
-        }
-      });
-    }
+    // Files stored in Cloudinary - can be managed from Cloudinary dashboard if needed
 
     res.status(200).json({
       success: true,
