@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { getImageUrl } from '../utils/imageUrl';
+import SafeImage from './SafeImage';
 
 const Sidebar = ({ navLinks, user, isAdmin = false, isMobileOpen = false, onClose }) => {
   return (
@@ -47,16 +48,14 @@ const Sidebar = ({ navLinks, user, isAdmin = false, isMobileOpen = false, onClos
         <div className="border-t border-orange-200 dark:border-slate-700 px-4 py-4 flex-shrink-0">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-orange-200 dark:border-slate-600 bg-orange-50 dark:bg-slate-700">
-              {user?.profileImage ? (
-                <img 
-                  src={getImageUrl(user.profileImage)} 
-                  alt={user.fullName}
-                  className="h-full w-full object-cover"
-                  onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling && (e.target.nextSibling.style.display = ''); }}
-                />
-              ) : (
-                <span className="text-sm font-semibold text-brand-orange">{user?.fullName?.charAt(0).toUpperCase()}</span>
-              )}
+              <SafeImage
+                src={user?.profileImage ? getImageUrl(user.profileImage) : null}
+                alt={user?.fullName}
+                className="h-full w-full object-cover"
+                fallbackIcon={
+                  <span className="text-sm font-semibold text-brand-orange">{user?.fullName?.charAt(0).toUpperCase()}</span>
+                }
+              />
             </div>
             <div>
               <p className="text-sm font-semibold text-brand-orange">{user?.fullName}</p>

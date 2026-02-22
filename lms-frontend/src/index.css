@@ -119,6 +119,19 @@ html {
   .dark .bg-brand-teal\/10 {
     background-color: rgba(125, 211, 252, 0.08) !important;
   }
+  .dark .text-brand-orange {
+    color: #ffffff !important;
+  }
+  .dark .text-brand-orange\/70,
+  .dark .text-brand-orange\/60 {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+  .dark .text-brand-orangeDark {
+    color: #f1f5f9 !important;
+  }
+  .dark .hover\:text-brand-orangeDark:hover {
+    color: #cbd5e1 !important;
+  }
   .dark .bg-orange-50 {
     background-color: rgba(249, 115, 22, 0.1) !important;
   }

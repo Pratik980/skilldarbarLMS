@@ -1,11 +1,32 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const path = require('path');
+const fs = require('fs');
 
 // Generate JWT Token
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRE || '7d',
   });
+};
+
+// Check if a profileImage path is a valid/accessible image
+// Old local paths (e.g. "uploads/images/profile-xxx.jpg") that don't exist should be cleared
+const cleanProfileImage = async (user) => {
+  if (!user.profileImage) return;
+  
+  // Cloudinary URLs are valid — keep them
+  if (user.profileImage.startsWith('http://') || user.profileImage.startsWith('https://')) {
+    return;
+  }
+  
+  // It's a local path — check if the file actually exists on disk
+  const fullPath = path.join(__dirname, '../../uploads', user.profileImage.replace(/^uploads[\/\/]?/, ''));
+  if (!fs.existsSync(fullPath)) {
+    // File doesn't exist — clear stale reference so UI shows fallback initials
+    user.profileImage = null;
+    await User.findByIdAndUpdate(user._id, { profileImage: null });
+  }
 };
 
 // @desc    Student Signup
@@ -112,6 +133,9 @@ exports.login = async (req, res) => {
     // Remove password from output
     user.password = undefined;
 
+    // Clean stale local profile image paths
+    await cleanProfileImage(user);
+
     const token = generateToken(user._id);
 
     res.status(200).json({
@@ -133,6 +157,9 @@ exports.login = async (req, res) => {
 exports.getMe = async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
+
+    // Clean stale local profile image paths
+    await cleanProfileImage(user);
 
     res.status(200).json({
       success: true,

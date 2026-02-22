@@ -3,6 +3,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useNavigate } from 'react-router-dom';
 import { getImageUrl } from '../utils/imageUrl';
 import NotificationBell from './NotificationBell';
+import SafeImage from './SafeImage';
 import { Sun, Moon } from 'lucide-react';
 
 const Header = ({ isAdmin = false, onMenuToggle }) => {
@@ -44,18 +45,16 @@ const Header = ({ isAdmin = false, onMenuToggle }) => {
         </button>
         <NotificationBell />
         <div className="h-8 w-8 overflow-hidden rounded-full border border-orange-200 bg-orange-50 md:h-10 md:w-10">
-          {user?.profileImage ? (
-            <img 
-              src={getImageUrl(user.profileImage)} 
-              alt={user.fullName}
-              className="h-full w-full object-cover"
-              onError={(e) => { e.target.style.display = 'none'; }}
-            />
-          ) : (
-            <div className="flex h-full w-full items-center justify-center text-sm font-semibold text-brand-orange">
-              {user?.fullName?.charAt(0).toUpperCase()}
-            </div>
-          )}
+          <SafeImage
+            src={user?.profileImage ? getImageUrl(user.profileImage) : null}
+            alt={user?.fullName}
+            className="h-full w-full object-cover"
+            fallbackIcon={
+              <span className="text-sm font-semibold text-brand-orange">
+                {user?.fullName?.charAt(0).toUpperCase()}
+              </span>
+            }
+          />
         </div>
         <button
           onClick={handleLogout}

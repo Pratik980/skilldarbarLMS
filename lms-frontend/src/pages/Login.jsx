@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
+import { useTheme } from '../context/ThemeContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -14,6 +15,20 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const { isDark } = useTheme();
+
+  // Force light mode on Login page
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isDark) {
+      root.classList.remove('dark');
+    }
+    return () => {
+      if (isDark) {
+        root.classList.add('dark');
+      }
+    };
+  }, [isDark]);
 
   useEffect(() => {
     // Check if there's a success message from signup
