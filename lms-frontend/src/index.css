@@ -102,7 +102,7 @@ html {
     color: #94a3b8 !important;
   }
   .dark .text-brand-teal {
-    color: #7dd3fc !important;
+    color: #7dd3fc !important; /* sky-300 */
   }
   .dark .text-brand-teal\/60,
   .dark .text-brand-teal\/70,
@@ -120,17 +120,17 @@ html {
     background-color: rgba(125, 211, 252, 0.08) !important;
   }
   .dark .text-brand-orange {
-    color: #ffffff !important;
+    color: #fb923c !important; /* Lighter orange for dark mode, not white! */
   }
   .dark .text-brand-orange\/70,
   .dark .text-brand-orange\/60 {
-    color: rgba(255, 255, 255, 0.7) !important;
+    color: rgba(251, 146, 60, 0.7) !important;
   }
   .dark .text-brand-orangeDark {
-    color: #f1f5f9 !important;
+    color: #fdba74 !important;
   }
   .dark .hover\:text-brand-orangeDark:hover {
-    color: #cbd5e1 !important;
+    color: #fed7aa !important;
   }
   .dark .bg-orange-50 {
     background-color: rgba(249, 115, 22, 0.1) !important;
