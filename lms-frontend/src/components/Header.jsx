@@ -38,10 +38,10 @@ const Header = ({ isAdmin = false, onMenuToggle }) => {
       <div className="flex items-center gap-2 md:gap-3">
         <button
           onClick={toggleTheme}
-          className="hidden rounded-lg p-2 text-brand-teal/70 transition-colors hover:bg-brand-teal/5 hover:text-brand-teal dark:text-orange-300 dark:hover:bg-white/10 sm:block"
+          className="rounded-lg p-2 text-brand-teal/70 transition-colors hover:bg-brand-teal/5 hover:text-brand-teal dark:text-orange-300 dark:hover:bg-white/10"
           aria-label="Toggle theme"
         >
-          {isDark ? <Sun size={20} /> : <Moon size={20} />}
+          {isDark ? <Sun size={16} className="sm:size-5" /> : <Moon size={16} className="sm:size-5" />}
         </button>
         <NotificationBell />
         <div className="h-8 w-8 overflow-hidden rounded-full border border-orange-200 bg-orange-50 md:h-10 md:w-10">
