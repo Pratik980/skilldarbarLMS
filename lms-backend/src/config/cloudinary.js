@@ -17,58 +17,70 @@ cloudinary.config({
 // Storage for profile images
 const profileImageStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
-  params: {
-    folder: 'lms/profiles',
-    allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
-    transformation: [{ width: 500, height: 500, crop: 'fill', gravity: 'face' }],
+  params: async (req, file) => {
+    return {
+      folder: 'lms/profiles',
+      allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+      transformation: [{ width: 500, height: 500, crop: 'fill', gravity: 'face' }],
+    };
   },
 });
 
 // Storage for course images and thumbnails
 const imageStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
-  params: {
-    folder: 'lms/images',
-    allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
-    transformation: [{ width: 1200, height: 800, crop: 'limit' }],
+  params: async (req, file) => {
+    return {
+      folder: 'lms/images',
+      allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+      transformation: [{ width: 1200, height: 800, crop: 'limit' }],
+    };
   },
 });
 
 // Storage for PDFs
 const pdfStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
-  params: {
-    folder: 'lms/pdfs',
-    allowed_formats: ['pdf'],
-    resource_type: 'raw',
+  params: async (req, file) => {
+    return {
+      folder: 'lms/pdfs',
+      allowed_formats: ['pdf'],
+      resource_type: 'raw',
+    };
   },
 });
 
 // Storage for videos
 const videoStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
-  params: {
-    folder: 'lms/videos',
-    allowed_formats: ['mp4', 'avi', 'mov', 'wmv'],
-    resource_type: 'video',
+  params: async (req, file) => {
+    return {
+      folder: 'lms/videos',
+      allowed_formats: ['mp4', 'avi', 'mov', 'wmv'],
+      resource_type: 'video',
+    };
   },
 });
 
 // Storage for payment proofs
 const paymentProofStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
-  params: {
-    folder: 'lms/payment-proofs',
-    allowed_formats: ['jpg', 'jpeg', 'png', 'pdf'],
+  params: async (req, file) => {
+    return {
+      folder: 'lms/payment-proofs',
+      allowed_formats: ['jpg', 'jpeg', 'png', 'pdf'],
+    };
   },
 });
 
 // Storage for QR codes
 const qrCodeStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
-  params: {
-    folder: 'lms/qr-codes',
-    allowed_formats: ['jpg', 'jpeg', 'png'],
+  params: async (req, file) => {
+    return {
+      folder: 'lms/qr-codes',
+      allowed_formats: ['jpg', 'jpeg', 'png'],
+    };
   },
 });
 
