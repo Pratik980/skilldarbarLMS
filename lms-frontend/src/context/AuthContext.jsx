@@ -3,6 +3,9 @@ import { authAPI } from '../api/auth';
 
 const AuthContext = createContext();
 
+// Export the context so it can be used in other files
+export { AuthContext };
+
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {

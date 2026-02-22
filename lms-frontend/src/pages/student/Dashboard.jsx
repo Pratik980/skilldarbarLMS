@@ -9,7 +9,7 @@ import { Clock, BookOpen, Users, Award, Lock, CheckCircle, XCircle, FileText, Tr
 import { getImageUrl } from '../../utils/imageUrl';
 import SafeImage from '../../components/SafeImage';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from 'recharts';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../context/AuthContext';
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -279,10 +279,19 @@ const Dashboard = () => {
           )}
         </div>
         {enrollments.length === 0 ? (
-          <div className="mt-6 flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-brand-teal/20 bg-brand-teal/5 py-12">
-            <BookOpen className="h-12 w-12 text-brand-teal/40" />
-            <p className="mt-4 text-sm font-medium text-brand-teal/70">No enrollments yet</p>
-            <Link to="/student/courses" className="mt-2 rounded-lg bg-brand-orange px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-orangeDark">
+          <div className="mt-6 flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-brand-teal/30 bg-gradient-to-br from-brand-teal/5 to-brand-teal/10 py-16 px-6">
+            <div className="rounded-full bg-brand-teal/10 p-4">
+              <BookOpen className="h-16 w-16 text-brand-teal/60" />
+            </div>
+            <h4 className="mt-6 text-lg font-bold text-brand-teal">No Enrollments Yet</h4>
+            <p className="mt-2 text-center text-sm text-brand-teal/70 max-w-md">
+              Start your learning journey by enrolling in courses that interest you
+            </p>
+            <Link 
+              to="/student/courses" 
+              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white shadow-lg transition-all hover:scale-105 hover:bg-brand-orangeDark hover:shadow-xl"
+            >
+              <Sparkles className="h-4 w-4" />
               Browse Courses
             </Link>
           </div>
