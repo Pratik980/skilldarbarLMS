@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { adminAPI } from '../../api/admin';
 import { authAPI } from '../../api/auth';
+import { useAuth } from '../../context/AuthContext';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import { Upload } from 'lucide-react';
 import { getImageUrl } from '../../utils/imageUrl';
 import SafeImage from '../../components/SafeImage';
 
 const Settings = () => {
+  const { updateProfileImage } = useAuth();
   const [profile, setProfile] = useState({
     fullName: '',
     email: '',
@@ -95,10 +97,11 @@ const Settings = () => {
       if (response.success) {
         setMessage('Profile photo updated successfully');
         setProfileImage(null);
-        // Update localStorage
-        const user = JSON.parse(localStorage.getItem('user'));
-        user.profileImage = response.data.profileImage;
-        localStorage.setItem('user', JSON.stringify(user));
+
+        // Update global auth state instantly
+        updateProfileImage(response.data.profileImage);
+
+        // Update local page state
         setProfile({
           ...profile,
           profileImage: response.data.profileImage
@@ -194,7 +197,7 @@ const Settings = () => {
       {/* Profile Photo Section */}
       <form onSubmit={handleUploadProfilePhoto} className="rounded-xl border border-white/10 bg-white p-6 shadow-lg shadow-black/5 space-y-4">
         <h3 className="text-lg font-semibold text-brand-orange">Admin Profile Photo</h3>
-        
+
         <div className="flex flex-col gap-6">
           <div className="flex items-center gap-6">
             <div className="flex h-32 w-32 items-center justify-center overflow-hidden rounded-lg border-2 border-orange-200 bg-orange-50">
@@ -206,7 +209,7 @@ const Settings = () => {
                 </span>
               )}
             </div>
-            
+
             <div className="flex-1">
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-brand-teal">Upload Profile Photo</label>
@@ -218,8 +221,8 @@ const Settings = () => {
                 />
                 <p className="text-xs text-slate-600">Recommended: Square image (500x500px or larger)</p>
               </div>
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="mt-4 flex items-center gap-2 rounded-lg bg-brand-orange px-4 py-2 text-sm font-semibold text-white hover:bg-brand-orangeDark disabled:opacity-50"
                 disabled={!profileImage || saving}
               >

@@ -297,7 +297,7 @@ const ReviewSection = ({ courseId, isEnrolled }) => {
               className="flex gap-3 border-t border-brand-teal/10 pt-4 dark:border-slate-700 first:border-0 first:pt-0"
             >
               <SafeImage
-                src={getImageUrl(r.user?.profilePic, PLACEHOLDER.profile)}
+                src={getImageUrl(r.user?.profileImage, PLACEHOLDER.profile)}
                 alt={r.user?.fullName || 'User'}
                 className="h-9 w-9 shrink-0 rounded-full object-cover"
               />

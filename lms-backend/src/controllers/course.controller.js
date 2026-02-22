@@ -82,7 +82,7 @@ exports.createCourse = async (req, res) => {
     console.log('=== CREATE COURSE REQUEST ===');
     console.log('Body:', req.body);
     console.log('Files:', req.files);
-    
+
     const { name, description, fee, category, duration, lectures, reviewEnabled } = req.body;
 
     if (!name || !fee) {
@@ -166,7 +166,7 @@ exports.updateCourse = async (req, res) => {
     if (updateData.reviewEnabled !== undefined) {
       updateData.reviewEnabled = updateData.reviewEnabled !== 'false' && updateData.reviewEnabled !== false;
     }
-    
+
     if (req.files) {
       if (req.files.qrImage && req.files.qrImage[0]) {
         updateData.qrImage = req.files.qrImage[0].path;
@@ -316,7 +316,7 @@ exports.addReview = async (req, res) => {
     await course.save();
 
     // Populate the newly added review's user info
-    const savedCourse = await Course.findById(courseId).populate('ratings.reviews.user', 'fullName email profilePic');
+    const savedCourse = await Course.findById(courseId).populate('ratings.reviews.user', 'fullName email profileImage');
     const newReview = savedCourse.ratings.reviews[savedCourse.ratings.reviews.length - 1];
 
     res.status(201).json({
@@ -336,7 +336,7 @@ exports.addReview = async (req, res) => {
 exports.getCourseReviews = async (req, res) => {
   try {
     const course = await Course.findById(req.params.id)
-      .populate('ratings.reviews.user', 'fullName email profilePic')
+      .populate('ratings.reviews.user', 'fullName email profileImage')
       .select('ratings reviewEnabled name');
 
     if (!course) {

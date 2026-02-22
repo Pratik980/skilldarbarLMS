@@ -19,7 +19,7 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: async (req, file) => {
     let folder, resourceType, allowedFormats;
-    
+
     if (file.fieldname === 'videoFile') {
       folder = 'lms/videos';
       resourceType = 'video';
@@ -37,7 +37,7 @@ const storage = new CloudinaryStorage({
       resourceType = 'image';
       allowedFormats = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
     }
-    
+
     return {
       folder: folder,
       resource_type: resourceType,
@@ -45,6 +45,7 @@ const storage = new CloudinaryStorage({
     };
   },
 });
+
 
 const upload = multer({
   storage: storage,

@@ -1,7 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
-const { cloudinary } = require('../config/cloudinary');
+const { cloudinary, profileImageStorage } = require('../config/cloudinary');
 const {
   signup,
   login,
@@ -13,18 +12,6 @@ const {
 const { protect } = require('../middleware/auth.middleware');
 
 const router = express.Router();
-
-// Configure multer for profile image uploads using Cloudinary
-const profileImageStorage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: async (req, file) => {
-    return {
-      folder: 'lms/images',
-      allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
-      resource_type: 'image',
-    };
-  },
-});
 
 const upload = multer({
   storage: profileImageStorage,
@@ -40,6 +27,7 @@ const upload = multer({
 });
 
 router.post('/signup', signup);
+
 router.post('/login', login);
 router.get('/me', protect, getMe);
 router.put('/update-profile', protect, updateProfile);

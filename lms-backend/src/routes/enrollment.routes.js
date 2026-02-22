@@ -1,7 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
-const { cloudinary } = require('../config/cloudinary');
+const { cloudinary, paymentProofStorage } = require('../config/cloudinary');
 const {
   getMyEnrollments,
   enrollCourse,
@@ -15,30 +15,19 @@ const { authorize } = require('../middleware/admin.middleware');
 
 const router = express.Router();
 
-// Multer configuration for payment proof upload using Cloudinary
-const paymentStorage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: async (req, file) => {
-    return {
-      folder: 'lms/payment-proofs',
-      allowed_formats: ['jpg', 'jpeg', 'png', 'gif'],
-      resource_type: 'image',
-    };
-  },
-});
-
 const uploadPaymentProof = multer({
-  storage: paymentStorage,
+  storage: paymentProofStorage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
   fileFilter: (req, file, cb) => {
-    const allowedMimes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];
+    const allowedMimes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'application/pdf'];
     if (allowedMimes.includes(file.mimetype)) {
       cb(null, true);
     } else {
-      cb(new Error('Invalid file type. Only JPEG, PNG, and GIF are allowed.'));
+      cb(new Error('Invalid file type. Only JPEG, PNG, GIF, and PDF are allowed.'));
     }
   },
 });
+
 
 router.get('/my-enrollments', protect, getMyEnrollments);
 router.post('/:courseId', protect, uploadPaymentProof.single('paymentProof'), enrollCourse);

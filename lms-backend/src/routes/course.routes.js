@@ -1,7 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
-const { cloudinary } = require('../config/cloudinary');
+const { cloudinary, imageStorage, qrCodeStorage } = require('../config/cloudinary');
 const {
   getAllCourses,
   getCourseById,
@@ -44,6 +44,7 @@ const uploadCourseImages = multer({
     }
   },
 });
+
 
 router.get('/', getAllCourses);
 router.get('/:id', getCourseById);

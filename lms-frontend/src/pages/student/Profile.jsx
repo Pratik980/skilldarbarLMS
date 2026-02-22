@@ -6,7 +6,7 @@ import { getImageUrl } from '../../utils/imageUrl';
 import SafeImage from '../../components/SafeImage';
 
 const Profile = () => {
-  const { user, updateUser, changePassword, logout, setUser } = useAuth();
+  const { user, updateUser, updateProfileImage, changePassword, logout } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     fullName: user?.fullName || '',
@@ -45,14 +45,14 @@ const Profile = () => {
     setLoading(true);
 
     const result = await updateUser(formData);
-    
+
     if (result.success) {
       setMessage('Profile updated successfully');
       setIsEditing(false);
     } else {
       setError(result.error);
     }
-    
+
     setLoading(false);
   };
 
@@ -106,12 +106,12 @@ const Profile = () => {
     try {
       const result = await authAPI.uploadProfileImage(profileImageFile);
       if (result.success) {
-        setUser(result.data);
-        localStorage.setItem('user', JSON.stringify(result.data));
+        updateProfileImage(result.data.profileImage);
         setMessage('Profile photo updated successfully');
         setProfileImageFile(null);
         setProfileImagePreview(null);
       }
+
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to upload profile photo');
     } finally {
@@ -139,8 +139,8 @@ const Profile = () => {
           <div className="relative">
             <div className="flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-slate-100 text-2xl font-semibold text-slate-600">
               {user?.profileImage ? (
-                <SafeImage 
-                  src={getImageUrl(user.profileImage)} 
+                <SafeImage
+                  src={getImageUrl(user.profileImage)}
                   alt={user.fullName}
                   className="h-full w-full object-cover"
                   fallbackIcon={<span className="text-2xl font-semibold">{user?.fullName?.charAt(0).toUpperCase()}</span>}
@@ -165,14 +165,14 @@ const Profile = () => {
             <div className="mt-4 flex flex-col items-center gap-2">
               <img src={profileImagePreview} alt="Preview" className="h-24 w-24 rounded-full border border-slate-200 object-cover" />
               <div className="flex gap-2">
-                <button 
-                  onClick={handleUploadProfileImage} 
+                <button
+                  onClick={handleUploadProfileImage}
                   disabled={loading}
                   className="rounded-lg bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white hover:bg-slate-800"
                 >
                   {loading ? 'Uploading...' : 'Upload Photo'}
                 </button>
-                <button 
+                <button
                   onClick={() => {
                     setProfileImageFile(null);
                     setProfileImagePreview(null);
@@ -210,7 +210,7 @@ const Profile = () => {
               <span>{new Date(user?.createdAt).toLocaleDateString()}</span>
             </div>
 
-            <button 
+            <button
               onClick={() => setIsEditing(true)}
               className="mt-2 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
             >
@@ -247,8 +247,8 @@ const Profile = () => {
               <button type="submit" disabled={loading} className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
                 {loading ? 'Saving...' : 'Save Changes'}
               </button>
-              <button 
-                type="button" 
+              <button
+                type="button"
                 onClick={() => setIsEditing(false)}
                 className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
               >

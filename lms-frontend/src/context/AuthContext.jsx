@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     const storedUser = localStorage.getItem('user');
-    
+
     if (token && storedUser) {
       setUser(JSON.parse(storedUser));
       validateToken();
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
     try {
       setError(null);
       const response = await authAPI.login({ email, password });
-      
+
       if (response.success) {
         localStorage.setItem('token', response.token);
         localStorage.setItem('user', JSON.stringify(response.user));
@@ -61,7 +61,7 @@ export const AuthProvider = ({ children }) => {
     try {
       setError(null);
       const response = await authAPI.signup(userData);
-      
+
       if (response.success) {
         // Don't store token/user here - let user login explicitly after signup
         return { success: true };
@@ -92,6 +92,14 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const updateProfileImage = (newImageUrl) => {
+    if (!user) return;
+    const updatedUser = { ...user, profileImage: newImageUrl };
+    setUser(updatedUser);
+    localStorage.setItem('user', JSON.stringify(updatedUser));
+  };
+
+
   const changePassword = async (passwordData) => {
     try {
       const response = await authAPI.changePassword(passwordData);
@@ -113,7 +121,9 @@ export const AuthProvider = ({ children }) => {
     signup,
     logout,
     updateUser,
+    updateProfileImage,
     changePassword,
+
     isAuthenticated: !!user,
     isAdmin: user?.role === 'admin',
     isStudent: user?.role === 'student',
