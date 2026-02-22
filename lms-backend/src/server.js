@@ -12,9 +12,14 @@ connectDB();
 const server = http.createServer(app);
 
 // Socket.io setup
-const allowedOrigins = process.env.FRONTEND_URL
-  ? [process.env.FRONTEND_URL, 'http://localhost:3000', 'http://localhost:5173', 'http://localhost:5174']
-  : '*';
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:5174',
+  'http://localhost:3000',
+  'https://skilldarbarlmss.netlify.app',
+  'https://skilldarbarlms.vercel.app',
+  process.env.FRONTEND_URL,
+].filter(Boolean);
 
 const io = new Server(server, {
   cors: {
@@ -22,6 +27,7 @@ const io = new Server(server, {
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   },
+
   transports: ['polling', 'websocket'],  // polling first for proxy compatibility
   pingTimeout: 60000,
   pingInterval: 25000,
