@@ -95,6 +95,12 @@ exports.createCourse = async (req, res) => {
       });
     }
 
+    // Debug: Log uploaded file info
+    console.log('Uploaded QR Image:', req.files.qrImage[0].path);
+    if (req.files.thumbnail) {
+      console.log('Uploaded Thumbnail:', req.files.thumbnail[0].path);
+    }
+
     const courseData = {
       name,
       description: description || '',
@@ -118,6 +124,7 @@ exports.createCourse = async (req, res) => {
       data: course,
     });
   } catch (error) {
+    console.error('Course creation error:', error);
     res.status(500).json({
       success: false,
       message: error.message,
