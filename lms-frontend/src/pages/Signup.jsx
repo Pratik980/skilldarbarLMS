@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
-import { useTheme } from '../context/ThemeContext';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -19,20 +18,6 @@ const Signup = () => {
   
   const { signup } = useAuth();
   const navigate = useNavigate();
-  const { isDark } = useTheme();
-
-  // Force light mode on Signup page
-  useEffect(() => {
-    const root = document.documentElement;
-    if (isDark) {
-      root.classList.remove('dark');
-    }
-    return () => {
-      if (isDark) {
-        root.classList.add('dark');
-      }
-    };
-  }, [isDark]);
 
   const handleChange = (e) => {
     setFormData({

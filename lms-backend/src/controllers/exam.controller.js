@@ -3,6 +3,7 @@ const Course = require('../models/Course');
 const Progress = require('../models/Progress');
 const Certificate = require('../models/Certificate');
 const mongoose = require('mongoose');
+const { createNotificationHelper } = require('./notification.controller');
 
 // @desc    Get exam by course ID
 // @route   GET /api/exams/course/:courseId
@@ -202,6 +203,18 @@ exports.submitExam = async (req, res) => {
       });
 
       await certificate.save();
+
+      // Populate course name for notification
+      await progress.populate('course', 'name');
+
+      // Send notification to student
+      await createNotificationHelper(
+        req.user.id,
+        'Exam Passed! Certificate Generated 🎓',
+        `Congratulations! You passed "${progress.course.name}" with ${score}%. Your certificate is ready.`,
+        'success',
+        `/student/my-enrollments`
+      );
     }
 
     await progress.save();

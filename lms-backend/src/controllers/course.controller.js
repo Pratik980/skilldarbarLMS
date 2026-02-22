@@ -3,6 +3,8 @@ const Content = require('../models/Content');
 const Enrollment = require('../models/Enrollment');
 const SiteStat = require('../models/SiteStat');
 const mongoose = require('mongoose');
+const User = require('../models/User');
+const { createNotificationHelper } = require('./notification.controller');
 
 const incrementVisitorCount = async () => {
   await SiteStat.findOneAndUpdate(
@@ -318,6 +320,18 @@ exports.addReview = async (req, res) => {
     // Populate the newly added review's user info
     const savedCourse = await Course.findById(courseId).populate('ratings.reviews.user', 'fullName email profileImage');
     const newReview = savedCourse.ratings.reviews[savedCourse.ratings.reviews.length - 1];
+
+    // Notify all admins about new review
+    const admins = await User.find({ role: 'admin' });
+    for (const admin of admins) {
+      await createNotificationHelper(
+        admin._id,
+        'New Review Submitted ⭐',
+        `${req.user.fullName} submitted a ${rating}-star review for "${course.name}".`,
+        'info',
+        `/admin/courses`
+      );
+    }
 
     res.status(201).json({
       success: true,

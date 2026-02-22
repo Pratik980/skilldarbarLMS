@@ -39,6 +39,17 @@ const Dashboard = () => {
     revenue: item.revenue,
   })) || [];
 
+  const weeklyChartData = stats?.weeklyRevenue?.map(item => ({
+    week: item._id,
+    revenue: item.revenue,
+    enrollments: item.enrollments,
+  })) || [];
+
+  const enrollmentComparisonData = [
+    { name: 'Enrolled', value: stats?.enrolledCount || 0, fill: '#F97316' },
+    { name: 'Completed', value: stats?.completedCount || 0, fill: '#10B981' },
+  ];
+
   const enrollmentPieData = [
     { name: 'Approved', value: stats?.approvedEnrollments || stats?.totalEnrollments || 0 },
     { name: 'Pending', value: stats?.pendingEnrollments || 0 },
@@ -83,6 +94,20 @@ const Dashboard = () => {
           <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Total Revenue</p>
           <p className="mt-2 text-3xl font-bold text-brand-teal">NPR {stats?.totalRevenue || 0}</p>
         </div>
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Enrolled</p>
+          <p className="mt-2 text-3xl font-bold text-brand-orange">{stats?.enrolledCount || 0}</p>
+        </div>
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Completed</p>
+          <p className="mt-2 text-3xl font-bold text-green-600">{stats?.completedCount || 0}</p>
+        </div>
+        <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-5">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-teal/60">Completion Rate</p>
+          <p className="mt-2 text-3xl font-bold text-brand-teal">
+            {stats?.enrolledCount > 0 ? ((stats.completedCount / stats.enrolledCount) * 100).toFixed(1) : 0}%
+          </p>
+        </div>
       </div>
 
       {/* Charts Row */}
@@ -121,6 +146,52 @@ const Dashboard = () => {
                 />
                 <Line type="monotone" dataKey="revenue" stroke="#1D4A5A" strokeWidth={2} dot={{ fill: '#F97316', strokeWidth: 2, r: 5 }} activeDot={{ r: 7 }} />
               </LineChart>
+            </ResponsiveContainer>
+          </div>
+        )}
+
+        {/* Weekly Revenue Line Chart */}
+        {weeklyChartData.length > 0 && (
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
+            <h3 className="mb-4 text-lg font-semibold text-brand-teal">Weekly Revenue Overview (Last 12 Weeks)</h3>
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart data={weeklyChartData} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                <XAxis dataKey="week" tick={{ fontSize: 11, fill: '#1D4A5A' }} />
+                <YAxis tick={{ fontSize: 12, fill: '#1D4A5A' }} />
+                <Tooltip
+                  contentStyle={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '8px', fontSize: '13px' }}
+                  formatter={(value, name) => [
+                    name === 'revenue' ? `NPR ${value}` : value,
+                    name === 'revenue' ? 'Revenue' : 'Enrollments'
+                  ]}
+                />
+                <Line type="monotone" dataKey="revenue" stroke="#F97316" strokeWidth={2} dot={{ fill: '#F97316', strokeWidth: 2, r: 5 }} activeDot={{ r: 7 }} />
+                <Line type="monotone" dataKey="enrollments" stroke="#1D4A5A" strokeWidth={2} dot={{ fill: '#1D4A5A', strokeWidth: 2, r: 5 }} activeDot={{ r: 7 }} />
+                <Legend />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        )}
+
+        {/* Enrolled vs Completed Bar Chart */}
+        {enrollmentComparisonData.length > 0 && (
+          <div className="rounded-xl border border-white/10 bg-white p-4 shadow-lg shadow-black/5 md:p-6">
+            <h3 className="mb-4 text-lg font-semibold text-brand-teal">Enrolled vs Completed</h3>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={enrollmentComparisonData} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                <XAxis dataKey="name" tick={{ fontSize: 12, fill: '#1D4A5A' }} />
+                <YAxis tick={{ fontSize: 12, fill: '#1D4A5A' }} />
+                <Tooltip
+                  contentStyle={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '8px', fontSize: '13px' }}
+                />
+                <Bar dataKey="value" fill="#F97316" radius={[4, 4, 0, 0]}>
+                  {enrollmentComparisonData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.fill} />
+                  ))}
+                </Bar>
+              </BarChart>
             </ResponsiveContainer>
           </div>
         )}

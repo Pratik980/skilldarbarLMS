@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
-import { useTheme } from '../context/ThemeContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -15,20 +14,6 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const { isDark } = useTheme();
-
-  // Force light mode on Login page
-  useEffect(() => {
-    const root = document.documentElement;
-    if (isDark) {
-      root.classList.remove('dark');
-    }
-    return () => {
-      if (isDark) {
-        root.classList.add('dark');
-      }
-    };
-  }, [isDark]);
 
   useEffect(() => {
     // Check if there's a success message from signup
@@ -115,7 +100,7 @@ const Login = () => {
               required
               placeholder="you@example.com"
               autoComplete="email"
-              className="w-full rounded-lg border border-brand-teal/20 bg-white px-3 py-2 text-sm text-brand-teal focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
+              className="w-full rounded-lg border border-brand-teal/20 bg-sky-50 px-3 py-2 text-sm text-slate-700 placeholder:text-slate-400 focus:border-brand-orange focus:bg-sky-50 focus:text-slate-700 focus:ring-2 focus:ring-brand-orange/30"
             />
           </div>
 
@@ -135,7 +120,7 @@ const Login = () => {
                 required
                 placeholder="Enter your password"
                 autoComplete="current-password"
-                className="w-full rounded-lg border border-brand-teal/20 bg-white px-3 py-2 pr-10 text-sm text-brand-teal focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/30"
+                className="w-full rounded-lg border border-brand-teal/20 bg-sky-50 px-3 py-2 pr-10 text-sm text-slate-700 placeholder:text-slate-400 focus:border-brand-orange focus:bg-sky-50 focus:text-slate-700 focus:ring-2 focus:ring-brand-orange/30"
               />
               <button
                 type="button"

@@ -4,6 +4,7 @@ const Enrollment = require('../models/Enrollment');
 const mongoose = require('mongoose');
 const PDFDocument = require('pdfkit');
 const path = require('path');
+const { createNotificationHelper } = require('./notification.controller');
 
 // @desc    Get user's course progress
 // @route   GET /api/progress/:courseId
@@ -112,6 +113,17 @@ exports.completeContent = async (req, res) => {
     progress.lastAccessedAt = Date.now();
     await progress.save();
 
+    // Send notification if course is 100% complete
+    if (progress.progressPercentage === 100) {
+      await createNotificationHelper(
+        req.user.id,
+        'Course Completed! 🎉',
+        `Congratulations! You have completed all content in "${progress.course.name}". You can now take the exam.`,
+        'success',
+        `/student/my-enrollments`
+      );
+    }
+
     res.status(200).json({
       success: true,
       message: 'Content marked as completed',
@@ -179,6 +191,15 @@ exports.sendCertificate = async (req, res) => {
     progress.certificateSent = true;
     progress.certificateSentAt = Date.now();
     await progress.save();
+
+    // Send notification to student
+    await createNotificationHelper(
+      progress.student._id,
+      'Certificate Available! 🎓',
+      `Your certificate for "${progress.course.name}" is now available for download.`,
+      'success',
+      `/student/my-enrollments`
+    );
 
     // TODO: Implement actual email sending using nodemailer
 

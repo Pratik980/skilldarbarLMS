@@ -54,6 +54,28 @@ exports.getDashboard = async (req, res) => {
       { $sort: { _id: 1 } },
     ]);
 
+    // Weekly revenue (last 12 weeks)
+    const twelveWeeksAgo = new Date();
+    twelveWeeksAgo.setDate(twelveWeeksAgo.getDate() - 84);
+    const weeklyRevenue = await Enrollment.aggregate([
+      { $match: { status: 'approved', approvedAt: { $gte: twelveWeeksAgo } } },
+      {
+        $group: {
+          _id: { $dateToString: { format: '%Y-W%V', date: '$approvedAt' } },
+          revenue: { $sum: '$amount' },
+          enrollments: { $sum: 1 },
+        },
+      },
+      { $sort: { _id: 1 } },
+    ]);
+
+    // Enrolled vs Completed stats
+    const enrolledCount = await Enrollment.countDocuments({ status: 'approved' });
+    const completedCount = await Enrollment.countDocuments({ 
+      status: 'approved', 
+      examPassed: true 
+    });
+
     res.status(200).json({
       success: true,
       data: {
@@ -66,6 +88,9 @@ exports.getDashboard = async (req, res) => {
         visitorCount,
         revenuePerCourse,
         monthlyRevenue,
+        weeklyRevenue,
+        enrolledCount,
+        completedCount,
       },
     });
   } catch (error) {
