@@ -9,10 +9,10 @@ const Sidebar = ({ navLinks, user, isAdmin = false, isMobileOpen = false, onClos
         <div className="fixed inset-0 z-30 bg-black/40 md:hidden" onClick={onClose}></div>
       )}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-orange-200 bg-white overflow-hidden transition-transform duration-200 dark:border-slate-700 dark:bg-slate-800 ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
+        className={`fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-orange-200 bg-orange-600 overflow-hidden transition-transform duration-200 dark:border-slate-700 dark:bg-slate-800 ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
       >
         <div className="flex items-center justify-between border-b border-orange-200 dark:border-slate-700 px-5 py-4 flex-shrink-0">
-          <h2 className="text-sm font-bold uppercase tracking-wide text-brand-orange">
+          <h2 className="text-sm font-bold uppercase tracking-wide text-white">
             {isAdmin ? 'Admin Panel' : 'LMS Student'}
           </h2>
           <button
@@ -32,8 +32,8 @@ const Sidebar = ({ navLinks, user, isAdmin = false, isMobileOpen = false, onClos
               className={({ isActive }) => {
                 const base = 'group flex items-center gap-3 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors';
                 return isActive
-                  ? `${base} bg-brand-orange/10 text-brand-orange`
-                  : `${base} text-brand-orange hover:bg-orange-100 hover:text-brand-orangeDark`;
+                  ? `${base} bg-brand-orange/10 text-white`
+                  : `${base} text-white hover:bg-orange-100 hover:text-brand-orangeDark`;
               }}
               onClick={onClose}
             >
@@ -53,13 +53,13 @@ const Sidebar = ({ navLinks, user, isAdmin = false, isMobileOpen = false, onClos
                 alt={user?.fullName}
                 className="h-full w-full object-cover"
                 fallbackIcon={
-                  <span className="text-sm font-semibold text-brand-orange">{user?.fullName?.charAt(0).toUpperCase()}</span>
+                  <span className="text-sm font-semibold text-white">{user?.fullName?.charAt(0).toUpperCase()}</span>
                 }
               />
             </div>
             <div>
-              <p className="text-sm font-semibold text-brand-orange">{user?.fullName}</p>
-              <p className="text-xs text-brand-orange/70 capitalize">{user?.role}</p>
+              <p className="text-sm font-semibold text-white">{user?.fullName}</p>
+              <p className="text-xs text-white capitalize">{user?.role}</p>
             </div>
           </div>
         </div>

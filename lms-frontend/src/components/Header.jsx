@@ -17,7 +17,7 @@ const Header = ({ isAdmin = false, onMenuToggle }) => {
   };
 
   return (
-    <header className="sticky top-0 z-20 flex items-center justify-between border-b border-orange-200 bg-white px-3 py-3 backdrop-blur dark:border-slate-700 dark:bg-slate-800 md:px-6 md:py-4">
+    <header className="sticky top-0 z-20 flex items-center justify-between border-b border-orange-200 bg-blue-900 px-3 py-3 backdrop-blur dark:border-slate-700 dark:bg-slate-800 md:px-6 md:py-4">
       <div className="flex items-center gap-2 md:gap-3">
         <button
           className="inline-flex items-center justify-center rounded-lg border border-orange-200 bg-orange-50 p-2 text-brand-orange hover:bg-orange-100 md:hidden"
@@ -30,7 +30,7 @@ const Header = ({ isAdmin = false, onMenuToggle }) => {
             <line x1="3" y1="18" x2="21" y2="18"></line>
           </svg>
         </button>
-        <h1 className="text-sm font-semibold text-slate-900 md:text-lg">
+        <h1 className="text-sm font-semibold text-white md:text-lg">
           <span className="hidden sm:inline">Welcome, </span><span className="text-brand-orange">{user?.fullName?.split(' ')[0]}</span><span className="hidden md:inline">{user?.fullName?.split(' ').slice(1).join(' ') ? ' ' + user?.fullName?.split(' ').slice(1).join(' ') : ''}</span>!
         </h1>
       </div>
@@ -38,7 +38,7 @@ const Header = ({ isAdmin = false, onMenuToggle }) => {
       <div className="flex items-center gap-2 md:gap-3">
         <button
           onClick={toggleTheme}
-          className="rounded-lg p-2 text-brand-teal/70 transition-colors hover:bg-brand-teal/5 hover:text-brand-teal dark:text-orange-300 dark:hover:bg-white/10"
+          className="rounded-lg p-2 text-white transition-colors hover:bg-brand-teal/5 hover:text-white dark:text-orange-300 dark:hover:bg-white/10"
           aria-label="Toggle theme"
         >
           {isDark ? <Sun size={16} className="sm:size-5" /> : <Moon size={16} className="sm:size-5" />}

@@ -102,7 +102,9 @@
 
 /* Main Navbar - White Background with Box Shadow */
 .main-navbar {
-  background: #ffffff;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -135,7 +137,7 @@
   height: 60px;
   width: auto;
   object-fit: contain;
-  background-color: orangered;
+  background-color: #0C4F63;
   border-radius: 50%;
 }
 

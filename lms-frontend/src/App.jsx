@@ -50,6 +50,7 @@ import ExamManagement from './pages/admin/ExamManagement'
 import ExamForm from './pages/admin/ExamForm'
 import ExamResults from './pages/admin/ExamResults'
 import CourseContent from './pages/admin/CourseContent'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <SocketProvider>
+          <ScrollToTop />
         <Toaster
           position="top-right"
           toastOptions={{
