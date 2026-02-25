@@ -51,7 +51,7 @@ function AboutPage() {
   ];
 
   const impactStats = [
-    { number: '500+', label: 'Students', desc: 'Trained and placed' },
+    { number: '5000+', label: 'Students', desc: 'Trained and placed' },
     { number: '200+', label: 'Projects Built', desc: 'By our students' },
     { number: '50+', label: 'Freelancers', desc: 'Working globally' }
   ];

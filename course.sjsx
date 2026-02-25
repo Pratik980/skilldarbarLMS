@@ -1,0 +1,4389 @@
+ {/* Cousre Section */}
+      <section className="popular-courses">
+      <div className="container">
+        {/* Section Header */}
+        <div className="section-header">
+          <div className="section-badge">
+            📚 Popular Courses
+          </div>
+          <h2 className="section-title">
+            Choose Your <span className="highlight">Learning Path</span>
+          </h2>
+          <p className="section-subtitle">
+            Industry-relevant courses designed to boost your career with practical skills
+          </p>
+        </div>
+
+        {/* Category Tabs */}
+        <div className="category-tabs">
+          {categories.map(category => (
+            <button
+              key={category.id}
+              className={`category-tab ${activeCategory === category.id ? 'active' : ''}`}
+              onClick={() => setActiveCategory(category.id)}
+            >
+              {category.name}
+            </button>
+          ))}
+        </div>
+
+        {/* Courses Grid */}
+        <div className="courses-grid">
+          {filteredCourses.map(course => (
+            <div key={course.id} className="course-card">
+              <div className="card-image-wrapper">
+                <img 
+                  src={course.image} 
+                  alt={course.title}
+                  className="course-image"
+                  loading="lazy"
+                />
+                <div className="image-overlay"></div>
+                <div className="course-badge">{course.badge}</div>
+              </div>
+
+              <div className="card-content">
+                <h3 className="course-title">{course.title}</h3>
+                
+                <div className="course-meta">
+                  <div className="meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    {course.duration}
+                  </div>
+                  <div className="meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    </svg>
+                    {course.students}
+                  </div>
+                  <div className="meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
+                    {course.level}
+                  </div>
+                </div>
+
+                <p className="course-description" style={{display: 'none'}}>
+                  Master {course.title} with our comprehensive course
+                </p>
+
+                <div className="tools-list">
+                  {course.tools.map((tool, index) => (
+                    <span key={index} className="tool-tag">{tool}</span>
+                  ))}
+                </div>
+
+                <div className="card-footer">
+                  <div className="course-price">
+                    रू {course.price} <span>/ course</span>
+                  </div>
+                  <Link to="/courses" className="enroll-link">
+                    Enroll Now
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 3L10 8L5 13" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* View All Button */}
+        <Link to="/courses" className="view-all-btn">
+          View All Courses
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M5 3L10 8L5 13" />
+          </svg>
+        </Link>
+      </div>
+    </section>
+
+    {/* Course SECTION END */}
+
+
+
+     {/* Leraning Process Section */}
+      <section className="learning-process" ref={sectionRef}>
+      {/* Floating decorative shapes */}
+      <div className="floating-shape shape-1"></div>
+      <div className="floating-shape shape-2"></div>
+
+      <div className="container">
+        {/* Section Header */}
+        <div className="section-header">
+          <div className="section-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+            Learning Journey
+          </div>
+          <h2 className="section-title">
+            Your Path to <span className="highlight">Success</span>
+          </h2>
+          <p className="section-subtitle">
+            A structured 4-step process designed to take you from beginner to earning professional
+          </p>
+        </div>
+
+        {/* Process Steps */}
+        <div className="process-steps">
+          {steps.map((step) => (
+            <div 
+              key={step.id} 
+              className={`step-card ${activeStep === step.id ? 'active' : ''}`}
+              onMouseEnter={() => setActiveStep(step.id)}
+            >
+              <div className="step-number">{step.id}</div>
+              
+              <div className="step-icon-wrapper">
+                <div className="step-icon">
+                  {step.icon}
+                </div>
+              </div>
+
+              <h3 className="step-title">{step.title}</h3>
+              <p className="step-description">{step.description}</p>
+
+              <ul className="step-features">
+                {step.features.map((feature, index) => (
+                  <li key={index}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+
+              <div style={{ 
+                marginTop: '20px', 
+                padding: '10px', 
+                background: 'rgba(249, 115, 22, 0.1)', 
+                borderRadius: '8px',
+                fontSize: '13px',
+                color: '#f97316'
+              }}>
+                ⏱️ {step.duration} • 🎯 {step.outcome}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Progress Stats */}
+        <div className="progress-stats">
+          <div className="stat-item">
+            <div className="stat-value">1000+</div>
+            <div className="stat-label">Hours of Content</div>
+            <div className="stat-desc">Expert-crafted curriculum</div>
+          </div>
+          <div className="stat-item">
+            <div className="stat-value">50+</div>
+            <div className="stat-label">Real Projects</div>
+            <div className="stat-desc">Industry simulations</div>
+          </div>
+          <div className="stat-item">
+            <div className="stat-value">500+</div>
+            <div className="stat-label">Portfolio Pieces</div>
+            <div className="stat-desc">Created by students</div>
+          </div>
+          <div className="stat-item">
+            <div className="stat-value">रू 2.5Cr+</div>
+            <div className="stat-label">Student Earnings</div>
+            <div className="stat-desc">Combined income</div>
+          </div>
+        </div>
+
+        {/* Process Visualization */}
+        <div style={{ 
+          marginTop: '40px', 
+          display: 'flex', 
+          justifyContent: 'center',
+          gap: '10px',
+          flexWrap: 'wrap'
+        }}>
+          {[1, 2, 3, 4].map(step => (
+            <div
+              key={step}
+              onClick={() => setActiveStep(step)}
+              style={{
+                width: '12px',
+                height: '12px',
+                borderRadius: '50%',
+                background: activeStep === step ? '#f97316' : 'rgba(255,255,255,0.2)',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                transform: activeStep === step ? 'scale(1.2)' : 'scale(1)'
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Sucess Stories */}
+    <section className="success-stories">
+      <div className="container">
+        {/* Section Header */}
+        <div className="section-header">
+          <div className="section-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+            🇳🇵 Made in Nepal
+          </div>
+          <h2 className="section-title">
+            Student <span className="highlight">Success Stories</span>
+          </h2>
+          <p className="section-subtitle">
+            Real stories from real students across Nepal who transformed their careers with Skill Darbar
+          </p>
+        </div>
+
+        {/* Nepal Districts Map Visualization */}
+        <div className="nepal-decoration">
+          {nepaliDistricts.map((district, index) => (
+            <span key={index} title={district}></span>
+          ))}
+        </div>
+
+        {/* Stories Grid */}
+        <div className="stories-grid">
+          {stories.map((story) => (
+            <div 
+              key={story.id} 
+              className="story-card"
+              onMouseEnter={() => setActiveStory(story.id)}
+              onMouseLeave={() => setActiveStory(null)}
+            >
+              <div className="location-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                {story.location}, {story.district}
+              </div>
+
+              <div className="card-header">
+                <img 
+                  src={story.image} 
+                  alt={story.name}
+                  className="student-image"
+                  loading="lazy"
+                />
+                <div className="image-overlay"></div>
+                <div className="quote-icon">“</div>
+              </div>
+
+              <div className="card-content">
+                <div className="student-info">
+                  <div 
+                    className="student-avatar"
+                    style={{ background: story.bgColor }}
+                  >
+                    {story.icon}
+                  </div>
+                  <div className="student-details">
+                    <h3 className="student-name">{story.name}</h3>
+                    <div className="student-location">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      </svg>
+                      {story.location}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="testimonial">
+                  <p className="testimonial-text">"{story.testimonial}"</p>
+                </div>
+
+                <div className="course-tag">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                  </svg>
+                  {story.course}
+                </div>
+
+                <div className="achievement-badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="8" r="7" />
+                    <polyline points="8 21 12 17 16 21" />
+                  </svg>
+                  {story.achievement}
+                </div>
+
+                {/* Hover Stats */}
+                {activeStory === story.id && (
+                  <div style={{
+                    marginTop: '15px',
+                    padding: '10px',
+                    background: '#f8fafc',
+                    borderRadius: '10px',
+                    fontSize: '13px',
+                    color: '#64748b',
+                    animation: 'fadeInUp 0.3s ease'
+                  }}>
+                    📍 From {story.district} • ⭐ 4.9 rating
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Stats Section */}
+        <div className="stories-stats">
+          {stats.map((stat, index) => (
+            <div key={index} className="stat-item">
+              <div className="stat-value">{stat.value}</div>
+              <div className="stat-label">{stat.label}</div>
+              <div className="stat-desc">{stat.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* View All Button */}
+        <Link to="/about" className="view-all-btn">
+          Read More Success Stories
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M5 3L10 8L5 13" />
+          </svg>
+        </Link>
+
+        {/* Nepali Flag Colors Line */}
+        <div style={{ 
+          marginTop: '40px', 
+          height: '4px', 
+          background: 'linear-gradient(90deg, #f97316 0%, #003893 50%, #f97316 100%)',
+          borderRadius: '2px',
+          opacity: '0.3'
+        }}></div>
+      </div>
+    </section>
+
+    {/* Sucess Stories ENd */}
+
+    {/* TEam Section */}
+
+     <section className="team-section">
+      <div className="container">
+        {/* Section Header */}
+        <div className="section-header">
+          <div className="section-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            Our Experts
+          </div>
+          <h2 className="section-title">
+            Meet the <span className="highlight">Mentors</span>
+          </h2>
+          <p className="section-subtitle">
+            Learn from industry professionals dedicated to your success
+          </p>
+        </div>
+
+        {/* Team Grid */}
+        <div className="team-grid">
+          {teamMembers.map((member) => (
+            <div 
+              key={member.id} 
+              className={`team-card ${activeMember === member.id ? 'featured' : ''}`}
+              onMouseEnter={() => setActiveMember(member.id)}
+              onMouseLeave={() => setActiveMember(null)}
+            >
+              <div className="card-image-wrapper">
+                <img 
+                  src={member.image} 
+                  alt={member.name}
+                  className="team-image"
+                  loading="lazy"
+                />
+                <div className="image-overlay"></div>
+                
+                {/* Role Badge */}
+                <div className="role-badge">{member.role}</div>
+
+                {/* Social Links */}
+                <div className="social-links">
+                  {member.social.linkedin && (
+                    <a href={member.social.linkedin} className="social-link" target="_blank" rel="noopener noreferrer">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                      </svg>
+                    </a>
+                  )}
+                  {member.social.github && (
+                    <a href={member.social.github} className="social-link" target="_blank" rel="noopener noreferrer">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                      </svg>
+                    </a>
+                  )}
+                  {member.social.behance && (
+                    <a href={member.social.behance} className="social-link" target="_blank" rel="noopener noreferrer">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-2.35-5.564-5.5 0-3.123 2.393-5.5 5.6-5.5 2.923 0 4.819 1.978 5.14 3.255l-2.012.598c-.248-.798-1.043-1.853-3.128-1.853-2.058 0-3.55 1.809-3.55 3.5 0 1.82 1.509 3.5 3.6 3.5 1.756 0 2.688-.95 2.944-1.5h-2.944v-1.5h5.026c.026.29.026.56.026.79 0 2.12-1.206 4.21-4.052 4.21-3.116 0-5.6-2.24-5.6-5.5 0-3.21 2.414-5.5 5.6-5.5 2.69 0 4.52 1.51 5.052 3.5h-2.026zM11 13h-5v3h5.5c-.139.984-.879 3-3.5 3-2.1 0-3.5-1.7-3.5-3.5s1.4-3.5 3.5-3.5c1.681 0 2.559.966 2.859 2h2.141c-.3-2.161-1.9-4-5-4-3.2 0-5.5 2.5-5.5 5.5s2.3 5.5 5.5 5.5c3.9 0 5-2.9 5-5.5v-.5h-5z" />
+                      </svg>
+                    </a>
+                  )}
+                  {member.social.email && (
+                    <a href={`mailto:${member.social.email}`} className="social-link">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              <div className="card-content">
+                <h3 className="member-name">{member.name}</h3>
+                <div className="member-title">{member.title}</div>
+                <p className="member-bio">{member.bio}</p>
+
+                {/* Expertise Tags */}
+                <div className="expertise-tags">
+                  {member.expertise.map((skill, index) => (
+                    <span key={index} className="expertise-tag">{skill}</span>
+                  ))}
+                </div>
+
+                {/* Experience Badge */}
+                <div className="experience-badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="8" r="7" />
+                    <polyline points="8 21 12 17 16 21" />
+                  </svg>
+                  {member.experience} • {member.achievement}
+                </div>
+
+                {/* Hover Education Info */}
+                {activeMember === member.id && (
+                  <div style={{
+                    marginTop: '15px',
+                    padding: '10px',
+                    background: 'rgba(249, 115, 22, 0.1)',
+                    borderRadius: '10px',
+                    fontSize: '12px',
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    border: '1px solid rgba(249, 115, 22, 0.2)',
+                    animation: 'fadeInUp 0.3s ease'
+                  }}>
+                    🎓 {member.education}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Team Stats */}
+        <div className="team-stats">
+          {teamStats.map((stat, index) => (
+            <div key={index} className="stat-item">
+              <div className="stat-value">{stat.value}</div>
+              <div className="stat-label">{stat.label}</div>
+              <div className="stat-desc">{stat.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* TEam Section End  */}
+
+    {/* CTA BUtton */}
+       <section className="final-cta">
+      {/* Floating Orbs */}
+      <div className="floating-orb orb-1"></div>
+      <div className="floating-orb orb-2"></div>
+      <div className="floating-orb orb-3"></div>
+
+      <div className="container">
+        <div className="cta-content">
+          {/* Decorative Elements */}
+          <div className="cta-decoration"></div>
+          <div className="cta-decoration-dots"></div>
+
+          {/* Badge */}
+          <div className="cta-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z" />
+            </svg>
+            <span>Limited Time Opportunity</span>
+          </div>
+
+          {/* Limited Offer Tag */}
+          <div className="limited-offer">
+            Offer Ends Soon
+          </div>
+
+          {/* Main Title */}
+          <h1 className="cta-title">
+            Ready to Build Your <span className="highlight">Career</span>
+            <br />with Skills?
+          </h1>
+
+          {/* Subtitle */}
+          <p className="cta-subtitle">
+            Join thousands of successful students who transformed their lives through practical learning. 
+            Your journey to a better future starts here.
+          </p>
+
+          {/* Stats Preview */}
+          <div className="cta-stats">
+            <div className="stat-item">
+              <div className="stat-value">5000+</div>
+              <div className="stat-label">Students</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-value">50+</div>
+              <div className="stat-label">Courses</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-value">95%</div>
+              <div className="stat-label">Success Rate</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-value">24/7</div>
+              <div className="stat-label">Support</div>
+            </div>
+          </div>
+
+          {/* CTA Button */}
+          <div className="cta-button-wrapper">
+            <button className="cta-button" onClick={handleEnrollClick}>
+              Enroll Now
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+            <div className="button-ripple"></div>
+          </div>
+
+          {/* Trust Badges */}
+          <div className="trust-badges">
+            <div className="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+              Money-back Guarantee
+            </div>
+            <div className="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+              Secure Payment
+            </div>
+            <div className="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </svg>
+              Lifetime Access
+            </div>
+          </div>
+
+          {/* Optional: Countdown Timer */}
+          <div style={{ 
+            marginTop: '30px',
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '15px',
+            color: 'rgba(255,255,255,0.6)',
+            fontSize: '14px'
+          }}>
+            <div>⏰ Offer ends in: {String(timeLeft.hours).padStart(2, '0')}h {String(timeLeft.minutes).padStart(2, '0')}m {String(timeLeft.seconds).padStart(2, '0')}s</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // Course 
+    const [activeCategory, setActiveCategory] = useState('all');
+
+  const categories = [
+    { id: 'all', name: 'All Courses' },
+    { id: 'design', name: 'Graphic Design' },
+    { id: 'video', name: 'Video Editing' },
+    { id: 'dev', name: 'Development' },
+    { id: 'marketing', name: 'Marketing' }
+  ];
+
+  const courses = [
+    // Graphic Designing
+    {
+      id: 1,
+      title: 'Graphic Designing',
+      category: 'design',
+      image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&auto=format&fit=crop',
+      duration: '12 Weeks',
+      students: '2.5k+',
+      price: '9999',
+      tools: ['Photoshop', 'Illustrator', 'InDesign', 'Canva'],
+      badge: 'Popular',
+      level: 'Beginner to Advanced'
+    },
+    // Video Editing
+    {
+      id: 2,
+      title: 'Video Editing',
+      category: 'video',
+      image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&auto=format&fit=crop',
+      duration: '10 Weeks',
+      students: '1.8k+',
+      price: '11999',
+      tools: ['Premiere Pro', 'After Effects', 'DaVinci Resolve', 'Capcut'],
+      badge: 'Trending',
+      level: 'Intermediate'
+    },
+    // Web Development
+    {
+      id: 3,
+      title: 'Web Development',
+      category: 'dev',
+      image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&auto=format&fit=crop',
+      duration: '16 Weeks',
+      students: '3.2k+',
+      price: '14999',
+      tools: ['HTML/CSS', 'JavaScript', 'React', 'Node.js'],
+      badge: 'Best Seller',
+      level: 'Full Stack'
+    },
+    // App Development
+    {
+      id: 4,
+      title: 'App Development',
+      category: 'dev',
+      image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&auto=format&fit=crop',
+      duration: '14 Weeks',
+      students: '1.5k+',
+      price: '15999',
+      tools: ['React Native', 'Flutter', 'Firebase', 'API'],
+      badge: 'New',
+      level: 'Intermediate'
+    },
+    // Digital Marketing
+    {
+      id: 5,
+      title: 'Digital Marketing',
+      category: 'marketing',
+      image: 'https://images.unsplash.com/photo-1557838923-2985c318be48?w=600&auto=format&fit=crop',
+      duration: '8 Weeks',
+      students: '2.1k+',
+      price: '8999',
+      tools: ['SEO', 'Google Ads', 'Social Media', 'Analytics'],
+      badge: 'Hot',
+      level: 'Beginner'
+    },
+    // UI/UX Design
+    {
+      id: 6,
+      title: 'UI/UX Design',
+      category: 'design',
+      image: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&auto=format&fit=crop',
+      duration: '10 Weeks',
+      students: '1.2k+',
+      price: '10999',
+      tools: ['Figma', 'Adobe XD', 'Sketch', 'Miro'],
+      badge: 'Popular',
+      level: 'Beginner'
+    },
+    // Motion Graphics
+    {
+      id: 7,
+      title: 'Motion Graphics',
+      category: 'video',
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop',
+      duration: '12 Weeks',
+      students: '900+',
+      price: '12999',
+      tools: ['After Effects', 'Cinema 4D', 'Premiere Pro'],
+      badge: 'Advanced',
+      level: 'Advanced'
+    },
+    // Meta Ads
+    {
+      id: 8,
+      title: 'Meta Ads & Marketing',
+      category: 'marketing',
+      image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop',
+      duration: '6 Weeks',
+      students: '1.1k+',
+      price: '7999',
+      tools: ['Facebook Ads', 'Instagram Ads', 'Pixel', 'Analytics'],
+      badge: 'Hot',
+      level: 'Intermediate'
+    },
+    // Backend Development
+    {
+      id: 9,
+      title: 'Backend Development',
+      category: 'dev',
+      image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&auto=format&fit=crop',
+      duration: '14 Weeks',
+      students: '1.3k+',
+      price: '13999',
+      tools: ['Node.js', 'Python', 'Databases', 'APIs'],
+      badge: 'Advanced',
+      level: 'Intermediate'
+    }
+  ];
+
+  const filteredCourses = activeCategory === 'all' 
+    ? courses 
+    : courses.filter(course => course.category === activeCategory);
+
+
+    // Learning Process
+
+      const [activeStep, setActiveStep] = useState(1);
+  // const sectionRefs = useRef(null);
+
+  const steps = [
+    {
+      id: 1,
+      title: 'Learn Fundamentals',
+      description: 'Master the core concepts and theories with expert-led video tutorials and interactive lessons.',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </svg>
+      ),
+      features: [
+        'Expert video tutorials',
+        'Interactive quizzes',
+        'Study materials & resources',
+        'Live doubt sessions'
+      ],
+      duration: '4-6 weeks',
+      outcome: 'Strong foundation'
+    },
+    {
+      id: 2,
+      title: 'Practice with Real Projects',
+      description: 'Apply your knowledge to real-world projects that simulate actual client work and industry scenarios.',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+          <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
+        </svg>
+      ),
+      features: [
+        'Client project simulations',
+        'Industry use cases',
+        'Code reviews & feedback',
+        'Team collaboration'
+      ],
+      duration: '6-8 weeks',
+      outcome: 'Practical experience'
+    },
+    {
+      id: 3,
+      title: 'Build Portfolio',
+      description: 'Create a stunning portfolio showcasing your best work to attract employers and clients.',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+          <path d="M12 11v6" />
+          <path d="M9 14h6" />
+        </svg>
+      ),
+      features: [
+        'Portfolio website setup',
+        'Project documentation',
+        'Case studies creation',
+        'Professional presentation'
+      ],
+      duration: '2-3 weeks',
+      outcome: 'Impressive portfolio'
+    },
+    {
+      id: 4,
+      title: 'Start Earning',
+      description: 'Launch your career through freelancing, remote jobs, or entrepreneurship with our placement support.',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 1v22M17 5H9.5M17 5a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3h10z" />
+          <circle cx="12" cy="12" r="2" />
+        </svg>
+      ),
+      features: [
+        'Freelance marketplace access',
+        'Job placement assistance',
+        'Interview preparation',
+        'Networking opportunities'
+      ],
+      duration: 'Ongoing',
+      outcome: 'Monthly income'
+    }
+  ];
+
+  // Auto-highlight steps on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const cards = document.querySelectorAll('.step-card');
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+          setActiveStep(index + 1);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Sucess Stories
+    const [activeStory, setActiveStory] = useState(null);
+
+  const stories = [
+    {
+      id: 1,
+      name: 'Rahul Saha',
+      location: 'Janakpur',
+      district: 'Dhanusha',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop',
+      course: 'Graphic Designing',
+      testimonial: 'After completing Graphic Designing, I started freelancing and now earn consistently online.',
+      achievement: 'Earning रू 45,000/month',
+      icon: '🎨',
+      bgColor: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+    },
+    {
+      id: 2,
+      name: 'Roshan Katuwal',
+      location: 'Kathmandu',
+      district: 'Kathmandu',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop',
+      course: 'Video Editing',
+      testimonial: 'Skill Darbar helped me master video editing and work with local clients.',
+      achievement: 'Worked with 15+ clients',
+      icon: '🎬',
+      bgColor: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+    },
+    {
+      id: 3,
+      name: 'Pooja Chaudhary',
+      location: 'Itahari',
+      district: 'Sunsari',
+      image: 'https://images.unsplash.com/photo-1494790108777-383d1a4b6a3f?w=400&auto=format&fit=crop',
+      course: 'Web Development',
+      testimonial: 'I built my first website after completing Web Development course.',
+      achievement: '3 websites launched',
+      icon: '💻',
+      bgColor: 'linear-gradient(135deg, #5e72e4 0%, #825ee4 100%)'
+    },
+    {
+      id: 4,
+      name: 'Ashish Yadav',
+      location: 'Birgunj',
+      district: 'Parsa',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop',
+      course: 'Meta Ads',
+      testimonial: 'Meta Ads training helped me manage ad campaigns for local businesses.',
+      achievement: 'Managed रू 10L+ ad spend',
+      icon: '📱',
+      bgColor: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)'
+    }
+  ];
+
+  const stats = [
+    { value: '5000+', label: 'Students Trained', desc: 'Across 77 districts' },
+    { value: 'रू 2.5Cr+', label: 'Student Earnings', desc: 'Combined freelance income' },
+    { value: '1000+', label: 'Success Stories', desc: 'And counting...' }
+  ];
+
+  const nepaliDistricts = ['Janakpur', 'Kathmandu', 'Itahari', 'Birgunj', 'Pokhara', 'Biratnagar', 'Butwal', 'Nepalgunj'];
+
+  // Team Section
+    const [activeMember, setActiveMember] = useState(null);
+
+  const teamMembers = [
+    {
+      id: 1,
+      name: 'Ashvik Yadav',
+      title: 'Founder / Director',
+      role: 'Leadership',
+      image: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=400&auto=format&fit=crop',
+      bio: 'Visionary leader with 10+ years in edtech, dedicated to making quality education accessible to every Nepali youth.',
+      expertise: ['Strategy', 'EdTech', 'Business Development'],
+      experience: '10+ years',
+      education: 'MBA, Kathmandu University',
+      achievement: 'Placed 1000+ students',
+      social: {
+        linkedin: '#',
+        twitter: '#',
+        email: '#'
+      }
+    },
+    {
+      id: 2,
+      name: 'Sushil Kunwar',
+      title: 'Lead Graphic Instructor',
+      role: 'Creative',
+      image: 'https://images.unsplash.com/photo-1531427186629-7fd5fe58b2e9?w=400&auto=format&fit=crop',
+      bio: 'Award-winning graphic designer with 8+ years of industry experience. Mentored 500+ students in design.',
+      expertise: ['Photoshop', 'Illustrator', 'UI/UX', 'Branding'],
+      experience: '8+ years',
+      education: 'B.Des, Purvanchal University',
+      achievement: '500+ students mentored',
+      social: {
+        linkedin: '#',
+        behance: '#',
+        email: '#'
+      }
+    },
+    {
+      id: 3,
+      name: 'Rahul Shrestha',
+      title: 'Lead Development Instructor',
+      role: 'Development',
+      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop',
+      bio: 'Full-stack developer with 7+ years of experience in MERN stack. Passionate about teaching coding to beginners.',
+      expertise: ['MERN Stack', 'Python', 'Cloud', 'DevOps'],
+      experience: '7+ years',
+      education: 'B.Tech CS, IOE Pulchowk',
+      achievement: 'Built 50+ projects',
+      social: {
+        linkedin: '#',
+        github: '#',
+        email: '#'
+      }
+    },
+    {
+      id: 4,
+      name: 'Roshan Katuwal',
+      title: 'Lead Software & Web Development',
+      role: 'Software',
+      image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop',
+      bio: 'Software architect with 9+ years in web and mobile development. Expert in building scalable applications.',
+      expertise: ['React Native', 'Node.js', 'AWS', 'System Design'],
+      experience: '9+ years',
+      education: 'M.Sc. CS, Tribhuvan University',
+      achievement: '20+ apps launched',
+      social: {
+        linkedin: '#',
+        github: '#',
+        email: '#'
+      }
+    }
+  ];
+
+  const teamStats = [
+    { value: '25+', label: 'Team Members', desc: 'Across Nepal' },
+    { value: '50+', label: 'Years Combined', desc: 'Industry experience' },
+    { value: '5000+', label: 'Students Taught', desc: 'And counting' },
+    { value: '100%', label: 'Passionate', desc: 'Dedicated mentors' }
+  ];
+
+
+   const [timeLeft, setTimeLeft] = useState({
+    hours: 23,
+    minutes: 59,
+    seconds: 59
+  });
+
+  // Countdown timer effect
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev.seconds > 0) {
+          return { ...prev, seconds: prev.seconds - 1 };
+        } else if (prev.minutes > 0) {
+          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
+        } else if (prev.hours > 0) {
+          return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        }
+        return prev;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const navigate = useNavigate();
+
+  const handleEnrollClick = () => {
+    navigate('/signup');
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+  /* Course  Section*/
+/* PopularCourses.css */
+
+.popular-courses {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative elements */
+.popular-courses::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.popular-courses::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.03) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.section-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 24px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 15px rgba(249, 115, 22, 0.3);
+  animation: fadeInUp 0.6s ease;
+}
+
+.section-title {
+  font-size: clamp(36px, 5vw, 48px);
+  font-weight: 800;
+  color: #0a1929;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.6s ease 0.1s both;
+  line-height: 1.2;
+}
+
+.section-title .highlight {
+  color: #f97316;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: rgba(249, 115, 22, 0.2);
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease 0.2s both;
+  line-height: 1.6;
+}
+
+/* Category Tabs */
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.6s ease 0.3s both;
+}
+
+.category-tab {
+  padding: 12px 28px;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.category-tab:hover {
+  border-color: #f97316;
+  color: #f97316;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.15);
+}
+
+.category-tab.active {
+  background: #f97316;
+  border-color: #f97316;
+  color: white;
+  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+}
+
+/* Courses Grid */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+/* Course Card */
+.course-card {
+  background: white;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.course-card:nth-child(1) { animation-delay: 0.3s; }
+.course-card:nth-child(2) { animation-delay: 0.4s; }
+.course-card:nth-child(3) { animation-delay: 0.5s; }
+.course-card:nth-child(4) { animation-delay: 0.6s; }
+.course-card:nth-child(5) { animation-delay: 0.7s; }
+.course-card:nth-child(6) { animation-delay: 0.8s; }
+.course-card:nth-child(7) { animation-delay: 0.9s; }
+.course-card:nth-child(8) { animation-delay: 1s; }
+.course-card:nth-child(9) { animation-delay: 1.1s; }
+
+.course-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 30px 60px -15px rgba(249, 115, 22, 0.3);
+}
+
+/* Card Image */
+.card-image-wrapper {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.course-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.course-card:hover .course-image {
+  transform: scale(1.1);
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+/* Course Badge */
+.course-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #f97316;
+  color: white;
+  padding: 6px 15px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  z-index: 2;
+  box-shadow: 0 5px 10px rgba(249, 115, 22, 0.3);
+}
+
+/* Card Content */
+.card-content {
+  padding: 25px;
+}
+
+.course-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0a1929;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.course-card:hover .course-title {
+  color: #f97316;
+}
+
+.course-meta {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.meta-item svg {
+  width: 14px;
+  height: 14px;
+  color: #f97316;
+}
+
+/* Tools List */
+.tools-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.tool-tag {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 6px 15px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.course-card:hover .tool-tag {
+  background: rgba(249, 115, 22, 0.1);
+  color: #f97316;
+  border-color: rgba(249, 115, 22, 0.2);
+}
+
+/* Card Footer */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.course-price {
+  font-size: 24px;
+  font-weight: 800;
+  color: #f97316;
+}
+
+.course-price span {
+  font-size: 14px;
+  font-weight: 400;
+  color: #94a3b8;
+  margin-left: 5px;
+}
+
+.enroll-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.enroll-link svg {
+  transition: transform 0.3s ease;
+}
+
+.enroll-link:hover {
+  color: #f97316;
+}
+
+.enroll-link:hover svg {
+  transform: translateX(5px);
+}
+
+/* View All Button */
+.view-all-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto;
+  background: transparent;
+  color: #0a1929;
+  border: 2px solid #f97316;
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.view-all-btn:hover {
+  background: #f97316;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(249, 115, 22, 0.3);
+}
+
+.view-all-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.view-all-btn:hover svg {
+  transform: translateX(5px);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .popular-courses {
+    padding: 80px 0;
+  }
+
+  .section-title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .courses-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+    padding: 0 20px;
+  }
+
+  .category-tab {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .card-image-wrapper {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .section-badge {
+    font-size: 12px;
+    padding: 6px 16px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .category-tabs {
+    gap: 10px;
+  }
+
+  .category-tab {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .course-title {
+    font-size: 20px;
+  }
+
+  .course-price {
+    font-size: 20px;
+  }
+
+  .view-all-btn {
+    width: 100%;
+    padding: 14px 20px;
+  }
+}
+
+/* Loading Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(to right, #f1f5f9 4%, #e2e8f0 25%, #f1f5f9 36%);
+  background-size: 1000px 100%;
+}
+
+/*  Course End */
+
+/* Learning Process */
+/* LearningProcess.css */
+
+.learning-process {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #0a1929 0%, #1a2b3c 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background */
+.learning-process::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(249, 115, 22, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(249, 115, 22, 0.1) 0%, transparent 40%),
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 10px);
+  pointer-events: none;
+}
+
+/* Floating elements */
+.floating-shape {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px solid rgba(249, 115, 22, 0.1);
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: floatShape 15s ease-in-out infinite;
+}
+
+.shape-1 {
+  top: -50px;
+  right: -50px;
+  width: 300px;
+  height: 300px;
+  border-color: rgba(249, 115, 22, 0.1);
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  bottom: -80px;
+  left: -80px;
+  width: 400px;
+  height: 400px;
+  border-color: rgba(249, 115, 22, 0.05);
+  animation-delay: -5s;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 70px;
+  position: relative;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(249, 115, 22, 0.2);
+  color: #f97316;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 24px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.6s ease;
+}
+
+.section-badge svg {
+  width: 18px;
+  height: 18px;
+}
+
+.section-title {
+  font-size: clamp(36px, 5vw, 48px);
+  font-weight: 800;
+  color: white;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.6s ease 0.1s both;
+  line-height: 1.2;
+}
+
+.section-title .highlight {
+  color: #f97316;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: rgba(249, 115, 22, 0.3);
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease 0.2s both;
+  line-height: 1.6;
+}
+
+/* Process Steps */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin: 60px 0;
+  position: relative;
+}
+
+/* Connecting line */
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 100px;
+  left: 15%;
+  right: 15%;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    rgba(249, 115, 22, 0.1) 0%,
+    rgba(249, 115, 22, 0.5) 50%,
+    rgba(249, 115, 22, 0.1) 100%
+  );
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+/* Step Card */
+.step-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 30px;
+  padding: 40px 30px;
+  text-align: center;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 2;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.step-card:nth-child(1) { animation-delay: 0.2s; }
+.step-card:nth-child(2) { animation-delay: 0.3s; }
+.step-card:nth-child(3) { animation-delay: 0.4s; }
+.step-card:nth-child(4) { animation-delay: 0.5s; }
+
+.step-card:hover {
+  transform: translateY(-15px);
+  border-color: rgba(249, 115, 22, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 30px 50px -20px rgba(249, 115, 22, 0.3);
+}
+
+/* Step Number */
+.step-number {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: #f97316;
+  color: white;
+  font-weight: 800;
+  font-size: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(249, 115, 22, 0.4);
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+.step-card:hover .step-number {
+  transform: translateX(-50%) scale(1.1);
+  background: white;
+  color: #f97316;
+  box-shadow: 0 8px 25px rgba(249, 115, 22, 0.5);
+}
+
+/* Step Icon */
+.step-icon-wrapper {
+  width: 100px;
+  height: 100px;
+  background: rgba(249, 115, 22, 0.1);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto 25px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.step-card:hover .step-icon-wrapper {
+  background: #f97316;
+  transform: scale(1.1) rotate(5deg);
+  border-radius: 25px;
+}
+
+.step-icon {
+  width: 50px;
+  height: 50px;
+  color: #f97316;
+  transition: all 0.3s ease;
+}
+
+.step-card:hover .step-icon {
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Step Content */
+.step-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.step-card:hover .step-title {
+  color: #f97316;
+}
+
+.step-description {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.step-card:hover .step-description {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Step Features */
+.step-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.step-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.step-card:hover .step-features li {
+  background: rgba(249, 115, 22, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  transform: translateX(5px);
+}
+
+.step-features li svg {
+  width: 14px;
+  height: 14px;
+  color: #f97316;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.step-card:hover .step-features li svg {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.step-features li:nth-child(1) svg { transition-delay: 0s; }
+.step-features li:nth-child(2) svg { transition-delay: 0.1s; }
+.step-features li:nth-child(3) svg { transition-delay: 0.2s; }
+
+/* Progress Stats */
+.progress-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 70px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.6s ease 0.6s both;
+}
+
+.stat-item {
+  text-align: center;
+  position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.stat-value {
+  font-size: 36px;
+  font-weight: 800;
+  color: #f97316;
+  margin-bottom: 5px;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-desc {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 5px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatShape {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  33% {
+    transform: rotate(5deg) scale(1.1);
+  }
+  66% {
+    transform: rotate(-5deg) scale(0.9);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .process-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .process-steps::before {
+    display: none;
+  }
+
+  .progress-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-item:not(:last-child)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .learning-process {
+    padding: 80px 0;
+  }
+
+  .section-title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .process-steps {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+    padding: 0 20px;
+  }
+
+  .step-card {
+    padding: 35px 25px;
+  }
+
+  .step-icon-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .step-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .step-title {
+    font-size: 20px;
+  }
+
+  .progress-stats {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 30px 20px;
+  }
+
+  .floating-shape {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .section-badge {
+    font-size: 12px;
+    padding: 6px 16px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .step-number {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .stat-value {
+    font-size: 28px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+  }
+}
+
+/* Animation for steps on scroll */
+@keyframes stepPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 20px rgba(249, 115, 22, 0);
+  }
+}
+
+.step-card.active {
+  animation: stepPulse 2s infinite;
+}
+
+/* Interactive hover effects */
+.step-card {
+  cursor: pointer;
+}
+
+.step-card:hover .step-features li {
+  transform: translateX(10px);
+}
+
+/* Learning process End */
+
+/* Sucess Stories  */
+/* SuccessStories.css */
+
+.success-stories {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative Nepali elements */
+.success-stories::before {
+  content: '🇳🇵';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 120px;
+  opacity: 0.03;
+  transform: rotate(15deg);
+  pointer-events: none;
+}
+
+.success-stories::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #f97316, #ffffff, #003893, #ffffff, #f97316);
+  opacity: 0.3;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 28px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+  animation: fadeInUp 0.6s ease;
+}
+
+.section-badge svg {
+  width: 18px;
+  height: 18px;
+}
+
+.section-title {
+  font-size: clamp(36px, 5vw, 48px);
+  font-weight: 800;
+  color: #0a1929;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.6s ease 0.1s both;
+  line-height: 1.2;
+}
+
+.section-title .highlight {
+  color: #f97316;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: rgba(249, 115, 22, 0.2);
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease 0.2s both;
+  line-height: 1.6;
+}
+
+/* Stories Grid */
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+/* Story Card */
+.story-card {
+  background: white;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.story-card:nth-child(1) { animation-delay: 0.2s; }
+.story-card:nth-child(2) { animation-delay: 0.3s; }
+.story-card:nth-child(3) { animation-delay: 0.4s; }
+.story-card:nth-child(4) { animation-delay: 0.5s; }
+
+.story-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 30px 60px -15px rgba(249, 115, 22, 0.3);
+}
+
+/* Location Badge */
+.location-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(249, 115, 22, 0.9);
+  backdrop-filter: blur(5px);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 2;
+  box-shadow: 0 5px 15px rgba(249, 115, 22, 0.3);
+}
+
+.location-badge svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Card Header with Image */
+.card-header {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.student-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.story-card:hover .student-image {
+  transform: scale(1.1);
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 25, 41, 0.8) 100%);
+}
+
+/* Quote Icon */
+.quote-icon {
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background: #f97316;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+  z-index: 3;
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.story-card:hover .quote-icon {
+  transform: rotate(180deg);
+  background: white;
+  color: #f97316;
+}
+
+/* Card Content */
+.card-content {
+  padding: 30px 25px 25px;
+  position: relative;
+}
+
+.student-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.student-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 24px;
+  box-shadow: 0 5px 15px rgba(249, 115, 22, 0.3);
+}
+
+.student-details {
+  flex: 1;
+}
+
+.student-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0a1929;
+  margin-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+.story-card:hover .student-name {
+  color: #f97316;
+}
+
+.student-location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.student-location svg {
+  width: 14px;
+  height: 14px;
+  color: #f97316;
+}
+
+/* Testimonial */
+.testimonial {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.testimonial-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #475569;
+  font-style: italic;
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 15px;
+  border-left: 3px solid #f97316;
+  transition: all 0.3s ease;
+}
+
+.story-card:hover .testimonial-text {
+  color: #0a1929;
+}
+
+/* Course Tag */
+.course-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.story-card:hover .course-tag {
+  background: rgba(249, 115, 22, 0.1);
+  color: #f97316;
+}
+
+.course-tag svg {
+  width: 16px;
+  height: 16px;
+  color: #f97316;
+}
+
+/* Achievement Badge */
+.achievement-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #0a1929 0%, #1a2b3c 100%);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 12px;
+  margin-top: 15px;
+  font-size: 13px;
+  transition: all 0.3s ease;
+}
+
+.story-card:hover .achievement-badge {
+  background: #f97316;
+}
+
+.achievement-badge svg {
+  width: 16px;
+  height: 16px;
+  color: #f97316;
+  transition: all 0.3s ease;
+}
+
+.story-card:hover .achievement-badge svg {
+  color: white;
+}
+
+/* Stats Section */
+.stories-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin: 60px 0 40px;
+  padding: 40px;
+  background: white;
+  border-radius: 40px;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.6s ease 0.6s both;
+}
+
+.stat-item {
+  text-align: center;
+  position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 40px;
+  background: #e2e8f0;
+}
+
+.stat-value {
+  font-size: 42px;
+  font-weight: 800;
+  color: #f97316;
+  margin-bottom: 5px;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 16px;
+  color: #64748b;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.stat-desc {
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+/* Nepal Map Decoration */
+.nepal-decoration {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 30px 0;
+  opacity: 0.5;
+}
+
+.nepal-decoration span {
+  width: 8px;
+  height: 8px;
+  background: #f97316;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.nepal-decoration span:nth-child(2) { animation-delay: 0.2s; }
+.nepal-decoration span:nth-child(3) { animation-delay: 0.4s; }
+.nepal-decoration span:nth-child(4) { animation-delay: 0.6s; }
+.nepal-decoration span:nth-child(5) { animation-delay: 0.8s; }
+
+/* View All Button */
+.view-all-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 40px auto 0;
+  background: transparent;
+  color: #0a1929;
+  border: 2px solid #f97316;
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.view-all-btn:hover {
+  background: #f97316;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(249, 115, 22, 0.3);
+}
+
+.view-all-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.view-all-btn:hover svg {
+  transform: translateX(5px);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .stories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .stories-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .success-stories {
+    padding: 80px 0;
+  }
+
+  .section-title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .stories-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+    padding: 0 20px;
+  }
+
+  .stories-stats {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 30px;
+  }
+
+  .stat-item:not(:last-child)::after {
+    display: none;
+  }
+
+  .stat-value {
+    font-size: 36px;
+  }
+
+  .success-stories::before {
+    font-size: 80px;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .section-badge {
+    font-size: 12px;
+    padding: 8px 20px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .card-header {
+    height: 150px;
+  }
+
+  .student-name {
+    font-size: 18px;
+  }
+
+  .testimonial-text {
+    font-size: 14px;
+  }
+
+  .stat-value {
+    font-size: 32px;
+  }
+
+  .stat-label {
+    font-size: 14px;
+  }
+
+  .view-all-btn {
+    width: 100%;
+    padding: 14px 20px;
+  }
+}
+
+/* Nepali Flag Colors */
+.nepali-flag {
+  background: linear-gradient(135deg, #f97316, #003893);
+}
+
+/* Hover effect for location pins */
+.location-badge:hover {
+  transform: scale(1.05);
+  background: #f97316;
+}
+
+/* Sucess Ending */
+
+/* Team Section */
+/* TeamSection.css */
+
+.team-section {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #0a1929 0%, #1a2b3c 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative elements */
+.team-section::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: floatOrb 20s ease-in-out infinite;
+}
+
+.team-section::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: floatOrb 20s ease-in-out infinite reverse;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 70px;
+  position: relative;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(249, 115, 22, 0.2);
+  color: #f97316;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 28px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.6s ease;
+}
+
+.section-badge svg {
+  width: 18px;
+  height: 18px;
+}
+
+.section-title {
+  font-size: clamp(36px, 5vw, 48px);
+  font-weight: 800;
+  color: white;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.6s ease 0.1s both;
+  line-height: 1.2;
+}
+
+.section-title .highlight {
+  color: #f97316;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: rgba(249, 115, 22, 0.3);
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease 0.2s both;
+  line-height: 1.6;
+}
+
+/* Team Grid */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* Team Card */
+.team-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 30px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.team-card:nth-child(1) { animation-delay: 0.2s; }
+.team-card:nth-child(2) { animation-delay: 0.3s; }
+.team-card:nth-child(3) { animation-delay: 0.4s; }
+.team-card:nth-child(4) { animation-delay: 0.5s; }
+
+.team-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  border-color: rgba(249, 115, 22, 0.3);
+  box-shadow: 0 30px 60px -20px rgba(249, 115, 22, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Card Image */
+.card-image-wrapper {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.team-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  filter: grayscale(20%);
+}
+
+.team-card:hover .team-image {
+  transform: scale(1.1);
+  filter: grayscale(0%);
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, 
+    rgba(10, 25, 41, 0.2) 0%,
+    rgba(249, 115, 22, 0.3) 100%
+  );
+  mix-blend-mode: overlay;
+}
+
+/* Role Badge */
+.role-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(249, 115, 22, 0.9);
+  backdrop-filter: blur(5px);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  z-index: 2;
+  box-shadow: 0 5px 15px rgba(249, 115, 22, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.team-card:hover .role-badge {
+  background: white;
+  color: #f97316;
+  transform: scale(1.05);
+}
+
+/* Social Links */
+.social-links {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.team-card:hover .social-links {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a1929;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
+.social-link:hover {
+  background: #f97316;
+  color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(249, 115, 22, 0.4);
+}
+
+.social-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Card Content */
+.card-content {
+  padding: 25px;
+  text-align: center;
+  position: relative;
+}
+
+.member-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+  letter-spacing: -0.5px;
+}
+
+.team-card:hover .member-name {
+  color: #f97316;
+}
+
+.member-title {
+  font-size: 15px;
+  color: #f97316;
+  font-weight: 600;
+  margin-bottom: 15px;
+  padding: 5px 15px;
+  background: rgba(249, 115, 22, 0.1);
+  display: inline-block;
+  border-radius: 50px;
+  border: 1px solid rgba(249, 115, 22, 0.2);
+}
+
+.member-bio {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 20px;
+  transition: color 0.3s ease;
+}
+
+.team-card:hover .member-bio {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Expertise Tags */
+.expertise-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.expertise-tag {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover .expertise-tag {
+  background: rgba(249, 115, 22, 0.1);
+  border-color: rgba(249, 115, 22, 0.3);
+  color: #f97316;
+}
+
+/* Experience Badge */
+.experience-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 5px 15px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.experience-badge svg {
+  width: 14px;
+  height: 14px;
+  color: #f97316;
+}
+
+/* Team Stats */
+.team-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 70px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.6s ease 0.6s both;
+}
+
+.stat-item {
+  text-align: center;
+  position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.stat-value {
+  font-size: 36px;
+  font-weight: 800;
+  color: #f97316;
+  margin-bottom: 5px;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.stat-desc {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatOrb {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .team-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .stat-item:not(:last-child)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .team-section {
+    padding: 80px 0;
+  }
+
+  .section-title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+    padding: 0 20px;
+  }
+
+  .card-image-wrapper {
+    height: 280px;
+  }
+
+  .member-name {
+    font-size: 20px;
+  }
+
+  .member-title {
+    font-size: 14px;
+  }
+
+  .member-bio {
+    font-size: 13px;
+  }
+
+  .team-stats {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 30px;
+  }
+
+  .stat-value {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .section-badge {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .card-image-wrapper {
+    height: 250px;
+  }
+
+  .role-badge {
+    font-size: 11px;
+    padding: 6px 15px;
+  }
+
+  .social-link {
+    width: 35px;
+    height: 35px;
+  }
+
+  .social-link svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Profile card animation */
+@keyframes profilePulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(249, 115, 22, 0);
+  }
+}
+
+.team-card.featured {
+  animation: profilePulse 3s infinite;
+}
+
+/* End */
+
+/* CTA BUTTON */
+
+/* FinalCTA.css */
+
+.final-cta {
+  padding: 120px 0;
+  background: linear-gradient(135deg, #0a1929 0%, #1a2b3c 100%);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Animated background patterns */
+.final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(249, 115, 22, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(249, 115, 22, 0.15) 0%, transparent 40%),
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 10px);
+  animation: gradientShift 15s ease infinite;
+  z-index: 1;
+}
+
+/* Floating orbs */
+.floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.2) 0%, transparent 70%);
+  filter: blur(40px);
+  animation: floatOrb 20s ease-in-out infinite;
+  z-index: 1;
+}
+
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  top: -200px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.3) 0%, transparent 70%);
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  bottom: -250px;
+  left: -150px;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.2) 0%, transparent 70%);
+  animation-delay: -5s;
+}
+
+.orb-3 {
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.1) 0%, transparent 70%);
+  animation: pulseOrb 8s ease-in-out infinite;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 3;
+}
+
+/* CTA Content */
+.cta-content {
+  text-align: center;
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 60px;
+  padding: 80px 60px;
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 0.8s ease;
+}
+
+/* Decorative elements */
+.cta-decoration {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border: 2px dashed rgba(249, 115, 22, 0.2);
+  border-radius: 50px;
+  pointer-events: none;
+  animation: borderRotate 20s linear infinite;
+}
+
+.cta-decoration-dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, #f97316 2px, transparent 2px);
+  background-size: 30px 30px;
+  opacity: 0.1;
+  animation: dotsMove 30s linear infinite;
+}
+
+/* Badge */
+.cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(249, 115, 22, 0.2);
+  color: #f97316;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 30px;
+  border-radius: 50px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  backdrop-filter: blur(5px);
+  position: relative;
+  animation: fadeInUp 0.6s ease 0.1s both;
+}
+
+.cta-badge svg {
+  width: 18px;
+  height: 18px;
+  animation: bounce 2s infinite;
+}
+
+/* Title */
+.cta-title {
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 800;
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.6s ease 0.2s both;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cta-title .highlight {
+  color: #f97316;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cta-title .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: rgba(249, 115, 22, 0.3);
+  border-radius: 4px;
+  z-index: -1;
+}
+
+/* Subtitle */
+.cta-subtitle {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+  animation: fadeInUp 0.6s ease 0.3s both;
+}
+
+/* Stats Preview */
+.cta-stats {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.6s ease 0.4s both;
+}
+
+.stat-item {
+  text-align: center;
+  position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(180deg, transparent, #f97316, transparent);
+}
+
+.stat-value {
+  font-size: 42px;
+  font-weight: 800;
+  color: #f97316;
+  margin-bottom: 5px;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+}
+
+.stat-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* CTA Button */
+.cta-button-wrapper {
+  position: relative;
+  display: inline-block;
+  animation: fadeInUp 0.6s ease 0.5s both;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: white;
+  border: none;
+  padding: 20px 60px;
+  border-radius: 60px;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -10px rgba(249, 115, 22, 0.5);
+  text-transform: uppercase;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 30px 60px -10px rgba(249, 115, 22, 0.7);
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.cta-button svg {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover svg {
+  transform: translateX(8px) rotate(90deg);
+}
+
+/* Button ripple effect */
+.button-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  animation: ripple 2s infinite;
+  pointer-events: none;
+}
+
+/* Trust badges */
+.trust-badges {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.6s ease 0.6s both;
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.trust-badge:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+.trust-badge svg {
+  width: 18px;
+  height: 18px;
+  color: #f97316;
+}
+
+/* Limited offer tag */
+.limited-offer {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  transform: rotate(5deg);
+  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.4);
+  animation: pulse 2s infinite;
+}
+
+.limited-offer::before {
+  content: '⚡';
+  margin-right: 5px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatOrb {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes pulseOrb {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes borderRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dotsMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 30px 30px;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: rotate(5deg) scale(1);
+  }
+  50% {
+    transform: rotate(5deg) scale(1.05);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .final-cta {
+    padding: 100px 0;
+  }
+
+  .cta-content {
+    padding: 60px 40px;
+  }
+
+  .cta-title {
+    font-size: 48px;
+  }
+
+  .cta-subtitle {
+    font-size: 18px;
+  }
+
+  .stat-item:not(:last-child)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .cta-content {
+    padding: 50px 30px;
+    border-radius: 40px;
+  }
+
+  .cta-title {
+    font-size: 40px;
+  }
+
+  .cta-subtitle {
+    font-size: 16px;
+    padding: 0 20px;
+  }
+
+  .cta-stats {
+    gap: 30px;
+  }
+
+  .stat-value {
+    font-size: 36px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+  }
+
+  .cta-button {
+    padding: 16px 40px;
+    font-size: 18px;
+  }
+
+  .cta-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .limited-offer {
+    position: relative;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    margin-bottom: 20px;
+    transform: rotate(0deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .cta-content {
+    padding: 40px 20px;
+  }
+
+  .cta-badge {
+    font-size: 12px;
+    padding: 8px 20px;
+  }
+
+  .cta-title {
+    font-size: 32px;
+  }
+
+  .cta-subtitle {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  .cta-stats {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .stat-value {
+    font-size: 32px;
+  }
+
+  .cta-button {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 16px;
+  }
+
+  .trust-badges {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .orb-1, .orb-2, .orb-3 {
+    display: none;
+  }
+}
+
+/* Dark mode optimization */
+@media (prefers-color-scheme: dark) {
+  .final-cta {
+    background: linear-gradient(135deg, #050a14 0%, #0f172a 100%);
+  }
+}
+
+/* Print styles */
+@media print {
+  .final-cta {
+    background: white;
+    color: black;
+  }
+  
+  .floating-orb,
+  .cta-decoration,
+  .cta-decoration-dots {
+    display: none;
+  }
+}
+
+/* CTA BUTTON END */
+
+
+
+Nothing
+
+
+.courses-section {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background decoration */
+.courses-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80') center/cover;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.courses-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.section-subtitle {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffd700;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px 20px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.section-title {
+  font-size: 52px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 25px;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.highlight {
+  color: #ffd700;
+  position: relative;
+  display: inline-block;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 215, 0, 0.3);
+  z-index: -1;
+}
+
+.section-description {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Courses Grid */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+  margin-bottom: 60px;
+}
+
+/* Course Card */
+.course-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.course-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 40px 60px rgba(0, 0, 0, 0.3);
+  background: #ffffff;
+}
+
+/* Course Image */
+.course-image-wrapper {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+}
+
+.course-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.course-card:hover .course-image {
+  transform: scale(1.1);
+}
+
+.course-level-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ffd700;
+  color: #2d3748;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+/* Course Content */
+.course-content {
+  padding: 30px;
+}
+
+.course-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.course-description {
+  font-size: 16px;
+  color: #718096;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.course-details {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 2px solid #edf2f7;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.detail-icon {
+  width: 20px;
+  height: 20px;
+  color: #667eea;
+}
+
+/* View Details Button */
+.view-details-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.view-details-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.view-details-btn:hover::before {
+  left: 100%;
+}
+
+.view-details-btn:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.view-details-btn:hover .btn-icon {
+  transform: translateX(5px);
+}
+
+/* View More Section */
+.view-more-wrapper {
+  text-align: center;
+}
+
+.view-more-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid #ffd700;
+  padding: 18px 45px;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.view-more-btn:hover {
+  background: #ffd700;
+  color: #2d3748;
+  transform: translateY(-3px);
+  box-shadow: 0 20px 30px rgba(255, 215, 0, 0.3);
+}
+
+.view-more-btn:hover .btn-icon {
+  stroke: #2d3748;
+}
+
+.login-prompt {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+  .courses-grid {
+    gap: 25px;
+  }
+  
+  .section-title {
+    font-size: 44px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .course-title {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .courses-section {
+    padding: 70px 0;
+  }
+  
+  .courses-container {
+    padding: 0 20px;
+  }
+  
+  .section-title {
+    font-size: 36px;
+  }
+  
+  .section-description {
+    font-size: 18px;
+  }
+  
+  .course-image-wrapper {
+    height: 240px;
+  }
+  
+  .course-details {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title {
+    font-size: 30px;
+  }
+  
+  .course-card {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .view-more-btn {
+    padding: 15px 35px;
+    font-size: 18px;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.course-card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.course-card:nth-child(1) { animation-delay: 0.1s; }
+.course-card:nth-child(2) { animation-delay: 0.2s; }
+.course-card:nth-child(3) { animation-delay: 0.3s; }
+.course-card:nth-child(4) { animation-delay: 0.4s; }
+
+
+
+
+
+const [activeFilter, setActiveFilter] = useState('all');
+
+  const coursesData = [
+    {
+      id: 1,
+      name: 'Graphic Designing Mastery',
+      category: 'design',
+      level: 'Beginner to Advanced',
+      duration: '12 Weeks',
+      students: 1240,
+      rating: 4.8,
+      tools: [
+        { name: 'Adobe Photoshop', icon: '🎨' },
+        { name: 'Adobe Illustrator', icon: '✏️' },
+        { name: 'Figma', icon: '🖌️' },
+        { name: 'Canva', icon: '📱' }
+      ],
+      curriculum: [
+        'Typography & Color Theory',
+        'Logo Design & Branding',
+        'UI/UX Fundamentals',
+        'Social Media Graphics',
+        'Portfolio Development'
+      ],
+      description: 'Master the art of visual communication with industry-standard tools. Create stunning designs for print and digital media.',
+      career: ['Graphic Designer', 'UI Designer', 'Brand Identity Designer', 'Social Media Manager'],
+      price: 'NPR 25,000',
+      image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&auto=format&fit=crop',
+      color: '#f97316'
+    },
+    {
+      id: 2,
+      name: 'Video Editing Professional',
+      category: 'video',
+      level: 'Intermediate',
+      duration: '8 Weeks',
+      students: 890,
+      rating: 4.9,
+      tools: [
+        { name: 'Premiere Pro', icon: '🎬' },
+        { name: 'After Effects', icon: '✨' },
+        { name: 'DaVinci Resolve', icon: '🎥' },
+        { name: 'Final Cut Pro', icon: '🍎' }
+      ],
+      curriculum: [
+        'Video Editing Fundamentals',
+        'Motion Graphics & VFX',
+        'Color Grading Mastery',
+        'Sound Design',
+        'YouTube Content Creation'
+      ],
+      description: 'Transform raw footage into cinematic masterpieces. Learn professional video editing techniques used by top creators.',
+      career: ['Video Editor', 'Motion Graphics Artist', 'Content Creator', 'Post-Production Specialist'],
+      price: 'NPR 22,000',
+      image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&auto=format&fit=crop',
+      color: '#ef4444'
+    },
+    {
+      id: 3,
+      name: 'Web Development',
+      category: 'development',
+      level: 'Beginner to Advanced',
+      duration: '16 Weeks',
+      students: 2150,
+      rating: 4.9,
+      tools: [
+        { name: 'HTML/CSS', icon: '🌐' },
+        { name: 'JavaScript', icon: '⚡' },
+        { name: 'React.js', icon: '⚛️' },
+        { name: 'Node.js', icon: '🚀' },
+        { name: 'MongoDB', icon: '🍃' }
+      ],
+      curriculum: [
+        'Frontend Development (React)',
+        'Backend Development (Node.js)',
+        'Database Management',
+        'API Development',
+        'Full-Stack Projects'
+      ],
+      description: 'Become a full-stack web developer. Build responsive, dynamic websites and web applications from scratch.',
+      career: ['Frontend Developer', 'Backend Developer', 'Full-Stack Developer', 'Web Application Developer'],
+      price: 'NPR 35,000',
+      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop',
+      color: '#3b82f6'
+    },
+    {
+      id: 4,
+      name: 'App Development',
+      category: 'development',
+      level: 'Intermediate',
+      duration: '14 Weeks',
+      students: 670,
+      rating: 4.7,
+      tools: [
+        { name: 'React Native', icon: '📱' },
+        { name: 'Flutter', icon: '🦋' },
+        { name: 'Firebase', icon: '🔥' },
+        { name: 'Android Studio', icon: '🤖' }
+      ],
+      curriculum: [
+        'Mobile UI/UX Design',
+        'Cross-Platform Development',
+        'Native Features Integration',
+        'App Store Deployment',
+        'Real-time Apps'
+      ],
+      description: 'Create powerful mobile apps for iOS and Android. Learn to build, test, and deploy applications.',
+      career: ['Mobile App Developer', 'React Native Developer', 'Flutter Developer', 'Mobile UI Designer'],
+      price: 'NPR 32,000',
+      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&auto=format&fit=crop',
+      color: '#8b5cf6'
+    },
+    {
+      id: 5,
+      name: 'Meta Ads & Marketing',
+      category: 'marketing',
+      level: 'Beginner to Advanced',
+      duration: '6 Weeks',
+      students: 540,
+      rating: 4.8,
+      tools: [
+        { name: 'Facebook Ads', icon: '📘' },
+        { name: 'Instagram Ads', icon: '📷' },
+        { name: 'Google Analytics', icon: '📊' },
+        { name: 'Meta Business Suite', icon: '📱' }
+      ],
+      curriculum: [
+        'Facebook/Instagram Advertising',
+        'Audience Targeting',
+        'Ad Creative Strategy',
+        'Budget Optimization',
+        'ROI Analysis'
+      ],
+      description: 'Master digital advertising on Meta platforms. Learn to create, optimize, and scale profitable ad campaigns.',
+      career: ['Digital Marketer', 'Social Media Manager', 'Media Buyer', 'Marketing Specialist'],
+      price: 'NPR 18,000',
+      image: 'https://images.unsplash.com/photo-1557838923-2985c318be48?w=600&auto=format&fit=crop',
+      color: '#06b6d4'
+    }
+  ];
+
+  const filters = [
+    { id: 'all', label: 'All Courses', icon: '📚' },
+    { id: 'design', label: 'Design', icon: '🎨' },
+    { id: 'video', label: 'Video', icon: '🎬' },
+    { id: 'development', label: 'Development', icon: '💻' },
+    { id: 'marketing', label: 'Marketing', icon: '📈' }
+  ];
+
+  const filteredCourses = activeFilter === 'all' 
+    ? coursesData 
+    : coursesData.filter(course => course.category === activeFilter);
+  
+
+
+
+import React, { useState } from 'react'; 
+
+
+  {/*===================================
+        2. COURSES FILTER & GRID
+      ===================================*/}
+      <section className="courses-section">
+        <div className="courses-container">
+          {/* Filter Bar */}
+          <div className="courses-filter-wrapper">
+            <div className="courses-filter-header">
+              <h2 className="courses-filter-title">Choose Your Path</h2>
+              <p className="courses-filter-subtitle">Select a category to explore specialized courses</p>
+            </div>
+            <div className="courses-filter-bar">
+              {filters.map(filter => (
+                <button
+                  key={filter.id}
+                  className={`courses-filter-btn ${activeFilter === filter.id ? 'active' : ''}`}
+                  onClick={() => setActiveFilter(filter.id)}
+                >
+                  <span className="courses-filter-icon">{filter.icon}</span>
+                  <span className="courses-filter-label">{filter.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Courses Grid */}
+          <div className="courses-grid">
+            {filteredCourses.map((course) => (
+              <div key={course.id} className="courses-card">
+                {/* Card Image */}
+                <div className="courses-card-image-wrapper">
+                  <img 
+                    src={course.image} 
+                    alt={course.name}
+                    className="courses-card-image"
+                  />
+                  <div className="courses-card-badge" style={{ background: course.color }}>
+                    {course.level}
+                  </div>
+                  <div className="courses-card-rating">
+                    <span className="courses-star">⭐</span>
+                    <span>{course.rating}</span>
+                    <span className="courses-rating-count">({course.students} students)</span>
+                  </div>
+                </div>
+
+                {/* Card Content */}
+                <div className="courses-card-content">
+                  <h3 className="courses-card-title">{course.name}</h3>
+                  
+                  {/* Tools/Skills */}
+                  <div className="courses-tools">
+                    {course.tools.map((tool, index) => (
+                      <div key={index} className="courses-tool">
+                        <span className="courses-tool-icon">{tool.icon}</span>
+                        <span className="courses-tool-name">{tool.name}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Course Info */}
+                  <div className="courses-info-grid">
+                    <div className="courses-info-item">
+                      <span className="courses-info-icon">⏱️</span>
+                      <div className="courses-info-text">
+                        <span className="courses-info-label">Duration</span>
+                        <span className="courses-info-value">{course.duration}</span>
+                      </div>
+                    </div>
+                    <div className="courses-info-item">
+                      <span className="courses-info-icon">📊</span>
+                      <div className="courses-info-text">
+                        <span className="courses-info-label">Level</span>
+                        <span className="courses-info-value">{course.level}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <p className="courses-description">{course.description}</p>
+
+                  {/* Curriculum Preview */}
+                  <div className="courses-curriculum">
+                    <span className="courses-curriculum-label">What you'll learn:</span>
+                    <ul className="courses-curriculum-list">
+                      {course.curriculum.slice(0, 3).map((item, index) => (
+                        <li key={index} className="courses-curriculum-item">
+                          <span className="courses-check">✓</span>
+                          {item}
+                        </li>
+                      ))}
+                      {course.curriculum.length > 3 && (
+                        <li className="courses-curriculum-item courses-more">
+                          +{course.curriculum.length - 3} more modules
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+
+                  {/* Career Paths */}
+                  <div className="courses-career">
+                    <span className="courses-career-label">Career opportunities:</span>
+                    <div className="courses-career-tags">
+                      {course.career.slice(0, 2).map((job, index) => (
+                        <span key={index} className="courses-career-tag">{job}</span>
+                      ))}
+                      {course.career.length > 2 && (
+                        <span className="courses-career-tag courses-more-tag">
+                          +{course.career.length - 2}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Price & CTA */}
+                  <div className="courses-card-footer">
+                    <div className="courses-price">
+                      <span className="courses-price-label">Course Fee</span>
+                      <span className="courses-price-value">{course.price}</span>
+                    </div>
+                    <Link to="/signup" className="courses-enroll-btn" style={{ '--hover-color': course.color }}>
+                      Enroll Now
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>

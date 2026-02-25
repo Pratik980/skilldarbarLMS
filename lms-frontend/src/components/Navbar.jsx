@@ -44,7 +44,7 @@ function Navbar() {
                 <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8 10a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
-                <span>+977 976-2726211</span>
+                <span>+977-9704050656</span>
               </div>
               <div className="contact-info location">
                 <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -95,8 +95,8 @@ function Navbar() {
               <NavLink to="/" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>Home</NavLink>
               <NavLink to="/about" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>About</NavLink>
               <NavLink to="/courses" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>Courses</NavLink>
-              <NavLink to="/careers" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>Careers</NavLink>
-              <NavLink to="/pricing" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>Pricing</NavLink>
+              {/* <NavLink to="/careers" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>Careers</NavLink>
+              <NavLink to="/pricing" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>Pricing</NavLink> */}
               <NavLink to="/blog" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>Blog</NavLink>
               <NavLink to="/faqs" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>Faqs</NavLink>
               <NavLink to="/contact" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>Contact</NavLink>
@@ -135,11 +135,11 @@ function Navbar() {
             <NavLink to="/about" className="mobile-menu-item" onClick={closeMenu}>About Us</NavLink>
             <NavLink to="/courses" className="mobile-menu-item" onClick={closeMenu}>Courses</NavLink>
       
-            <NavLink to="/pricing" className="mobile-menu-item" onClick={closeMenu}>Pricing</NavLink>
+            {/* <NavLink to="/pricing" className="mobile-menu-item" onClick={closeMenu}>Pricing</NavLink> */}
             <NavLink to="/blog" className="mobile-menu-item" onClick={closeMenu}>Blog</NavLink>
             <NavLink to="/faqs" className="mobile-menu-item" onClick={closeMenu}>Faqs</NavLink>
        
-            <NavLink to="/careers" className="mobile-menu-item" onClick={closeMenu}>Careers</NavLink>
+            {/* <NavLink to="/careers" className="mobile-menu-item" onClick={closeMenu}>Careers</NavLink> */}
             <NavLink to="/contact" className="mobile-menu-item" onClick={closeMenu}>Contact Us</NavLink>
             
             <div className="mobile-menu-footer">

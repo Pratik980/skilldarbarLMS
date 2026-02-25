@@ -96,6 +96,7 @@
   max-width: 600px;
   margin: 0 auto 40px;
   animation: blogFadeInUp 0.6s ease 0.25s both;
+  border: none;
 }
 
 .blog-search-box {
@@ -105,6 +106,7 @@
   border-radius: 60px;
   padding: 5px 5px 5px 20px;
   box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+  border: none;
 }
 
 .blog-search-icon {
@@ -119,6 +121,7 @@
   padding: 15px 10px;
   font-size: 16px;
   outline: none;
+  color: black;
   background: transparent;
 }
 

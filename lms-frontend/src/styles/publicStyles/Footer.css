@@ -6,7 +6,7 @@
 } 
 
 .footer {
-  background: #f97316; /* Orange background */
+  background: #ff0000; /* Orange background */
   color: white;
   padding: 60px 0 0;
   position: relative;
@@ -56,9 +56,11 @@
 }
 
 .footer-logo-img {
-  height: 50px;
+  height: 80px;
   width: auto;
   object-fit: contain;
+  background-color: #0C4F63;
+  border-radius: 50%;
 }
 
 .footer-logo-placeholder {

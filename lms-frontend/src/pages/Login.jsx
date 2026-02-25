@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 import LightModeWrapper from '../components/LightModeWrapper';
+import Logo from '../assets/skill-darbar-logo.png';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -52,16 +53,17 @@ const Login = () => {
   return (
     <LightModeWrapper>
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-slate-200 px-4 py-10 font-sans">
-      <div className="pointer-events-none absolute -top-20 right-0 h-64 w-64 rounded-full bg-brand-orange/20 blur-3xl"></div>
+      <div className="pointer-events-none absolute -top-20 right-0 h-64 w-64 rounded-full  blur-3xl"></div>
       <div className="pointer-events-none absolute -bottom-24 left-0 h-64 w-64 rounded-full bg-white/10 blur-3xl"></div>
 
       <div className="relative w-full max-w-md rounded-2xl border border-white/10 bg-white/95 p-8 shadow-2xl backdrop-blur">
         <div className="text-center">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-brand-orange">
-            <svg width="26" height="26" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="50" height="50" rx="10" fill="white"/>
-              <path d="M15 20h20M15 25h20M15 30h15" stroke="#0f172a" strokeWidth="3" strokeLinecap="round"/>
-            </svg>
+          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-xl bg-[#0C4F63]">
+             <img
+    src={Logo}
+    alt="SkillDarbar Logo"
+    className="h-15 w-15 object-contain"
+  />
           </div>
           <h2 className="mt-4 text-2xl font-bold text-brand-orange">Welcome Back</h2>
           <p className="mt-2 text-sm text-brand-teal/70">Login to access your learning dashboard</p>
@@ -100,7 +102,7 @@ const Login = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              placeholder="you@example.com"
+              placeholder="ramkarki12@gmail.com"
               autoComplete="email"
               className="w-full rounded-lg border border-brand-teal/20 bg-sky-50 px-3 py-2 text-sm text-slate-700 placeholder:text-slate-400 focus:border-brand-orange focus:bg-sky-50 focus:text-slate-700 focus:ring-2 focus:ring-brand-orange/30"
             />
