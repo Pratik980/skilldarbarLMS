@@ -16,6 +16,7 @@ html {
     opacity: 0;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -23,14 +24,11 @@ html {
 }
 
 @layer base {
-  /* Dark mode base styles */
-  .dark {
-    color-scheme: dark;
-  }
-  .dark body {
-    background-color: #0f172a;
-    color: #e2e8f0;
-  }
+  /*
+   * Note: `.dark` is now scoped to portal layout divs (AdminLayout / MainLayout),
+   * NOT to <html>. The public landing pages are always light mode.
+   * Do NOT add `html.dark` or `body` overrides here — they would escape the portal scope.
+   */
 }
 
 @layer components {
@@ -44,9 +42,11 @@ html {
   :root:not(.dark) .text-white\/80 {
     color: #1D4A5A !important;
   }
+
   :root:not(.dark) .text-white\/70 {
     color: rgba(29, 74, 90, 0.7) !important;
   }
+
   :root:not(.dark) .text-white\/60 {
     color: rgba(29, 74, 90, 0.6) !important;
   }
@@ -55,9 +55,11 @@ html {
   :root:not(.dark) .text-red-100 {
     color: #b91c1c !important;
   }
+
   :root:not(.dark) .bg-red-500\/15 {
     background-color: rgba(239, 68, 68, 0.08) !important;
   }
+
   :root:not(.dark) .border-red-300\/40 {
     border-color: rgba(252, 165, 165, 0.6) !important;
   }
@@ -71,6 +73,7 @@ html {
   :root:not(.dark) .border-white\/10 {
     border-color: rgba(226, 232, 240, 1) !important;
   }
+
   :root:not(.dark) .border-white\/20 {
     border-color: rgba(203, 213, 225, 1) !important;
   }
@@ -79,68 +82,89 @@ html {
   .dark .bg-white {
     background-color: #1e293b !important;
   }
+
   .dark .bg-slate-50 {
     background-color: #0f172a !important;
   }
+
   .dark .bg-slate-100 {
     background-color: #1e293b !important;
   }
+
   .dark .border-orange-200,
   .dark .border-slate-200 {
     border-color: rgba(248, 250, 252, 0.1) !important;
   }
+
   .dark .border-brand-teal\/10 {
     border-color: rgba(248, 250, 252, 0.08) !important;
   }
+
   .dark .text-slate-900,
   .dark .text-slate-800,
   .dark .text-slate-700 {
     color: #e2e8f0 !important;
   }
+
   .dark .text-slate-600,
   .dark .text-slate-500 {
     color: #94a3b8 !important;
   }
+
   .dark .text-brand-teal {
-    color: #7dd3fc !important; /* sky-300 */
+    color: #7dd3fc !important;
+    /* sky-300 */
   }
+
   .dark .text-brand-teal\/60,
   .dark .text-brand-teal\/70,
   .dark .text-brand-teal\/80 {
     color: rgba(125, 211, 252, 0.7) !important;
   }
+
   .dark .text-brand-teal\/50,
   .dark .text-brand-teal\/40 {
     color: rgba(125, 211, 252, 0.5) !important;
   }
+
   .dark .bg-brand-teal\/5 {
     background-color: rgba(125, 211, 252, 0.05) !important;
   }
+
   .dark .bg-brand-teal\/10 {
     background-color: rgba(125, 211, 252, 0.08) !important;
   }
+
   .dark .text-brand-orange {
-    color: #fb923c !important; /* Lighter orange for dark mode, not white! */
+    color: #fb923c !important;
+    /* Lighter orange for dark mode, not white! */
   }
+
   .dark .text-brand-orange\/70,
   .dark .text-brand-orange\/60 {
     color: rgba(251, 146, 60, 0.7) !important;
   }
+
   .dark .text-brand-orangeDark {
     color: #fdba74 !important;
   }
+
   .dark .hover\:text-brand-orangeDark:hover {
     color: #fed7aa !important;
   }
+
   .dark .bg-orange-50 {
     background-color: rgba(249, 115, 22, 0.1) !important;
   }
+
   .dark .bg-orange-100 {
     background-color: rgba(249, 115, 22, 0.15) !important;
   }
+
   .dark .shadow-lg {
     --tw-shadow-color: rgba(0, 0, 0, 0.3) !important;
   }
+
   .dark input,
   .dark textarea,
   .dark select {
@@ -148,10 +172,12 @@ html {
     border-color: rgba(248, 250, 252, 0.15) !important;
     color: #e2e8f0 !important;
   }
+
   .dark input::placeholder,
   .dark textarea::placeholder {
     color: rgba(148, 163, 184, 0.5) !important;
   }
+
   .dark .border-white\/10 {
     border-color: rgba(248, 250, 252, 0.08) !important;
   }

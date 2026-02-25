@@ -10,22 +10,28 @@ export const useTheme = () => {
   return context;
 };
 
+/**
+ * Portal-scoped ThemeProvider.
+ * 
+ * Instead of adding `dark` to <html> (which affects the entire app),
+ * this provider exposes `isDark` so that the layout component can add
+ * `dark` class only to its OWN root <div>. This keeps dark mode
+ * scoped to the Admin / Student portal and never bleeds into the
+ * public landing pages.
+ *
+ * localStorage key is `portalTheme` (distinct from any legacy `theme` key)
+ * so old global-dark state doesn't accidentally re-activate.
+ */
 export const ThemeProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(() => {
-    const saved = localStorage.getItem('theme');
+    const saved = localStorage.getItem('portalTheme');
     if (saved) return saved === 'dark';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Default to light inside portals — public pages are always light anyway
+    return false;
   });
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (isDark) {
-      root.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      root.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
+    localStorage.setItem('portalTheme', isDark ? 'dark' : 'light');
   }, [isDark]);
 
   const toggleTheme = () => setIsDark(prev => !prev);

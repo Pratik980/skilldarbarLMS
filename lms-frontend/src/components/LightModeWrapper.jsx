@@ -1,39 +1,15 @@
-import { useEffect } from 'react';
-
 /**
- * Wrapper component that forces light mode for specific pages (Login, Signup)
- * Temporarily removes the 'dark' class and restores it on unmount
+ * LightModeWrapper — now a simple passthrough.
+ *
+ * Previously this component fought against the global `html.dark` class by
+ * using a MutationObserver to strip it off. That hack is no longer needed
+ * because dark mode is now scoped to portal layout divs (AdminLayout /
+ * MainLayout) and NEVER applied to <html>. Public pages and auth pages are
+ * always in light mode by default.
+ *
+ * The component is kept as a transparent wrapper so existing imports in
+ * Login.jsx / Signup.jsx continue to work without changes.
  */
-const LightModeWrapper = ({ children }) => {
-  useEffect(() => {
-    const root = document.documentElement;
-    const wasDark = root.classList.contains('dark');
-
-    // Force light mode
-    root.classList.remove('dark');
-
-    // Create an observer to prevent other components from adding 'dark' back
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'class' && root.classList.contains('dark')) {
-          root.classList.remove('dark');
-        }
-      });
-    });
-
-    observer.observe(root, { attributes: true });
-
-    // Restore previous theme on unmount
-    return () => {
-      observer.disconnect();
-      if (wasDark) {
-        root.classList.add('dark');
-      }
-    };
-  }, []);
-
-
-  return <>{children}</>;
-};
+const LightModeWrapper = ({ children }) => <>{children}</>;
 
 export default LightModeWrapper;

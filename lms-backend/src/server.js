@@ -88,7 +88,7 @@ server.listen(PORT, () => {
   console.log(`✓ Server running on http://localhost:${PORT}`);
   console.log(`✓ API ready at http://localhost:${PORT}/api`);
   console.log(`✓ Socket.io ready`);
-  console.log("Cloudinary also ready mero lekha")
+  console.log("Cloudinary is successfully configured")
 });
 
 // Handle unhandled promise rejections
