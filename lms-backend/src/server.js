@@ -23,13 +23,13 @@ const allowedOrigins = [
 
 const io = new Server(server, {
   cors: {
-    origin: function(origin, callback) {
+    origin: function (origin, callback) {
       // Allow requests with no origin (mobile apps, curl, etc)
       if (!origin) {
         console.log('✅ Socket.IO: Allowing request with no origin');
         return callback(null, true);
       }
-      
+
       if (allowedOrigins.includes(origin)) {
         console.log('✅ Socket.IO: Allowing origin:', origin);
         return callback(null, true);
